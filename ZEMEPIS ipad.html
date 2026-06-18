@@ -1,0 +1,1842 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maturita Zeměpis pro Vanessu 🌸</title>
+<style>
+:root{--pink:#FF6BAE;--pink-light:#FFB3D9;--pink-pale:#FFF0F7;--pink-deep:#FF3D8A;--plum:#3D1A2E;--plum-mid:#6B3052;--white:#FFFFFF;--cream:#FFF8FC}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--cream);color:var(--plum);overflow-x:hidden}
+.particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;border-radius:50%;opacity:.15;animation:floatUp linear infinite}
+@keyframes floatUp{0%{transform:translateY(110vh) rotate(0deg);opacity:0}10%{opacity:.15}90%{opacity:.15}100%{transform:translateY(-10vh) rotate(720deg);opacity:0}}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;background:linear-gradient(135deg,#FFE4F3 0%,#FFF0F7 40%,#FFD6EC 100%);overflow:hidden}
+.hero::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(255,107,174,.2) 0%,transparent 70%);top:-100px;right:-100px;border-radius:50%;animation:pulse 4s ease-in-out infinite}
+.hero::after{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(255,179,217,.25) 0%,transparent 70%);bottom:-80px;left:-80px;border-radius:50%;animation:pulse 5s ease-in-out infinite reverse}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.hero-badge{background:rgba(255,107,174,.15);border:1px solid rgba(255,107,174,.4);color:var(--pink-deep);font-size:12px;font-weight:600;padding:6px 16px;border-radius:100px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.5rem;position:relative;z-index:1;animation:slideDown .6s ease}
+.hero-title{font-family:'Georgia',serif;font-size:clamp(2.8rem,8vw,5rem);font-weight:900;line-height:1.05;color:var(--plum);position:relative;z-index:1;animation:slideDown .7s ease}
+.hero-title span{background:linear-gradient(135deg,var(--pink) 0%,var(--pink-deep) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(.9rem,2.5vw,1.1rem);color:var(--plum-mid);margin:1.2rem 0 .5rem;position:relative;z-index:1;animation:slideDown .8s ease}
+.hero-school{font-size:.8rem;color:var(--pink);font-weight:600;letter-spacing:.05em;position:relative;z-index:1;margin-bottom:2.5rem;animation:slideDown .85s ease}
+.hero-emoji{font-size:4rem;margin-bottom:1rem;position:relative;z-index:1;animation:bounce 2s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+.hero-stats{display:flex;gap:1.5rem;position:relative;z-index:1;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem;animation:slideDown .9s ease}
+.stat-pill{background:white;border:1px solid var(--pink-light);border-radius:100px;padding:8px 20px;font-size:.85rem;font-weight:500;color:var(--plum-mid);box-shadow:0 2px 12px rgba(255,107,174,.12)}
+.stat-pill strong{color:var(--pink-deep)}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:1;animation:scrollBounce 2s ease-in-out infinite;color:var(--pink);font-size:.8rem;display:flex;flex-direction:column;align-items:center;gap:6px}
+@keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,248,252,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,107,174,.2);padding:.75rem 1rem}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-btn{flex-shrink:0;padding:8px 18px;border-radius:100px;border:1.5px solid transparent;background:transparent;font-size:.85rem;font-weight:500;color:var(--plum-mid);cursor:pointer;transition:all .2s;font-family:system-ui,-apple-system,sans-serif;white-space:nowrap}
+.nav-btn.active,.nav-btn:hover{background:linear-gradient(135deg,var(--pink) 0%,var(--pink-deep) 100%);color:white;border-color:transparent;box-shadow:0 4px 15px rgba(255,107,174,.35)}
+.main{max-width:900px;margin:0 auto;padding:2rem 1rem}
+.section{display:none}
+.section.active{display:block}
+.section-header{text-align:center;margin-bottom:2rem}
+.section-header h2{font-family:'Georgia',serif;font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;color:var(--plum)}
+.section-header p{color:var(--plum-mid);font-size:.95rem;margin-top:.5rem}
+.search-wrap{position:relative;margin-bottom:1.5rem}
+.search-wrap input{width:100%;padding:14px 20px 14px 48px;border-radius:100px;border:2px solid var(--pink-light);background:white;font-size:.95rem;font-family:system-ui,-apple-system,sans-serif;color:var(--plum);outline:none;transition:border-color .2s,box-shadow .2s}
+.search-wrap input:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(255,107,174,.12)}
+.search-wrap input::placeholder{color:#C99AB5}
+.search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:1.1rem}
+.group-label{display:flex;align-items:center;gap:10px;margin:2rem 0 1rem;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--pink)}
+.group-label::after{content:'';flex:1;height:1px;background:linear-gradient(to right,rgba(255,107,174,.3),transparent)}
+.okruh-card{background:white;border:1.5px solid rgba(255,179,217,.4);border-radius:20px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s;animation:fadeUp .4s ease both;margin-bottom:12px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.okruh-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,174,.2);border-color:var(--pink-light)}
+.okruh-card.open{border-color:var(--pink);box-shadow:0 8px 30px rgba(255,107,174,.25)}
+.card-head{display:flex;align-items:center;gap:14px;padding:16px 20px}
+.card-num-bubble{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0;background:linear-gradient(135deg,var(--pink-pale),#FFE0F2);color:var(--pink-deep);border:1.5px solid var(--pink-light)}
+.card-emoji-big{font-size:1.6rem;flex-shrink:0}
+.card-title-wrap{flex:1;min-width:0}
+.card-title-main{font-weight:600;font-size:.95rem;color:var(--plum);line-height:1.3}
+.card-title-sub{font-size:.75rem;color:#C99AB5;margin-top:2px}
+.card-arrow{color:var(--pink-light);font-size:1.2rem;flex-shrink:0;transition:transform .3s}
+.okruh-card.open .card-arrow{transform:rotate(90deg);color:var(--pink)}
+.card-body{display:none;padding:0 20px 20px;border-top:1px solid rgba(255,179,217,.3)}
+.okruh-card.open .card-body{display:block;padding-top:16px}
+.key-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.key-tag{background:linear-gradient(135deg,#FFF0F7,#FFE4F3);border:1px solid rgba(255,107,174,.25);border-radius:100px;padding:5px 12px;font-size:.78rem;color:var(--plum-mid);line-height:1.5}
+.trick-box{background:linear-gradient(135deg,rgba(255,107,174,.08),rgba(255,61,138,.05));border-left:3px solid var(--pink);border-radius:0 12px 12px 0;padding:10px 14px;font-size:.82rem;color:var(--plum-mid);margin-bottom:14px}
+.trick-box strong{color:var(--pink-deep);font-weight:600}
+.more-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:100px;border:1.5px solid var(--pink);background:linear-gradient(135deg,var(--pink-pale),#FFE4F3);color:var(--pink-deep);font-size:.85rem;font-weight:600;cursor:pointer;font-family:system-ui,-apple-system,sans-serif;transition:all .2s;margin-bottom:12px}
+.more-btn:hover{background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:white;box-shadow:0 4px 15px rgba(255,107,174,.3)}
+
+/* VÝKLAD PANEL */
+.vyklad-panel{display:none;margin-top:16px;background:linear-gradient(135deg,#FFF8FC,#FFF0F7);border:1.5px solid rgba(255,107,174,.3);border-radius:16px;padding:20px;animation:fadeUp .3s ease}
+.vyklad-panel.show{display:block}
+.vyklad-text{font-size:.88rem;line-height:1.8;color:var(--plum-mid)}
+.vyklad-text p{margin-bottom:10px}
+.vyklad-text strong{color:var(--pink-deep);font-weight:600}
+.vyklad-text em{color:var(--plum);font-style:italic}
+.vyklad-text .highlight{background:linear-gradient(135deg,#FFE4F3,#FFD6EC);border-radius:8px;padding:10px 14px;margin:10px 0;border-left:3px solid var(--pink);font-size:.85rem}
+.vyklad-text .priklad{background:white;border-radius:10px;padding:10px 14px;margin:8px 0;border:1px solid rgba(255,179,217,.4);font-size:.83rem}
+.vyklad-text .priklad::before{content:'💡 Příklad: ';font-weight:600;color:var(--pink-deep)}
+.vy-section{margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid rgba(255,179,217,.2)}
+.vy-section:last-child{border-bottom:none;margin-bottom:0}
+.vy-section h3{font-family:'Georgia',serif;font-size:1rem;color:var(--pink-deep);margin:0 0 8px;padding-bottom:6px;border-bottom:1px solid rgba(255,179,217,.25)}
+.vy-img{width:100%;max-width:480px;border-radius:10px;margin:8px 0;display:block;border:1.5px solid rgba(255,179,217,.3);object-fit:cover;max-height:200px;background:#fff0f7}
+.vy-list{margin:8px 0 10px 18px;padding-left:4px}
+.vy-list li{margin-bottom:5px;line-height:1.6;font-size:.87rem}
+
+/* QUIZ */
+.quiz-header{display:flex;align-items:center;justify-content:space-between;background:white;border:1.5px solid rgba(255,179,217,.4);border-radius:20px;padding:16px 22px;margin-bottom:1.5rem;flex-wrap:wrap;gap:12px}
+.hearts{display:flex;gap:6px;font-size:1.4rem}
+.score-info{text-align:center}
+.score-big{font-family:'Georgia',serif;font-size:2rem;font-weight:700;color:var(--pink-deep)}
+.score-label{font-size:.75rem;color:#C99AB5}
+.reset-quiz-btn{padding:8px 18px;border-radius:100px;border:1.5px solid var(--pink-light);background:transparent;color:var(--pink-deep);font-size:.82rem;font-weight:500;cursor:pointer;font-family:system-ui,-apple-system,sans-serif;transition:all .2s}
+.reset-quiz-btn:hover{background:var(--pink-pale)}
+.quiz-card{background:white;border:1.5px solid rgba(255,179,217,.4);border-radius:24px;padding:24px;position:relative;overflow:hidden}
+.quiz-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(to right,var(--pink),var(--pink-deep))}
+.quiz-topic{font-size:.75rem;font-weight:600;color:var(--pink);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.quiz-question{font-family:'Georgia',serif;font-size:clamp(1.1rem,3vw,1.4rem);font-weight:700;color:var(--plum);margin-bottom:1.5rem;line-height:1.4}
+.quiz-opts{display:grid;gap:10px}
+.quiz-opt{padding:14px 18px;border-radius:14px;border:1.5px solid rgba(255,179,217,.5);background:var(--pink-pale);color:var(--plum);font-size:.9rem;font-family:system-ui,-apple-system,sans-serif;text-align:left;cursor:pointer;transition:all .2s;font-weight:500}
+.quiz-opt:hover:not(:disabled){border-color:var(--pink);background:linear-gradient(135deg,#FFF0F7,#FFE4F3);transform:translateX(4px)}
+.quiz-opt.correct{background:linear-gradient(135deg,#E8FFF5,#D0FFE8);border-color:#4CAF85;color:#1A5C3A}
+.quiz-opt.wrong{background:linear-gradient(135deg,#FFF0F0,#FFE0E0);border-color:#E24B4A;color:#7A1F1F}
+.quiz-feedback{margin-top:16px;padding:14px 18px;border-radius:14px;font-size:.88rem;display:none;line-height:1.6}
+.quiz-feedback.show{display:block;animation:fadeUp .3s ease}
+.quiz-feedback.ok{background:linear-gradient(135deg,#E8FFF5,#D0FFE8);color:#1A5C3A;border:1px solid #4CAF85}
+.quiz-feedback.bad{background:linear-gradient(135deg,#FFF0F0,#FFE0E0);color:#7A1F1F;border:1px solid #E24B4A}
+.quiz-next-btn{display:none;margin-top:16px;padding:12px 28px;border-radius:100px;border:none;background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:white;font-size:.9rem;font-weight:600;font-family:system-ui,-apple-system,sans-serif;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(255,107,174,.35)}
+.quiz-next-btn.show{display:inline-block;animation:fadeUp .3s ease}
+.quiz-next-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,107,174,.45)}
+.progress-wrap{margin-bottom:16px}
+.progress-label{font-size:.75rem;color:#C99AB5;margin-bottom:6px;display:flex;justify-content:space-between}
+.progress-track{height:6px;background:rgba(255,179,217,.3);border-radius:100px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(to right,var(--pink),var(--pink-deep));border-radius:100px;transition:width .4s ease}
+.done-screen{text-align:center;padding:3rem 1rem}
+.done-emoji{font-size:4rem;margin-bottom:1rem;animation:bounce 1s ease-in-out infinite}
+.done-title{font-family:'Georgia',serif;font-size:2rem;font-weight:700;color:var(--plum);margin-bottom:.5rem}
+.done-sub{color:var(--plum-mid);margin-bottom:2rem}
+.done-btn{padding:14px 32px;border-radius:100px;border:none;background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:white;font-size:1rem;font-weight:600;font-family:system-ui,-apple-system,sans-serif;cursor:pointer;box-shadow:0 6px 25px rgba(255,107,174,.4);transition:all .2s}
+.done-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,107,174,.5)}
+.tahak-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.tahak-tile{background:white;border:1.5px solid rgba(255,179,217,.4);border-radius:18px;padding:18px 16px;cursor:default;transition:all .2s;text-align:center}
+.tahak-tile:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(255,107,174,.18);border-color:var(--pink-light)}
+.tahak-num{font-size:.7rem;font-weight:700;color:var(--pink);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.tahak-emoji{font-size:1.8rem;margin-bottom:6px;display:block}
+.tahak-title{font-size:.85rem;font-weight:600;color:var(--plum);line-height:1.3;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid rgba(255,179,217,.35)}
+.tahak-key{font-size:.72rem;color:var(--plum-mid);line-height:1.55}
+.confetti-piece{position:fixed;width:10px;height:10px;border-radius:2px;pointer-events:none;z-index:9999;animation:confettiFall 1.5s ease-in forwards}
+@keyframes confettiFall{0%{opacity:1;transform:translateY(-20px) rotate(0deg)}100%{opacity:0;transform:translateY(300px) rotate(720deg)}}
+@media(max-width:600px){.hero-stats{gap:8px}.stat-pill{font-size:.78rem;padding:6px 14px}.tahak-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important}}
+</style>
+</head>
+<body>
+<div class="particles" id="particles"></div>
+<section class="hero">
+  <div class="hero-badge">✨ Na míru pro tebe ✨</div>
+  <div class="hero-emoji">🌸</div>
+  <h1 class="hero-title">Maturita<br><span>Zeměpis</span><br>pro Vanessu</h1>
+  <p class="hero-sub">Gymnázium Jana Šabršuly s.r.o. · Orlová</p>
+  <p class="hero-school">🎀 Tvůj osobní studijní průvodce — 29 okruhů 🎀</p>
+  <div class="hero-stats">
+    <div class="stat-pill">🗺️ <strong>29</strong> okruhů</div>
+    <div class="stat-pill">📖 <strong>29</strong> výkladů</div>
+    <div class="stat-pill">🎯 <strong>29</strong> kvíz otázek</div>
+  </div>
+  <div class="scroll-hint"><span>posuň se dolů</span><span>↓</span></div>
+</section>
+<nav class="nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showSection('karticky',this)">🗂️ Kartičky</button>
+    <button class="nav-btn" onclick="showSection('kviz',this)">🎯 Kvíz</button>
+    <button class="nav-btn" onclick="showSection('tahak',this)">⚡ Tahák</button>
+  </div>
+</nav>
+<main class="main">
+  <section id="karticky" class="section active">
+    <div class="section-header"><h2>Moje kartičky 🗂️</h2><p>Klikni na okruh · pak na tlačítko pro celý výklad</p></div>
+    <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" placeholder="Hledej okruh..." oninput="filterCards(this.value)"/></div>
+    <div id="cards-container"></div>
+  </section>
+  <section id="kviz" class="section">
+    <div class="section-header"><h2>Kvíz 🎯</h2><p>3 srdíčka — neztrácej je!</p></div>
+    <div id="quiz-wrapper"></div>
+  </section>
+  <section id="tahak" class="section">
+    <div class="section-header"><h2>Rychlý tahák ⚡</h2><p>Přehled všech 29 okruhů na jednom místě</p></div>
+    <div class="tahak-grid" id="tahak-container"></div>
+  </section>
+</main>
+<script>
+const VYKLAD = {
+1:`<div class="vy-section">
+<h3>🌍 Co je vlastně geografie a proč ji studujeme?</h3>
+<p>Geografie (řecky <em>gé</em> = Země, <em>graphein</em> = psát/popisovat) je věda, která zkoumá <strong>prostor, místo a vztahy mezi přírodou a lidmi</strong>. Není to jen „učení se hlavních měst". Je to věda, která nám pomáhá pochopit, proč je svět takový, jaký je.</p>
+
+<div class="highlight">📌 Na maturitě se tě zeptají: „Co studuje geografie?" Odpověz: Zkoumá rozmístění přírodních a společenských jevů na Zemi a vztahy mezi nimi a prostředím.</div>
+</div>
+
+<div class="vy-section">
+<h3>📚 Jak se geografie dělí?</h3>
+<p>Geografie má dvě hlavní větve, a ty mají spousty podvětví:</p>
+<p>🏔️ <strong>Fyzická geografie</strong> = studuje přírodní složky Země.</p>
+<ul class="vy-list">
+<li><strong>Geomorfologie</strong> — tvary povrchu (hory, nížiny, kaňony)</li>
+<li><strong>Klimatologie</strong> — klima a počasí</li>
+<li><strong>Hydrologie</strong> — voda na Zemi (řeky, jezera, oceány)</li>
+<li><strong>Biogeografie</strong> — rozmístění rostlin a živočichů</li>
+<li><strong>Pedogeografie</strong> — půdy</li>
+</ul>
+<p>👥 <strong>Humánní (socioekonomická) geografie</strong> = studuje lidskou společnost v prostoru.</p>
+<ul class="vy-list">
+<li><strong>Geografie obyvatelstva</strong> — kolik lidí kde žije a proč</li>
+<li><strong>Geografie sídel</strong> — vesnice, města, megalopole</li>
+<li><strong>Politická geografie</strong> — státy, hranice, moc</li>
+<li><strong>Ekonomická geografie</strong> — průmysl, zemědělství, obchod</li>
+</ul>
+<p>🗺️ <strong>Regionální geografie</strong> = studuje konkrétní regiony světa (Evropa, Asie, ČR...) komplexně — fyzicky i humánně dohromady.</p>
+<div class="highlight">💡 Trik: FHR = Fyzická, Humánní, Regionální. Jako „Fakt Hodně Regionů".</div>
+</div>
+
+<div class="vy-section">
+<h3>🔬 Metody — jak geografové pracují?</h3>
+
+<p>📍 <strong>Terénní výzkum</strong> = geograf jde do terénu, měří, pozoruje, dělá snímky. Klasika.</p>
+<p>🗺️ <strong>Kartografické metody</strong> = práce s mapami — vytváření, analýza.</p>
+<p>📡 <strong>Dálkový průzkum Země (DPZ)</strong> = satelitní snímkování, letecké fotografie. NASA, ESA — vidíme z vesmíru, jak se mění klima, kde jsou lesní požáry.</p>
+<p>💻 <strong>GIS (Geografické informační systémy)</strong> = počítačové systémy, které pracují s prostorovými daty. Vrstvíš mapy jako průsvitky — přidáš vrstvu silnic, vrstvu populace, vrstvu povodí. Výsledek = přehledná mapa s odpověďmi. Google Maps je zjednodušený GIS.</p>
+<p>📊 <strong>Statistické metody</strong> = zpracování číselných dat (počty obyvatel, teploty, exporty...).</p>
+</div>
+
+<div class="vy-section">
+<h3>🌐 Globalizace — co to je a proč je to geografické téma?</h3>
+
+<p><strong>Globalizace</strong> = proces propojování světa v oblasti ekonomiky, kultury, politiky a komunikace. Díky internetu, letecké dopravě a volnému obchodu se svět „zmenšuje".</p>
+<p>✅ <strong>Pozitiva globalizace:</strong> levnější zboží, sdílení technologií, kulturní výměna, rozvojové země se mohou rychleji rozvíjet.</p>
+<p>❌ <strong>Negativa globalizace:</strong> vykořisťování levné pracovní síly, ztráta lokálních kultur, závislost ekonomik (covid = výpadek dodávek z Číny), ekologická zátěž z přepravy.</p>
+<div class="highlight">💡 Příklad globalizace: Tvůj iPhone — navrhl ho Američan (Apple, Kalifornie), součástky vyrobili Japoncí a Korejci, sestavili ho Číňané (Foxconn), prodali ho v Praze. To je globalizace v praxi.</div>
+</div>
+
+<div class="vy-section">
+<h3>⚠️ Globální problémy lidstva — co nás ohrožuje?</h3>
+
+<p>Globální problémy jsou výzvy, které <strong>nelze vyřešit jednou zemí</strong> — vyžadují mezinárodní spolupráci.</p>
+<p>🌡️ <strong>Klimatická změna</strong> — oteplování planety způsobené CO₂ z fosilních paliv. Důsledky: tání ledovců, stoupání moří, extrémní počasí.</p>
+<p>💧 <strong>Nedostatek vody</strong> — 2 miliardy lidí nemají bezpečný přístup k pitné vodě. Předpovídají se „vodní války".</p>
+<p>🌲 <strong>Odlesňování</strong> — mizí tropické pralesy (Amazonie, Kongo, Indonésie). S nimi mizí biodiverzita a „plíce Země".</p>
+<p>🍽️ <strong>Hlad a chudoba</strong> — 800 milionů lidí trpí hladem, i když svět produkuje dost jídla pro všechny. Problém je distribuce, ne produkce.</p>
+<p>💣 <strong>Války a konflikty</strong> — destabilizují celé regiony (Sýrie, Jemen, Súdán), způsobují uprchlické krize.</p>
+<p>👴 <strong>Stárnutí populace</strong> — v bohatých zemích (Japonsko, ČR, Německo) přibývá důchodců, ubývá pracujících. Kdo bude platit důchody?</p>
+<div class="priklad">Dohoda z Paříže 2015: 196 zemí se dohodlo omezit oteplení na max. 1,5–2 °C do roku 2100. USA z ní vystoupily za Trumpa, pak se vrátily za Bidena. Složitá mezinárodní spolupráce — ale jinak to nejde.</div>
+</div>`,
+2:`<div class="vy-section">
+<h3>🪐 Planeta Země — základní fakta, která musíš znát</h3>
+
+<p>Země je <strong>třetí planeta od Slunce</strong>, jediná s kapalnou vodou a životem. Vznikla před ~4,5 miliardami let.</p>
+<p>📏 <strong>Základní čísla:</strong></p>
+<ul class="vy-list">
+<li>Průměr: ~12 742 km (v rovníku trochu více — Země je sploštelá)</li>
+<li>Povrch: 510 milionů km² (71 % tvoří oceány, 29 % souš)</li>
+<li>Hmotnost: 5,97 × 10²⁴ kg</li>
+<li>Vzdálenost od Slunce: ~150 milionů km (1 AU)</li>
+</ul>
+<div class="highlight">⚠️ Země NENÍ dokonalá koule. Je to elipsoid (geoid) — trochu zploštělá u pólů a vyboulená v rovníku. Důvod: odstředivá síla způsobená rotací. Rovníkový průměr je o 43 km větší než polární!</div>
+</div>
+
+<div class="vy-section">
+<h3>🔄 Rotace Země — proč máme den a noc</h3>
+
+<p><strong>Rotace</strong> = Země se otáčí kolem své osy (imaginární přímky skrze Severní a Jižní pól) ze <strong>západu na východ</strong> (proto Slunce vychází na východě!).</p>
+<p>⏱️ Trvá: <strong>23 hodin 56 minut</strong> (přesná rotace), ale pro nás je den 24 hodin (Země se mezitím trochu posunula kolem Slunce).</p>
+<p>📍 <strong>Důsledky rotace:</strong></p>
+<ul class="vy-list">
+<li>Střídání dne a noci</li>
+<li>Coriolisova síla — vítr a oceánské proudy se stáčejí (na severní polokouli doprava, na jižní doleva)</li>
+<li>Zploštění Země u pólů</li>
+<li>Zdánlivý pohyb Slunce po obloze</li>
+</ul>
+<p>🌍 Osa je <strong>nakloněna o 23,5°</strong> od kolmice k rovině oběhu. Tohle naklonění je klíčové — bez něj bychom neměli roční období!</p>
+</div>
+
+<div class="vy-section">
+<h3>🌞 Revoluce Země — proč máme roční období</h3>
+
+<p><strong>Revoluce</strong> = Země obíhá kolem Slunce po <strong>eliptické dráze</strong>. Trvá <strong>365 dní 6 hodin</strong> (proto každé 4 roky přestupný rok — přidáme 29. února).</p>
+<p>☀️ <strong>Proč máme roční období?</strong> Kvůli naklonění osy. Když je severní polokoule nakloněna KE Slunci → léto (přímé paprsky, delší den). Když je nakloněna OD Slunce → zima (šikmé paprsky, kratší den).</p>
+<div class="highlight">🧠 Pozor! Roční období nejsou způsobena vzdáleností od Slunce! V lednu je Země dokonce BLÍŽE ke Slunci než v červenci. Způsobuje je nakloněná osa!</div>
+<p>📅 <strong>Klíčové dny:</strong></p>
+<ul class="vy-list">
+<li>21. 6. — <strong>letní slunovrat</strong> — nejdelší den na severní polokouli</li>
+<li>22. 12. — <strong>zimní slunovrat</strong> — nejkratší den</li>
+<li>21. 3. — <strong>jarní rovnodennost</strong> — den = noc</li>
+<li>23. 9. — <strong>podzimní rovnodennost</strong> — den = noc</li>
+</ul>
+</div>
+
+<div class="vy-section">
+<h3>🕐 Časová pásma — proč je v Japonsku ráno, když u nás spíme</h3>
+
+<p>Země je rozdělena na <strong>24 časových pásem</strong> (360° ÷ 24 hodin = 15° na pásmo). Každé pásmo se liší o 1 hodinu.</p>
+<p>📍 <strong>Nultý poledník</strong> (greenwichský) prochází Greenwichem u Londýna. Odtud se počítá UTC (Universal Time Coordinated).</p>
+<p>🌍 ČR je v pásmu <strong>UTC+1</strong> (v létě UTC+2 — letní čas).</p>
+<p>🌏 Rusko má 11 časových pásem. USA má 6. Čína má jen 1 (i když geograficky by měla mít 5).</p>
+<p>📅 <strong>Datová hranice (datumová mez)</strong> = přibližně 180° poledník (Tichý oceán). Když ji přejdeš na západ, přeskočíš o den dopředu. Na východ — jdeš o den dozadu.</p>
+<div class="priklad">Letíš z Prahy do New Yorku (UTC−5): Praha 12:00 → New York 6:00 (stejný čas, jen jiné pásmo). Letíš z Prahy do Tokia (UTC+9): Praha 12:00 → Tokio 20:00. Proto při cestě do Asie přiletíš „příští den".</div>
+</div>
+
+<div class="vy-section">
+<h3>🌐 Zeměpisné souřadnice — jak adresovat místo na Zemi</h3>
+
+<p>Každé místo na Zemi má <strong>dvě souřadnice</strong>:</p>
+<p>📐 <strong>Zeměpisná šířka (φ, fí)</strong> = vzdálenost od rovníku. Rovník = 0°, Severní pól = 90° S, Jižní pól = 90° J. Praha leží na ~50° severní šířky.</p>
+<p>📐 <strong>Zeměpisná délka (λ, lambda)</strong> = vzdálenost od nultého poledníku. 0°–180° Z nebo V. Praha leží na ~14° východní délky.</p>
+<div class="highlight">🧭 Pamatuj: ŠÍřka = vodoROVNÉ čáry (rovnoběžky). DÉLka = SVISlé čáry (poledníky). Šířka jde od jihu na sever (jako výška člověka), délka jde od západu na východ (jako šíře těla).</div>
+<p>🌍 <strong>Důležité rovnoběžky:</strong></p>
+<ul class="vy-list">
+<li>0° = rovník</li>
+<li>23,5° S = obratník Raka (severní obratník)</li>
+<li>23,5° J = obratník Kozoroha (jižní obratník)</li>
+<li>66,5° S = severní polární kruh</li>
+<li>66,5° J = jižní polární kruh</li>
+</ul>
+<p>🌡️ <strong>Teplotní pásy:</strong> rovníkový, tropický (subtropický), mírný, polární. ČR leží v mírném pásu.</p>
+</div>`,
+3:`<div class="vy-section">
+<h3>🗺️ Co je mapa a k čemu slouží?</h3>
+
+<p>Mapa je <strong>zmenšený, zjednodušený a zobecněný obraz části zemského povrchu</strong>, zpravidla v rovině (na papíře nebo obrazovce). Je to nejdůležitější nástroj geografa.</p>
+<p>Kartografie = věda o tvorbě a studiu map. Existuje tisíce let — první mapy kreslili starověcí Babyloňané na hliněné destičky.</p>
+<div class="highlight">Proč říkáme „zjednodušený"? Protože mapa nemůže ukázat ÚPLně vše — vybírá jen to důležité pro daný účel. Silniční mapa nekreslí každý strom. Lesnická mapa ano.</div>
+</div>
+
+<div class="vy-section">
+<h3>📏 Měřítko — jak číst velikost na mapě</h3>
+
+<p><strong>Měřítko</strong> udává poměr vzdálenosti na mapě ke skutečné vzdálenosti na Zemi.</p>
+<p>📐 Zapisujeme jako zlomek: <strong>1 : 100 000</strong> znamená → 1 cm na mapě = 100 000 cm = 1 km ve skutečnosti.</p>
+<p>🔍 <strong>Velké měřítko</strong> = malé číslo (1:10 000) → vidíš detailně malou oblast. Mapa parcel, katastr.</p>
+<p>🔭 <strong>Malé měřítko</strong> = velké číslo (1:5 000 000) → vidíš velkou oblast, málo detailů. Atlas světa.</p>
+<div class="highlight">🧠 Mnemotechnika: „Velké měřítko = velký detail, malé číslo". Jako fotografické přiblížení (zoom) — přiblížíš se, vidíš víc detailů, ale méně plochy.</div>
+<div class="priklad">Turistická mapa 1:25 000 — 4 cm na mapě = 1 km v terénu. Atletická mapa (orientační běh) 1:10 000 — vidíš každou pěšinku. Školní atlas světa 1:50 000 000 — jeden kontinent na jednu stránku.</div>
+</div>
+
+<div class="vy-section">
+<h3>📈 Vrstevnice — jak zobrazit výšku na ploché mapě</h3>
+
+<p><strong>Vrstevnice (izohypsy)</strong> = čáry spojující místa stejné nadmořské výšky. Pomáhají zobrazit třídimenzionální terén na ploché mapě.</p>
+<p>📖 <strong>Jak je číst:</strong></p>
+<ul class="vy-list">
+<li>Hustě u sebe = strmý svah</li>
+<li>Daleko od sebe = mírný svah nebo rovina</li>
+<li>Uzavřené kruhy = vrchol kopce (nejvyšší bod je uprostřed)</li>
+<li>Čísla na vrstevnici = nadmořská výška v metrech</li>
+</ul>
+<div class="highlight">💡 Trik: Představ si, že bereš horu a řežeš ji vodorovně jako chleba na plátky v pravidelných výškách. Každý řez je vrstevnice. Pak plátky pohledíš shora — to je mapa s vrstevnicemi.</div>
+<p>🎨 <strong>Hypsometrie (barevné stupnicování výšek)</strong>: zelená = nížiny, žlutá = pahorkatiny, hnědá = hory, bílá = sníh. V modrých tónech se zobrazují hloubky oceánů (batimetrie).</p>
+</div>
+
+<div class="vy-section">
+<h3>🌐 Kartografická zobrazení — jak „rozbalit" kulatou Zemi na plochý papír</h3>
+
+<p>Zásadní problém kartografie: Země je kulatá, papír je plochý. Nelze zobrazit kulatý povrch na plochu BEZ zkreslení. Vždy se něco zkreslí — plocha, tvary, vzdálenosti nebo úhly.</p>
+<p>🗺️ <strong>Mercatorovo zobrazení</strong> (1569) — nejznámější. Zachovává úhly (ideální pro námořní navigaci). ALE: plochy blíže k pólům jsou obrovské oproti realitě. Grónsko vypadá jako Afrika, ač je 14× menší!</p>
+
+<p>🗺️ <strong>Gallovo-Petersovo zobrazení</strong> — zachovává plochy. Země vypadají deformovaně (protažené nebo stlačené), ale jejich velikosti jsou správné.</p>
+<p>🗺️ <strong>Azimutální zobrazení</strong> — mapa vystředěná na jeden bod (třeba severní pól). Typicky se používá pro mapy polárních oblastí.</p>
+<div class="highlight">📌 Pro maturitu stačí vědět: každé zobrazení Země na plochu VŽDY něco zkresluje. Mercator = nejpoužívanější, zachovává tvary a úhly, ale zkresluje plochy (severní oblasti vypadají větší).</div>
+</div>
+
+<div class="vy-section">
+<h3>📂 Typy map — co vše mapa může zobrazovat</h3>
+<p>Map existují tisíce druhů. Základní dělení:</p>
+<p>📋 <strong>Podle obsahu:</strong></p>
+<ul class="vy-list">
+<li><strong>Obecně zeměpisné</strong> — zobrazují terén, sídla, řeky, silnice. Topografické mapy (vojenské), turistické mapy.</li>
+<li><strong>Tematické</strong> — zaměřené na jedno téma: mapa populace, mapa srážek, mapa nalezišť ropy, mapa jazyků...</li>
+</ul>
+<p>📋 <strong>Podle měřítka:</strong></p>
+<ul class="vy-list">
+<li>Velkoměřítkové (1:200 000 a větší) — podrobné, malé území</li>
+<li>Středoměřítkové (1:200 000 – 1:1 000 000)</li>
+<li>Maloměřítkové (1:1 000 000 a menší) — přehledy, celé kontinenty</li>
+</ul>
+<p>🌐 <strong>Atlasy</strong> = sbírky map s různou tematikou a měřítky. Školní atlas, historický atlas, autoatlas...</p>
+<div class="priklad">Google Maps = digitální interaktivní mapa s různými vrstvami (satelit, silnice, doprava, podniky). Kombinuje obecně zeměpisné i tematické prvky. Je to GIS dostupný každému ve smartphonu.</div>
+</div>`,
+4:`<div class="vy-section">
+<h3>🌋 Stavba Země — co se skrývá pod našima nohama</h3>
+
+<p>Nemůžeme se prokopat ke středu Země (nejhlubší vrt světa — Kola na Rusku — dosáhl 12 km za 20 let, ale Země má poloměr 6 371 km). Co víme, víme ze seismických vln — jak procházejí Zemí, když je zemětřesení.</p>
+<p>🌍 <strong>Vrstvy Země od povrchu ke středu:</strong></p>
+<ul class="vy-list">
+<li>🪨 <strong>Kůra (litosféra)</strong> — pevná vnější vrstva, 5–70 km silná. Oceánská kůra je tenčí (5–10 km) a hustší. Pevninská kůra je silnější (30–70 km) a lehčí. <em>Litosféra = kůra + svrchní část pláště</em>.</li>
+<li>🌡️ <strong>Plášť (mantl)</strong> — tvoří 84 % objemu Země, sahá do ~2 900 km. Horní plášť = polotuhý (astenosféra — pohybující se materiál, po němž „plaví" litosférické desky). Dolní plášť = tuhý kvůli tlaku.</li>
+<li>⚙️ <strong>Jádro vnější</strong> — tekuté železo + nikl, ~2 900–5 100 km. Pohyb tekutého kovu generuje magnetické pole Země — to nás chrání před slunečním větrem.</li>
+<li>🔴 <strong>Jádro vnitřní</strong> — tuhé železo + nikl, ~5 100–6 371 km. Teplota: ~5 000–6 000 °C. Tlak tak obrovský, že kov nemůže být tekutý.</li>
+</ul>
+<div class="highlight">🔥 Proč je Země uvnitř horká? Zbytky tepla z doby vzniku + rozpad radioaktivních prvků (uran, thorium). Toto teplo pohání pohyb litosférických desek!</div>
+</div>
+
+<div class="vy-section">
+<h3>🧩 Deskotektonika — proč se pohybují kontinenty</h3>
+
+<p><strong>Litosférické desky</strong> = velké kusy zemské kůry + svrchního pláště, které „plaví" po polotuhé astenosféře jako kry ledu na vodě.</p>
+<p>Hlavní desky: Euroasijská, Africká, Severoamerická, Jihoamerická, Tichomořská, Indo-australská, Antarktická.</p>
+<p>📍 <strong>Proč se pohybují?</strong> Konvekční proudy v plášti — horký materiál stoupá, studený klesá. Jako vroucí voda v hrnci, jen milionkrát pomalejší (rychlost desek: 2–10 cm/rok — jako roste nehet).</p>
+<div class="highlight">🧠 Důkaz pohybu desek: Jihoamerické pobřeží a africké pobřeží do sebe „zapadají" jako puzzle! Alfred Wegener to v roce 1912 popsal (teorie kontinentálního driftu) — ale léta mu nikdo nevěřil.</div>
+<p>⏰ Před ~250 miliony let existoval jeden superkontinent — <strong>Pangea</strong>. Rozpadl se a kontinenty se postupně rozpluly na dnešní pozice. Tento pohyb stále pokračuje!</p>
+</div>
+
+<div class="vy-section">
+<h3>🔥 Rozhraní desek — kde vznikají sopky a zemětřesení</h3>
+
+<p>Na okrajích desek se odehrává většina geologické aktivity světa.</p>
+<p>⬅️➡️ <strong>Divergentní rozhraní</strong> (desky se od sebe vzdalují): Upwelling magmatu, vznik nové oceánské kůry. Příklad: Středoatlantský hřeben — Island leží přímo na něm. Amerika a Evropa se vzdalují rychlostí ~2,5 cm/rok.</p>
+<p>➡️⬅️ <strong>Konvergentní rozhraní</strong> (desky se setkávají): Hustší deska se ponoří pod lehčí (subdukce). Vznikají hluboké příkopy, vulkány, pohoří. Příklad: Japonsko — Tichomořská deska se podsouvá pod Euroasijskou → tsunami a sopky.</p>
+
+<p>↔️ <strong>Transformní rozhraní</strong> (desky kloužou vedle sebe): Nejsou sopky, ale jsou obrovská zemětřesení. Příklad: San Andreas Fault v Kalifornii — tu se třese USA.</p>
+<p>⛰️ <strong>Kolize dvou pevninských desek</strong>: Obě jsou lehké, žádná se nepodsouvá → vrásčí se nahoru a vznikají pohoří! Himálaj = sráz Indo-australské a Euroasijské desky. Alpy = sráz Africké a Euroasijské.</p>
+</div>
+
+<div class="vy-section">
+<h3>🌋 Sopky — jak a kde vznikají</h3>
+
+<p><strong>Sopka</strong> = místo, kde magma (roztavená hornina z pláště) vystupuje na povrch. Po výstupu se nazývá <strong>láva</strong>.</p>
+<p>🗺️ 80 % sopek leží na <strong>Ohnivém kruhu</strong> (Pacific Ring of Fire) — okraj Tichého oceánu. Japonsko, Indonésie, Filipíny, Pacific pobřeží Ameriky.</p>
+<p>📋 <strong>Typy sopek:</strong></p>
+<ul class="vy-list">
+<li><strong>Stratovulkán (smíšená sopka)</strong> — strmý, klasický tvar kužele, výbušná erupce. Vezuv (Pompeje 79 n.l.), Fuji, Etna, Kilauea.</li>
+<li><strong>Štítová sopka</strong> — plochá, tekutá láva, klidnější erupce. Mauna Loa na Havaji (od dna oceánu je nejvyšší hora světa!).</li>
+<li><strong>Kaldera</strong> — sopka se zřítila do sebe po obří erupci. Yellowstone v USA (supererupce každých ~600 000 let — poslední před 640 000 lety...).</li>
+</ul>
+<div class="highlight">🌡️ Sopečná erupce může dočasně OCHLADIT planetu! Sopka Pinatubo (Filipíny, 1991) vstřelila do stratosféry tolik SO₂, že průměrná teplota Země klesla o 0,5 °C na 1–2 roky.</div>
+</div>
+
+<div class="vy-section">
+<h3>💥 Zemětřesení a exogenní pochody</h3>
+
+<p><strong>Zemětřesení</strong> = náhlé uvolnění energie v zemské kůře, šíří se jako seismické vlny. Místo vzniku = <strong>hypocentrum</strong> (ohnisko). Místo na povrchu přímo nad ním = <strong>epicentrum</strong>.</p>
+<p>📊 Měříme <strong>Richterovou stupnicí</strong> (logaritmická — stupeň 7 = 31× silnější než stupeň 6!).</p>
+<p>Největší: Chile 1960 (M 9,5), Aljaška 1964 (M 9,2), Japonsko 2011 (M 9,1 + obrovská tsunami).</p>
+<p>🌊 <strong>Tsunami</strong> = obří vlny vzniklé podmořským zemětřesením nebo sesuvem. Vlna může dosáhnout výšky 30+ metrů. 2004 — tsunami v Indickém oceánu → 230 000 obětí.</p>
+<p><strong>Exogenní (vnější) pochody</strong> = procesy modelující povrch Země energií ze Slunce a gravitací:</p>
+<ul class="vy-list">
+<li>💧 <strong>Eroze</strong> — odnos hornin vodou, větrem, ledem</li>
+<li>🏔️ <strong>Zvětrávání</strong> — rozpad hornin fyzikálními, chemickými a biologickými procesy</li>
+<li>🏂 <strong>Sesuvy, laviny</strong> — pohyb materiálu po svahu</li>
+<li>🌊 <strong>Činnost moře</strong> — abraze (obrušování pobřeží), ukládání sedimentů</li>
+</ul>
+<div class="priklad">Grand Canyon v USA vznikl erozí řeky Colorado za ~5–6 milionů let. Řeka se zahlubovala o milimetry ročně — ale dohromady to je kaňon hluboký 1 800 m!</div>
+</div>`,
+5:`<div class="vy-section">
+<h3>🌬️ Co je atmosféra a proč bez ní nemůžeme žít</h3>
+
+<p><strong>Atmosféra</strong> = plynný obal Země. Drží ji gravitace. Bez atmosféry by Země byla jako Měsíc — přes den +130 °C, v noci −170 °C. Nás chrání před UV zářením, meteority a slunečním větrem.</p>
+<p>📊 <strong>Složení:</strong> Dusík N₂ (78 %) + Kyslík O₂ (21 %) + Argon Ar (0,93 %) + CO₂ (0,04 %) + vodní pára + ostatní.</p>
+<div class="highlight">⚠️ Skleníkové plyny (CO₂, metan, vodní pára) jsou NORMÁLNÍ a NUTNÉ! Bez nich by průměrná teplota Země byla −18 °C. Problém je jen to, že jich přibývá příliš rychle lidskou činností.</div>
+</div>
+
+<div class="vy-section">
+<h3>🌍 Vrstvy atmosféry — kde co se děje</h3>
+
+<ul class="vy-list">
+<li>🌤️ <strong>Troposféra</strong> (0–12 km) — kde žijeme, kde vzniká počasí. Teplota s výškou klesá (~6,5 °C/km). Kumulonimby (bouřkové mraky) sahají až na vrchol troposféry.</li>
+<li>☀️ <strong>Stratosféra</strong> (12–50 km) — tady je ozónová vrstva (zachycuje UV záření). Létají zde tryskáče a balóny. Teplota roste (ozon absorbuje UV).</li>
+<li>🌌 <strong>Mezosféra</strong> (50–85 km) — nejchladnější místo atmosféry (−90 °C). Shoří tu meteority.</li>
+<li>🔆 <strong>Termosféra</strong> (85–600 km) — velmi řídká, teplota stoupá (ale vzduch je tak řídký, že bychom to necítili). Zde létá ISS (Mezinárodní vesmírná stanice).</li>
+<li>🛸 <strong>Exosféra</strong> (600 km+) — přechod do kosmického prostoru.</li>
+</ul>
+<div class="priklad">Ozónová vrstva ve stratosféře = sluneční filtr Země. Freony z chladniček ji ničily. Protokol z Montrealu (1987) freony zakázal → ozónová díra nad Antarktidou se pomalu zmenšuje. Jeden z mála úspěchů mezinárodní ochrany ŽP!</div>
+</div>
+
+<div class="vy-section">
+<h3>🌦️ Počasí vs. Klima — co je rozdíl?</h3>
+
+<p>🌤️ <strong>Počasí</strong> = aktuální stav atmosféry na konkrétním místě v konkrétní čas. Dnes je oblačno a 15 °C.</p>
+<p>🌡️ <strong>Klima</strong> = průměrné podmínky počasí za <strong>minimálně 30 let</strong> v určité oblasti. Praha má mírné přechodné klima — průměrné léto ~20 °C, průměrná zima ~0 °C.</p>
+<div class="highlight">💡 Trik: „Počasí je nálada, klima je povaha." Povaha se mění pomalu, nálada každý den.</div>
+<p>🌡️ <strong>Faktory ovlivňující klima:</strong></p>
+<ul class="vy-list">
+<li>🌍 <strong>Zeměpisná šířka</strong> — čím blíže rovníku, tím teplejší</li>
+<li>🏔️ <strong>Nadmořská výška</strong> — čím výš, tím chladněji (∼6,5 °C/km)</li>
+<li>🌊 <strong>Vzdálenost od moře</strong> — moře vyrovnává teploty (oceánické vs. kontinentální klima)</li>
+<li>🌊 <strong>Mořské proudy</strong> — teplý Golfský proud otepluje Velkou Británii a Skandinávii</li>
+<li>💨 <strong>Vítr</strong> — přenáší vzduchové hmoty</li>
+</ul>
+<p>📊 <strong>Köppenova klasifikace klimat</strong> — nejpoužívanější systém. 5 základních typů: A (tropické), B (suché), C (mírné), D (kontinentální), E (polární).</p>
+</div>
+
+<div class="vy-section">
+<h3>💧 Hydrosféra — voda na Zemi</h3>
+
+<p><strong>Hydrosféra</strong> = všechna voda na Zemi a v atmosféře. Zahrnuje oceány, moře, řeky, jezera, ledovce, podzemní vodu, vodu v atmosféře a v živých organismech.</p>
+<p>📊 <strong>Rozložení vody:</strong></p>
+<ul class="vy-list">
+<li>🌊 97,5 % — slaná voda (oceány, moře)</li>
+<li>❄️ 1,75 % — sladká voda v ledovcích (Antarktida, Grónsko)</li>
+<li>🌱 0,75 % — podzemní voda + řeky + jezera (co my reálně používáme)</li>
+</ul>
+<div class="highlight">⚠️ Jen 0,75 % vody na Zemi je přístupná sladká voda. Z toho velká část je v podzemí nebo v permafrostu. Reálně dostupná pro lidi je zlomek procenta!</div>
+<p>🔄 <strong>Hydrologický (vodní) cyklus:</strong> Výpar (moře, jezera) → kondenzace (mraky) → srážky (déšť, sníh) → odtok do řek → zpět do moří. Nebo: infiltrace do půdy → podzemní voda → prameny → řeky → moře.</p>
+<p>🌊 <strong>Oceány:</strong> Tichý (nejrozlehlejší, ~165 mil. km²), Atlantský, Indický, Severní ledový, Jižní oceán. Průměrná hloubka oceánu: 3 700 m. Mariánský příkop: 11 034 m (nejhlubší místo Země).</p>
+</div>
+
+<div class="vy-section">
+<h3>🌡️ Klimatická změna — co se děje s klimatem Země</h3>
+
+<p>Od průmyslové revoluce (~1850) spalujeme fosilní paliva (uhlí, ropa, plyn) → uvolňuje se CO₂ → skleníkový efekt zesílil → průměrná teplota Země vzrostla o ~1,2 °C.</p>
+<p>🌡️ <strong>Důsledky oteplování:</strong></p>
+<ul class="vy-list">
+<li>Tání ledovců → stoupání hladin oceánů (~3 mm/rok, při tání Antarktidy hrozí +6 m!)</li>
+<li>Extrémní počasí — silnější hurikány, delší sucha, silnější povodně</li>
+<li>Odkyselení oceánů — CO₂ se rozpouští ve vodě → kyselina uhličitá → ničí korálové útesy</li>
+<li>Posun klimatických pásem — druhy se stěhují na sever nebo do vyšších poloh</li>
+</ul>
+<p>📋 <strong>Co se dělá:</strong> Pařížská dohoda (2015) — cíl: max. +1,5–2 °C. EU Green Deal — uhlíková neutralita do 2050. Přechod na obnovitelné zdroje energie.</p>
+<div class="priklad">Maledivy — souostroví v Indickém oceánu, průměrná výška nad mořem 1,5 m. Při stoupání hladiny o 1–2 m by zmizely pod vodou. Vláda Malediv pořádala konference vlády pod vodou — aby upozornila svět.</div>
+</div>`,
+6:`<div class="vy-section">
+<h3>🌿 Co je biosféra?</h3>
+
+<p><strong>Biosféra</strong> = sféra života — celkový prostor na Zemi, ve kterém existuje život. Zahrnuje část atmosféry (ptáci, hmyz), celý povrch Země a část hydrosféry (až do nejhlubších oceánských příkopů).</p>
+<p>Biosféra je neuvěřitelně tenká vrstva — jen ~20 km. Ale je to naše všechno.</p>
+<div class="highlight">🌍 Celková hmotnost veškerého života na Zemi = ~550 miliard tun uhlíku. Z toho: 82 % rostliny, 13 % bakterie, 5 % ostatní (houby, živočichové). Všichni živočichové dohromady tvoří jen 0,4 % biomasy Země!</div>
+</div>
+
+<div class="vy-section">
+<h3>🌎 Biomy světa — velké ekosystémy</h3>
+
+<p><strong>Biom</strong> = velký ekosystém charakterizovaný typickým podnebím, vegetací a živočichy. Biomy jsou rozmístěny podle zeměpisné šířky a nadmořské výšky.</p>
+<p>🌴 <strong>Tropický deštný prales</strong> — rovníkový pás, celoroční teplo a vlhko. Amazonie, Kongo, Borneo. Největší biodiverzita na Zemi — 50–70 % všech druhů! Ale půda je paradoxně chudá (živiny jsou v biomase, ne v půdě).</p>
+
+<p>🌾 <strong>Savana</strong> — tropická trávovinatá krajina, střídá se suchá a deštivá sezóna. Afrika (Serengeti), Brazílie (cerrado), Austrálie. Velké herdy zvěře — nosorožci, sloni, žirafy.</p>
+<p>🌵 <strong>Poušť</strong> — srážky pod 250 mm/rok. Horká (Sahara, Atacama) nebo studená (Gobi, Antarktida — největší poušť světa!). 33 % pevniny Země jsou pouště.</p>
+
+<p>🌲 <strong>Tajga (boreální les)</strong> — nejrozlehlejší biom světa. Jehličnaté lesy v Rusku, Kanadě, Skandinávii. Smrky, borovice, jedle. Chladné zimy, krátká léta.</p>
+<p>🍂 <strong>Listnatý opadavý les</strong> — mírný pás. Střední Evropa, východ USA, části Asie. Duby, buky, habry. Čtyři roční období, mírné srážky rovnoměrně rozložené.</p>
+<p>❄️ <strong>Tundra</strong> — pás za polárním kruhem. Žádné stromy — příliš krátká vegetační sezóna a permafrost (trvale zmrzlá půda). Mechy, lišejníky, drobné byliny.</p>
+<p>🧊 <strong>Polární oblasti</strong> — Arktida (ledový oceán) a Antarktida (kontinent pod ledem, teplota −90 °C). Téměř žádný život na souši.</p>
+</div>
+
+<div class="vy-section">
+<h3>🌱 Pedosféra — půdy světa</h3>
+
+<p><strong>Pedosféra</strong> = sféra půd. Půda vzniká zvětráváním hornin + rozkladem organické hmoty (humus) + činností živočichů (žížaly!) po tisíce let.</p>
+<p>🏆 <strong>Hlavní typy půd:</strong></p>
+<ul class="vy-list">
+<li>⬛ <strong>Černozem</strong> — nejúrodnější půda na světě! Tmavá, bohatá na humus, výborně drží vodu. Jižní Morava, Ukrajina (černozemní pás), prérie USA (hnědá černozem). Vznikla pod stepní vegetací.</li>
+<li>🟫 <strong>Hnědozem</strong> — typická půda středoevropských listnatých lesů. Dobrá zemědělská půda. Většina ČR.</li>
+<li>🟡 <strong>Laterit (ferralsol)</strong> — červenohnědá tropická půda. Intenzivní výluh živin. Paradox: nejbohatší prales roste na nejchudší půdě (živiny jsou v biomase, půda je chudá).</li>
+<li>⬜ <strong>Podzol</strong> — kyselá šedivá půda jehličnatých lesů (tajga). Velmi málo živin, kyselá reakce.</li>
+</ul>
+<div class="highlight">🕒 1 cm půdy vzniká 100–1 000 let. Intenzivní zemědělství a eroze může 1 cm půdy zničit za jediný rok. Půda je tedy NEOBNOVITELNÝ zdroj v lidském časovém měřítku!</div>
+</div>
+
+<div class="vy-section">
+<h3>⚠️ Problémy biosféry a pedosféry</h3>
+
+<p>🌲 <strong>Odlesňování (deforestace)</strong> — ničení lesů pro zemědělství (sója, pastviny pro dobytek), těžbu dřeva, těžbu nerostů. Amazonie ztrácí plochu odpovídající Belgiím každých pár let. Důsledky: ztráta biodiverzity, zhoršení klimatu, eroze půdy.</p>
+<p>🏜️ <strong>Desertifikace</strong> — rozšiřování pouštních oblastí na okraje pouští (Sahel v Africe). Příčiny: sucho + přepásání dobytkem + odlesňování. Saharská poušť se rozrůstá jižním směrem.</p>
+<p>☠️ <strong>Ztráta biodiverzity</strong> — 6. masové vymírání druhů v historii Země. Tentokrát ho způsobujeme my. Rychlost vymírání je 100–1 000× vyšší než přirozená.</p>
+<p>🌾 <strong>Degradace půdy</strong> — eroze, zasolení (nadměrné zavlažování), zhutňování těžkou technikou, chemické znečištění.</p>
+<div class="priklad">Arálské jezero (Kazachstán/Uzbekistán) — v 50. letech 4. největší jezero světa. Sovětský svaz přesměroval jeho přítokové řeky na zavlažování bavlníků → jezero zmizelo z 80 %. Dnes je tam polopoušť a rybářské lodě trčí v písku 200 km od vody. Největší ekologická katastrofa 20. století.</div>
+</div>`,
+7:`<div class="vy-section">
+<h3>🏞️ Co je krajina?</h3>
+
+<p><strong>Krajina</strong> = část zemského povrchu s charakteristickým reliéfem, klimatem, vegetací, živočichy a stopami lidské činnosti. Je to „vizitka" místa.</p>
+<p>Krajinu studuje <strong>krajinná ekologie</strong> — věda zkoumající vztahy v krajině a jak se krajina mění.</p>
+</div>
+
+<div class="vy-section">
+<h3>🌿 Přírodní vs. Kulturní krajina</h3>
+
+<p>🌲 <strong>Přírodní krajina</strong> = minimálně dotčená člověkem. Zachovává přirozené procesy. <em>Příklady:</em> polární oblasti, tropické pralesy v centrální Amazónii, vysokohorská pásma.</p>
+<p>⚠️ Opravdová přírodní krajina je dnes vzácností — i „nedotčené" pralesy jsou ovlivněny kyselými dešti nebo klimatickou změnou.</p>
+<p>🏘️ <strong>Kulturní krajina</strong> = přetvořená lidskou činností. Pole, sady, vinice, přehrady, parky, města. Většina Evropy je kulturní krajina — i „přírodní" lesy jsou z velké části uměle vysázené a spravované.</p>
+<div class="highlight">💡 Šumava je přírodě blízkým NP — v jádrové zóně se nechávají padlé stromy, kůrovci, přirozené procesy. Je to „řízená přírodní krajina". Česká zemědělská krajina (Haná) je kulturní — každé pole, každý les, každý příkop je výsledkem lidského záměru.</div>
+<p>🏙️ <strong>Urbánní krajina</strong> = krajina měst. Dominuje zástavba, dopravní infrastruktura, parky jsou ostrůvky zeleně. Tepelný ostrov města — v centru Prahy je průměrně o 2–4 °C teplejší než v okolí.</p>
+</div>
+
+<div class="vy-section">
+<h3>🏔️ Ochrana přírody v ČR — NP, CHKO, PR</h3>
+
+<p>ČR má dobře propracovaný systém ochrany přírody. Od nejpřísnější po nejméně přísnou:</p>
+<p>🏔️ <strong>Národní parky (NP)</strong> — nejvyšší stupeň ochrany. Přísné zóny, nesmíš opustit vyznačené cesty, žádná těžba, žádné stavby.</p>
+<ul class="vy-list">
+<li>🏔️ <strong>NP Krkonoše</strong> (1963) — nejstarší NP v ČR, na hranici s Polskem. Sněžka 1 603 m.</li>
+<li>🌲 <strong>NP Šumava</strong> (1991) — největší NP v ČR, pralesovité části, rašeliniště, Vydra.</li>
+<li>🪨 <strong>NP České Švýcarsko</strong> (2000) — nejmenší NP, pískovcové skalní útvary, Pravčická brána (největší pískovcový oblouk v Evropě).</li>
+<li>🌿 <strong>NP Podyjí</strong> (1991) — jihozápadní Morava, říční kaňon Dyje.</li>
+</ul>
+
+<p>🌿 <strong>CHKO (Chráněná krajinná oblast)</strong> — méně přísná ochrana. Lidé zde žijí a hospodaří, ale příroda je chráněna. ČR má 26 CHKO.</p>
+<div class="highlight">Příklady CHKO: Beskydy, Jeseníky, Moravský kras, Jizerské hory, Labské pískovce, Bílé Karpaty, Šumava (obklopuje NP Šumava). Celkem CHKO chrání ~15 % rozlohy ČR.</div>
+<p>🌸 <strong>Přírodní rezervace (PR) a Přírodní památka (PP)</strong> — malá území s konkrétním chráněným jevem: vzácná orchidej, ledovcové jezírko, geologický odkryv.</p>
+<p>🌍 <strong>UNESCO biosférické rezervace</strong> — mezinárodní uznání. ČR má 6 (Šumava, Krkonoše, Třeboňsko, Křivoklátsko, Bílé Karpaty, Dolní Morava).</p>
+</div>
+
+<div class="vy-section">
+<h3>🌱 Krajinná ekologie a ráz krajiny</h3>
+
+<p><strong>Ráz krajiny</strong> = to, co dělá krajinu jedinečnou — kombinace reliéfu, vegetace, zástavby, kultury. Zákon o ochraně přírody ráz krajiny chrání — nesmíš do ní zásadně zasáhnout bez povolení.</p>
+<p>⚠️ <strong>Problémy s krajinou v ČR:</strong></p>
+<ul class="vy-list">
+<li>Lánové hospodaření — obrovská pole bez mezí a stromořadí → eroze, ztráta biodiverzity</li>
+<li>Meliorace — odvodnění mokřadů → zmizely tůně, žáby, čápi</li>
+<li>Suburbanizace — zástavba na zemědělské půdě kolem měst</li>
+<li>Kůrovcová kalamita — nezdravé smrkové monokultury se zhroutily, nyní probíhá obnova lesa</li>
+</ul>
+<div class="priklad">Kůrovcová kalamita v ČR — smrkové monokultury vysázené v nesprávných polohách, oslabené suchem a teplem, snadno podlehly přemnožení kůrovce. Výsledek: miliony hektarů mrtvého lesa. Nyní se sází pestré lesy — duby, buky, jedle, lípy — odolnější vůči změně klimatu.</div>
+</div>`,
+8:`<div class="vy-section">
+<h3>👥 Proč nás geografie zajímá jako lidi</h3>
+
+<p>Geografie obyvatelstva (demografie + geografie) studuje: Kde žijí lidé? Kolik jich je? Proč se pohybují? Jak se populace mění?</p>
+<p>🌍 Světová populace dnes: <strong>~8,1 miliard lidí</strong> (2024). V roce 1800 nás bylo jen 1 miliarda. Za 200 let jsme se 8× znásobili.</p>
+<div class="highlight">📈 Tempo růstu ale zpomaluje. 8 miliard jsme překročili v 2022. Předpokládáme, že kolem 10–11 miliard se populace stabilizuje (asi kolem roku 2100).</div>
+</div>
+
+<div class="vy-section">
+<h3>📊 Základní demografické ukazatele</h3>
+
+<p>📈 <strong>Porodnost (natalita)</strong> = počet živě narozených na 1000 obyvatel za rok. Niger: 47‰. ČR: ~10‰. Japonsko: 6‰.</p>
+<p>📉 <strong>Úmrtnost (mortalita)</strong> = počet zemřelých na 1000 obyvatel za rok. Závisí na kvalitě zdravotnictví, výživě, hygieně, věkovém složení.</p>
+<p>➕ <strong>Přirozený přírůstek</strong> = porodnost − úmrtnost. Může být záporný! ČR, Japonsko, Německo mají záporný přirozený přírůstek (umírá víc, než se rodí).</p>
+<p>👶 <strong>Kojenecká úmrtnost</strong> = počet zemřelých dětí do 1 roku na 1000 živě narozených. V Africe: 50–100‰. V ČR: 2‰. Klíčový ukazatel rozvoje.</p>
+<p>📅 <strong>Střední délka života (naděje dožití)</strong> = kolik let průměrně prožije člověk narozený dnes. Japonsko: 84 let. ČR: 78 let. Středoafrická republika: 52 let.</p>
+<div class="priklad">Věková pyramida = grafické zobrazení věkového složení populace. Základna = mladší ročníky, vrchol = starší. Africké země mají „pyramidový" tvar (hodně dětí, málo starých). ČR a Japonsko mají tvar „urny" nebo „kytky" — hodně středních věků, málo dětí.</div>
+</div>
+
+<div class="vy-section">
+<h3>🔄 Demografický přechod — jak se populace mění s rozvojem</h3>
+
+<p>Model demografického přechodu popisuje, jak se mění porodnost a úmrtnost, jak se společnost rozvíjí. Má 4 fáze:</p>
+<p>1️⃣ <strong>Fáze 1 — Preindustriální</strong>: Vysoká porodnost + vysoká úmrtnost → populace stagnuje. Nemoci, hladomory, války. (Středověká Evropa, dnešní nejchudší regiony Afriky.)</p>
+<p>2️⃣ <strong>Fáze 2 — Rané industriální</strong>: Porodnost zůstává vysoká, ale KLESÁ ÚMRTNOST (lepší lékařství, hygiena, potraviny) → POPULAČNÍ EXPLOZI. Počet lidí rychle roste. (Afrika dnes, Asie 50–70. léta.)</p>
+<p>3️⃣ <strong>Fáze 3 — Pozdní industriální</strong>: Začíná klesat i porodnost (ženy pracují, antikoncepce, vyšší vzdělání, urbanizace) → tempo růstu populace zpomaluje. (ČR v 70. letech, dnes většina Asie.)</p>
+<p>4️⃣ <strong>Fáze 4 — Postindustriální</strong>: Obě hodnoty nízké → populace stagnuje nebo klesá. (Japonsko, ČR, celá západní Evropa dnes.)</p>
+<div class="highlight">💡 Klíčové pochopení: Populační exploze (fáze 2) nastává, když KLESÁ ÚMRTNOST ale porodnost se nestihne snížit. Léky a hygiena zachrání víc dětí → všechny dospějí a mají děti → populace exploduje.</div>
+</div>
+
+<div class="vy-section">
+<h3>✈️ Migrace — proč se lidé přesouvají</h3>
+
+<p><strong>Migrace</strong> = přesun lidí z jednoho místa do druhého. Věčný jev — lidé se pohybují od pravěku.</p>
+<p>✈️ <strong>Emigrace</strong> = opuštění vlasti. Z latinského „ex" = ven, odejít.</p>
+<p>🏠 <strong>Imigrace</strong> = příchod do nové země. Z latinského „in" = dovnitř, vstoupit.</p>
+<p>📋 <strong>Typy migrace:</strong></p>
+<ul class="vy-list">
+<li>🌊 Dobrovolná vs. Nucená (válka, klimatická katastrofa, pronásledování)</li>
+<li>🏙️ Vnitřní (venkov→město) vs. Mezinárodní (mezi státy)</li>
+<li>🏗️ Ekonomická (za prací) vs. Rodinná vs. Vzdělávací vs. Climatická</li>
+</ul>
+<p>🌍 <strong>Faktory migrace:</strong></p>
+<ul class="vy-list">
+<li>Push faktory (vytlačují z domova): chudoba, válka, pronásledování, klimatická katastrofa</li>
+<li>Pull faktory (lákají do cílové země): práce, bezpečí, lepší vzdělání, příbuzní</li>
+</ul>
+<div class="priklad">Syrská uprchlická krize 2015: Miliony Syřanů emigrovaly kvůli občanské válce. Přes Turecko, Řecko, Balkán do Německa, Švédska, Rakouska. Push = válka. Pull = bezpečí a sociální systém. To je vynucená mezinárodní migrace.</div>
+</div>
+
+<div class="vy-section">
+<h3>🗺️ Rozmístění obyvatelstva — kde žijí lidé a proč</h3>
+
+<p><strong>Hustota zalidnění</strong> = počet obyvatel na km². Průměr světa: ~60 ob/km². ČR: ~140 ob/km². Monako: 26 000 ob/km²!</p>
+<p>🌍 <strong>Nejhustěji osídlené oblasti:</strong></p>
+<ul class="vy-list">
+<li>Jižní a jihovýchodní Asie — Indie, Bangladéš, Čína, Japonsko, Indonésie</li>
+<li>Evropa — zejm. západ (UK, Belgie, Nizozemsko)</li>
+<li>Pobřeží severovýchodní USA</li>
+<li>Nilská delta v Egyptě (nejhustěji osídlená oblast v Africe)</li>
+</ul>
+<p>🏜️ <strong>Nejřídčeji osídlené oblasti:</strong></p>
+<ul class="vy-list">
+<li>Sahara a jiné pouště</li>
+<li>Polární oblasti (Grónsko, Antarktida, Sibiř)</li>
+<li>Amazonie a další tropické pralesy</li>
+<li>Himaláj a vysokohorské oblasti</li>
+</ul>
+<div class="highlight">Důvody hustého osídlení: úrodná půda, přístup k vodě, mírné klima, pobřeží (obchod), historické centrum moci. Důvody řídkého: extrémní klima (příliš horké/studené/suché), nedostatek vody, obtížný terén.</div>
+</div>`,
+9:`<div class="vy-section">
+<h3>🏙️ Sídla — kde a jak lidé bydlí</h3>
+
+<p><strong>Sídlo</strong> = trvalé místo, kde lidé žijí. Rozdělujeme na vesnice (venkov) a města (urban).</p>
+<p>🌍 Dnes žije ve městech více než <strong>55 % světové populace</strong>. V roce 1800 to bylo jen 3 %! Do roku 2050 bude urbanizace přes 70 %.</p>
+<div class="highlight">📌 Největší města světa: Tokio (~37 mil.), Dillí (~33 mil.), Šanghaj (~27 mil.), Dhaka (~23 mil.), São Paulo (~22 mil.). Praha je relativně malá — 1,4 milionu.</div>
+</div>
+
+<div class="vy-section">
+<h3>📈 Urbanizace — proč lidé míří do měst</h3>
+
+<p><strong>Urbanizace</strong> = přesun obyvatelstva z venkova do měst. Historicky spojena s industrializací — továrny v městech, práce → lidé se stěhují.</p>
+<p>🌍 <strong>Fáze urbanizace:</strong></p>
+<ul class="vy-list">
+<li><strong>Industrializace</strong> — 19. stol. Evropa: továrny v Manchesteru, Birminghamu, Ostravě lákají dělníky z venkova</li>
+<li><strong>Suburbanizace</strong> — bohatší vrstvy se stěhují na předměstí (20. stol.)</li>
+<li><strong>Deurbanizace</strong> — opuštění měst (někde zaznamenáno po 2000, ale celkový trend urbanizace pokračuje)</li>
+<li><strong>Reurbanizace</strong> — návrat do zrekonstruovaných center (gentrifikace)</li>
+</ul>
+<div class="priklad">Detroit USA — industriální město aut (Ford, General Motors). Vrchol: 1,8 milionu obyvatel (1950). Pak: automobilky odešly → nezaměstnanost → kriminalita → lidé odešli. 2013: Detroit vyhlásil bankrot. Dnes má jen 640 000 obyvatel, tisíce opuštěných domů. Urbánní úpadek.</div>
+</div>
+
+<div class="vy-section">
+<h3>🏡 Suburbanizace a Gentrifikace</h3>
+
+<p>🏡 <strong>Suburbanizace</strong> = přesun lidí z centra města na předměstí. Chtějí: větší domy, zahradu, klid, čistý vzduch. Ale: každý den dojíždějí do centra za prací → dopravní zácpy, zvýšené emise, problémy s dopravní infrastrukturou.</p>
+<p>Suburbanizace vznikla masovým rozšířením aut v USA 50. léta, v Evropě 70.–90. léta.</p>
+<div class="highlight">Suburbanizace v ČR: Rodiny se stěhují z Prahy do Jesenice, Říčan, Rakovníka. Ráno: 50 km zácpa na D1 do Prahy. Výsledek: suburbie (zástavba bez centra, jen bydlení, žádný park, žádná kavárna, žádná knihovna). Americký model přišel do ČR.</div>
+<p>🏘️ <strong>Gentrifikace</strong> = přicházení bohatších (mladých vzdělaných lidí) do chudší čtvrti → rekonstrukce, hipsteři, kavárny → ceny nemovitostí rostou → původní chudší obyvatelé musejí odejít (nemohou platit nájmy). Žižkov v Praze, Prenzlauer Berg v Berlíně, Williamsburg v NYC.</p>
+</div>
+
+<div class="vy-section">
+<h3>🌆 Aglomerace, megalopolis a světová města</h3>
+
+<p>🏙️ <strong>Aglomerace</strong> = velkoměsto splynulo s okolními obcemi a satelitními sídlišti. Praha + Kladno + Brandýs = Pražská aglomerace.</p>
+<p>🌆 <strong>Konurbace</strong> = splynuly dvě nebo více velkých měst stejné váhy. Horní Slezsko — Katowice + Ostrava + Opava.</p>
+<p>🌇 <strong>Megalopolis</strong> = splynulé aglomerace tvořící nepřetržitou zástavbu stovky km.</p>
+<ul class="vy-list">
+<li>🇺🇸 <strong>BosWash</strong> — Boston–New York–Philadelphia–Baltimore–Washington D.C. ~50 milionů lidí, 700 km</li>
+<li>🇯🇵 <strong>Tokaido</strong> — Tokio–Osaka–Kobe. 80 milionů lidí!</li>
+<li>🇨🇳 <strong>Delta Perlové řeky</strong> — Guangzhou–Shenzhen–Hongkong. Největší na světě.</li>
+</ul>
+<p>🌍 <strong>Světová města (Global Cities)</strong> = centra světového hospodářství, politiky, kultury. New York, Londýn, Tokio, Paříž, Singapur, Šanghaj.</p>
+</div>
+
+<div class="vy-section">
+<h3>🏚️ Problémy měst — slums a sociální problémy</h3>
+
+<p>🏚️ <strong>Slums (chudinské čtvrti, favely)</strong> = neformální zástavba na okrajích měst v rozvojových zemích. Lidé přicházejí z venkova za prací, ale nemají peníze na bydlení → staví z čeho mohou na nevhodných místech (svahy, záplavy, blíže skládkám).</p>
+<p>Rio de Janeiro: Favela Rocinha — 70 000 lidí, žádná kanalizace, vysoká kriminalita, ale zároveň komunita, kultura (samba!), podnikavost.</p>
+<div class="highlight">⚠️ 1 miliarda lidí dnes žije ve slumech! Největší: Dhaka, Mumbai, Lagos, Nairobi. Problém není jen v ČR neznámý — ale bude čím dál závažnější.</div>
+<p>🚦 <strong>Další problémy měst:</strong> dopravní zácpy, znečištění ovzduší (Dillí, Peking), nedostatek zelených ploch, chudoba, kriminalita, izolace (lidé ve velkých městech jsou paradoxně osamělejší), drahé bydlení (Praha, Londýn).</p>
+</div>`,
+10:`<div class="vy-section">
+<h3>🏛️ Co je stát a co ho definuje</h3>
+
+<p><strong>Stát</strong> = základní politická jednotka mezinárodního společenství. Aby byl stát mezinárodně uznán, musí splňovat <strong>tři podmínky (Montevidejská konvence 1933):</strong></p>
+<ul class="vy-list">
+<li>🗺️ <strong>Území</strong> — ohraničený prostor s definovanými hranicemi</li>
+<li>👥 <strong>Obyvatelstvo</strong> — lidé trvale obývající toto území</li>
+<li>🏛️ <strong>Svrchovanost (vláda)</strong> — efektivní kontrola nad územím, schopnost vstupovat do mezinárodních vztahů</li>
+</ul>
+<div class="highlight">🤔 Kosovo — vyhlásilo nezávislost na Srbsku v 2008. Uznalo ho přes 100 zemí (USA, EU). Srbsko a Rusko ho neuznávají. Kosovo splňuje fakticky 3 podmínky, ale politicky je uznání sporné. Ukazuje, že politická geografie je komplikovaná.</div>
+<p>Dnes má svět <strong>193 členů OSN</strong> + pár dalších entit (Taiwan, Kosovo, Palestinská samospráva...).</p>
+</div>
+
+<div class="vy-section">
+<h3>👑 Formy vlády a politické systémy</h3>
+
+<p>📋 <strong>Monarchie</strong> = v čele stojí panovník (král, královna, císař, emir, sultán).</p>
+<ul class="vy-list">
+<li>🏰 <strong>Absolutní monarchie</strong> — panovník vládne sám, bez omezení. Saúdská Arábie, Katar, Omán.</li>
+<li>👸 <strong>Konstituční monarchie</strong> — panovník je symbolická hlava, skutečně vládne parlament + premiér. UK (král Karel III.), Španělsko (král Felipe VI.), Japonsko (císař Naruhito), Norsko, Švédsko, Dánsko, Belgie, Nizozemsko.</li>
+</ul>
+<p>🗳️ <strong>Republika</strong> = v čele je prezident nebo premiér volení lidem.</p>
+<ul class="vy-list">
+<li>🗳️ <strong>Demokratická republika</strong> — volné volby, opozice, soudní nezávislost. ČR, USA, Francie, Německo.</li>
+<li>👊 <strong>Autoritářský systém</strong> — nominálně republika, ale vůdce vládne bez reálné opozice. Rusko, Čína, Bělorusko, Venezuela.</li>
+<li>🎖️ <strong>Vojenská junta</strong> — vládne armáda. Myanmar, historicky časté v Latinské Americe.</li>
+</ul>
+<div class="highlight">💡 Velká Británie je konstituční monarchie — Král Karel III. otevírá parlament, podepisuje zákony, reprezentuje zemi. ALE: nevládne. Skutečnou moc má premiér a parlament. Král nemůže odmítnout podepsat zákon schválený parlamentem.</div>
+</div>
+
+<div class="vy-section">
+<h3>🏢 Územní uspořádání státu</h3>
+
+<p>🏛️ <strong>Unitární stát</strong> = jedna centrální vláda vládne celé zemi. Všechny regiony mají stejná pravidla. Regiony mohou mít samosprávu, ale zákony určuje centrum.</p>
+<ul class="vy-list">
+<li>ČR (14 krajů, ale zákonodárnou moc má parlament v Praze)</li>
+<li>Francie, Polsko, Japonsko, Čína, Egypt</li>
+</ul>
+<p>🏢 <strong>Federativní stát (federace)</strong> = stát se skládá z autonomních celků (státy, spolkové země, kantony, republiky). Každý celek má vlastní vládu, parlament a část zákonodárné moci.</p>
+<ul class="vy-list">
+<li>🇺🇸 USA (50 států) — každý stát má vlastní zákony (trest smrti, marihuana, rychlostní limity)</li>
+<li>🇩🇪 Německo (16 spolkových zemí — Länder) — Bayern, Severní Porýní-Vestfálsko...</li>
+<li>🇷🇺 Rusko (85 subjektů — republiky, oblasti, kraje, okruhy)</li>
+<li>🇨🇭 Švýcarsko (26 kantonů) — extrémně decentralizované, referenda o všem</li>
+<li>🇦🇺 Austrálie, Kanada, Brazílie, Indie, Mexiko</li>
+</ul>
+<div class="priklad">V USA je marihuana na federální úrovni stále nelegální — ale v Coloradu je legální, protože Colorado si schválilo vlastní zákon. To je federace — stát může mít jiné zákony než federální vláda (v mezích ústavy).</div>
+</div>
+
+<div class="vy-section">
+<h3>🌍 Mezinárodní organizace — kdo řídí svět</h3>
+
+<p>🌍 <strong>OSN (Organizace spojených národů)</strong> = nejdůležitější mezinárodní organizace. Vznikla 1945 po 2. světové válce. 193 členů. Cíle: udržení míru, humanitární pomoc, lidská práva, rozvoj.</p>
+<ul class="vy-list">
+<li>Bezpečnostní rada OSN — 5 stálých členů s právem veta: USA, UK, Francie, Rusko, Čína</li>
+<li>WHO, UNESCO, UNICEF, FAO — specializované agentury OSN</li>
+</ul>
+
+<p>🛡️ <strong>NATO</strong> = Severoatlantická aliance (1949). Vojenská obranná aliance — útok na jednoho člena = útok na všechny (Článek 5). Dnes 32 členů. Velitelství: Brusel. USA nese největší náklady (~70 % rozpočtu).</p>
+<p>🇪🇺 <strong>EU</strong> = Evropská unie (1993, předchůdci od 1957). 27 členů (UK odešlo 2020 — Brexit). Společný trh, volný pohyb osob, euro (20 zemí), společná zahraniční politika. Velitelství: Brusel.</p>
+<div class="highlight">ČR je v EU od 2004, v NATO od 1999. Nejsme v eurozóně (máme korunu). Schengenský prostor — volný pohyb bez pasů.</div>
+<p>Další org.: ASEAN, AU (Africká unie), MERCOSUR, APEC, G7, G20, WTO, MMF, Světová banka...</p>
+</div>`,
+11:`<div class="vy-section">
+<h3>🕌 Náboženství — co to je a proč nás zajímá v geografii</h3>
+
+<p>Náboženství = systém víry, rituálů a hodnot vztahující se k posvátnu. Ovlivňuje: architekturu (kostely, mešity, chrámy), právo (šaría v islámských zemích), kulturu, politiku, konflikty.</p>
+<p>📊 Přibližně 84 % světové populace se hlásí k nějakému náboženství. Největší skupiny nábožensky nepracujících: Čína, Japonsko, ČR (jedna z nejateističtějších zemí světa!).</p>
+</div>
+
+<div class="vy-section">
+<h3>✝️ Křesťanství — největší náboženství světa</h3>
+
+<p>~2,4 miliardy věřících (31 % světa). Vzniklo v Judsku (dnešní Izrael) v 1. stol. n.l. kolem Ježíše Krista.</p>
+<p>Rozšíření: Evropa, Amerika, subsaharská Afrika, Filipíny, Austrálie.</p>
+<p><strong>Tři hlavní větve:</strong></p>
+<ul class="vy-list">
+<li>⛪ <strong>Katolicismus</strong> — 1,3 mld. Vedení: papež ve Vatikánu (dnes František). Dominuje v Latinské Americe, jižní Evropě, Irsku, Polsku, ČR.</li>
+<li>☦️ <strong>Pravoslaví</strong> — 260 mil. Rusko, Řecko, Srbsko, Rumunsko, Bulharsko. Od roku 1054 odloučeno od Říma.</li>
+<li>✝️ <strong>Protestantismus</strong> — 800+ mil. Luteráni, kalvinisté, anglikáni, baptisté, evangelíci... Vznikl reformací (Luther 1517). Severní Evropa, USA, UK.</li>
+</ul>
+</div>
+
+<div class="vy-section">
+<h3>☪️ Islám — druhé největší náboženství</h3>
+
+<p>~1,9 miliardy věřících (24 % světa). Vznikl na Arabském poloostrově v 7. stol. n.l. Mohamed přijal zjevení Boha (Alláha) → zapsal je jako Korán.</p>
+<p>Rozšíření: Blízký východ, severní Afrika, jižní a jihovýchodní Asie (Indonésie je největší muslimský stát), části subsaharské Afriky.</p>
+<p><strong>Dvě hlavní větve:</strong></p>
+<ul class="vy-list">
+<li>🟢 <strong>Sunité</strong> (~85–90 %) — uznávají 4 prvních chalífy. Saúdská Arábie, Egypt, Turecko, Indonésie.</li>
+<li>🔵 <strong>Šíité</strong> (~10–15 %) — uznávají jen Alího jako legitimního nástupce. Irán, Irák, Jemen, Bahrajn, Libanon (Hizballáh).</li>
+</ul>
+<div class="highlight">Sunité vs. Šíité: Rozkol nastal po Mohamedově smrti (632 n.l.) — kdo má být jeho nástupce? Šíité: jen Aliho rodová linie. Sunité: volení chalífové. Tento rozkol ovlivňuje konflikty na Blízkém východě dodnes (Saúdská Arábie vs. Írán).</div>
+<p>Pět pilířů islámu: Šahada (vyznání víry), Salát (5× denní modlitba), Zakát (almužna), Saum (půst v ramadánu), Hadž (pouť do Mekky).</p>
+</div>
+
+<div class="vy-section">
+<h3>🕉️ Hinduismus, Buddhismus, Judaismus</h3>
+
+<p>🕉️ <strong>Hinduismus</strong> — ~1,2 mld. Nejstarší světové náboženství (3 500+ let). Indie a Nepál. Etnické náboženství — nevystupuje misionářsky. Kasty, reinkarnace, karma, mnoho bohů (Brahma-stvořitel, Višnu-zachovatel, Šiva-ničitel). Posvátná řeka Ganga.</p>
+
+<p>☸️ <strong>Buddhismus</strong> — ~500 mil. Zakladatel: Siddhártha Gautama (Buddha = osvícený), 5. stol. př. n.l., Indie. Cíl: dosáhnout nirváně (osvobození od utrpení a koloběhu reinkarnací). Jihovýchodní a východní Asie — Thajsko, Japonsko, Myanmar, Srí Lanka.</p>
+<p>🕍 <strong>Judaismus</strong> — ~15 mil. Nejstarší monoteistické náboženství, základ pro křesťanství i islám (tzv. Abrahamovská náboženství). Posvátné texty: Tóra. Posvátné město: Jeruzalém. Rozptýleni po světě (diaspora) od roku 70 n.l. (zničení Chrámu Římy).</p>
+</div>
+
+<div class="vy-section">
+<h3>🔥 Ohniska neklidu — konflikty světa</h3>
+
+<p>🔥 <strong>Izrael–Palestina</strong> (od 1948): Po holokaustu OSN rozdělila Palestinu — Izraelský stát + arabský stát. Arabské státy útok nepřijaly → válka → Izrael zvítězil a obsadil více území. Dnes: Izrael kontroluje Západní břeh Jordánu, Palestinci mají Gazu (kontroluje Hamas). Konflikt bez řešení.</p>
+<p>🔥 <strong>Rusko–Ukrajina</strong> (od 2014, eskalace 2022): Rusko anektovalo Krym 2014, od února 2022 vede plnohodnotnou invazi. Největší válka v Evropě od r. 1945. Stovky tisíc mrtvých, miliony uprchlíků.</p>
+<p>🔥 <strong>Kašmír</strong>: Sporné území mezi Indií a Pákistánem od 1947. Obě země mají jaderné zbraně. Klíčová je strategická poloha a vodní zdroje.</p>
+<p>🔥 <strong>Jemen</strong>: Od 2015 občanská válka — hútijové (íránský vliv) vs. vláda (saúdská podpora). Největší humanitární krize světa.</p>
+<p>🔥 <strong>Súdán</strong>: Od 2023 válka mezi armádou a polovojenskou milicí RSF. Miliony uprchlíků.</p>
+<div class="highlight">Proč je tolik konfliktů? Kombinace: 1) Náboženské/etnické rozdíly 2) Spory o zdroje (ropa, voda, půda) 3) Koloniální hranice (Afrika — hranice trhaly etnické skupiny) 4) Chudoba 5) Mocenská geopolitika (Rusko, USA, Čína, Írán).</div>
+</div>`,
+12:`<div class="vy-section">
+<h3>🏭 Světové hospodářství — jak funguje ekonomika planety</h3>
+
+<p>Světové hospodářství = souhrn všech ekonomických aktivit na Zemi. <strong>HDP (Hrubý domácí produkt)</strong> = celková hodnota všeho, co se v zemi za rok vyprodukuje. Klíčový ukazatel bohatství.</p>
+<p>🏆 <strong>Největší ekonomiky světa (HDP, 2024):</strong> USA (~27 bil. USD), Čína (~18 bil.), Německo (~4 bil.), Japonsko (~4 bil.), Indie (~3,5 bil.), UK, Francie, Brazílie, Kanada, Itálie (TOP 10). ČR je na ~40. místě.</p>
+<div class="highlight">HDP vs. HDP na obyvatele: Indie má obrovský celkový HDP, ale přes 1,4 mld. lidí → na jednoho připadá málo. Lucembursko má malý celkový HDP, ale jen 660 000 lidí → na jednoho připadá nejvíce na světě!</div>
+</div>
+
+<div class="vy-section">
+<h3>🌾🏭💼 Tři sektory ekonomiky</h3>
+
+<p>🌾 <strong>Primární sektor</strong> = získávání surovin přímo z přírody.</p>
+<ul class="vy-list">
+<li>Zemědělství (rostlinná výroba, živočišná výroba)</li>
+<li>Lesnictví a dřevozpracování</li>
+<li>Rybolov (Čína, Indonésie, Norsko jsou největší)</li>
+<li>Těžba nerostných surovin (uhlí, ropa, rudy, drahé kameny)</li>
+</ul>
+<p>Dominuje v chudých zemích — Čad, Niger, Kongo mají 50–70 % obyvatelstva v primáru.</p>
+<p>🏭 <strong>Sekundární sektor</strong> = zpracování surovin, výroba.</p>
+<ul class="vy-list">
+<li>Průmysl: těžký (ocel, chemie), lehký (elektronika, textil, potraviny)</li>
+<li>Stavebnictví</li>
+<li>Energetika</li>
+</ul>
+<p>Dominoval v Evropě 19.–20. stol. Dnes dominuje v Číně (továrna světa), Vietnamu, Bangladéši.</p>
+<p>💼 <strong>Terciární sektor</strong> = služby.</p>
+<ul class="vy-list">
+<li>Obchod, finance, bankovnictví, pojišťovnictví</li>
+<li>Doprava a logistika</li>
+<li>Zdravotnictví, vzdělávání</li>
+<li>Cestovní ruch (turismus)</li>
+<li>IT, média, komunikace</li>
+</ul>
+<p>Dominuje v bohatých zemích. V ČR tvoří ~60 % HDP. USA, UK: přes 75 %.</p>
+<p>📊 <strong>Kvartérní sektor</strong> (někdy se přidává) = znalostní ekonomika: výzkum, vývoj, AI, konzultace. Silicon Valley.</p>
+</div>
+
+<div class="vy-section">
+<h3>⚡ Energetika — zdroje energie světa</h3>
+
+<p>Energie pohání vše — průmysl, dopravu, vytápění, elektroniku. Odkud ji bereme?</p>
+<p>🔥 <strong>Fosilní paliva</strong> (80 % světové energie): Ropa, uhlí, zemní plyn. Neobnovitelné, produkují CO₂. Ale levné, hustě energetické, snadno skladovatelné.</p>
+<p>⚛️ <strong>Jaderná energie</strong> (~10 %): Štěpení uranu → teplo → elektřina. Nízké emise CO₂, ale radioaktivní odpad, bezpečnostní rizika (Černobyl 1986, Fukušima 2011). Francie: 70 % elektřiny z jádra!</p>
+<p>🌊🌬️☀️ <strong>Obnovitelné zdroje</strong> (~15 %, rychle roste): Vodní, větrná, sluneční, geotermální, biomasa. Čisté, nevyčerpatelné, ale závislé na počasí a geografii.</p>
+<div class="highlight">🛢️ OPEC (Organizace zemí vyvážejících ropu): saúdská Arábie, Irák, Írán, Kuvajt, SAE, Nigérie, Venezuela... Dohodou určují objem těžby → ovlivňují světové ceny ropy. Ropná krize 1973 = OPEC přestal dodávat ropu Západu kvůli válce Jom Kippur → ceny ropy vzrostly 4× → světová recese.</div>
+</div>
+
+<div class="vy-section">
+<h3>🌾 Zemědělství světa</h3>
+
+<p>Zemědělství živí 8 miliard lidí. Je to nejstarší lidská ekonomická aktivita.</p>
+<p>🌾 <strong>Rostlinná výroba</strong>: Obiloviny (pšenice, rýže, kukuřice) = základ potravy pro většinu světa. Hlavní producenti pšenice: Čína, Indie, Rusko, USA. Rýže: Čína, Indie, Bangladéš (potravina asijské civilizace).</p>
+<p>🐄 <strong>Živočišná výroba</strong>: Dobytek, prasata, drůbež. USA, Brazílie, Čína dominují v produkci masa. Extrémní vliv na ŽP — dobytek produkuje metán (skleníkový plyn), zabírá plochu pralesů.</p>
+<p>🤔 <strong>Paradox potravin</strong>: Svět produkuje dostatek jídla pro všechny. Ale 800 milionů lidí trpí hladem. Problém není produkce, ale distribuce — chudoba, války, infrastruktura.</p>
+<div class="priklad">Zelená revoluce 60.–70. léta: vývoj nových odrůd obilí s mnohem vyššími výnosy (Norman Borlaug) zachránil miliardy lidí před hladem v Asii. Ale: závislost na pesticidech, hnojivech, zavlažování → ekologické problémy.</div>
+</div>
+
+<div class="vy-section">
+<h3>🚢 Doprava a cestovní ruch</h3>
+
+<p>🚢 <strong>Námořní doprava</strong> = přepravuje 90 % světového obchodu (objemem). Největší přístavy: Šanghaj, Singapur, Rotterdam, Los Angeles. Kontejnerizace — standardní kovové kontejnery (TEU) = revoluce v logistice.</p>
+<p>✈️ <strong>Letecká doprava</strong> = rychlá, ale drahá, velká uhlíková stopa. Klíčová pro cestovní ruch a přepravu zboží vysoké hodnoty (elektronika, léky). Největší letiště: Dubai, Atlanta, Peking.</p>
+<p>🚂 <strong>Železnice</strong> = efektivní, šetrná. Čína má nejdelší síť vysokorychlostních tratí (40 000 km!). Japonské Shinkansen, Eurostar, TGV.</p>
+<p>🌴 <strong>Cestovní ruch (turismus)</strong>: Jedno z největších odvětví světové ekonomiky. ~1,3 miliardy turistů ročně (před covidem). Největší příjemci: Francie, Španělsko, USA, Itálie, Čína. ČR: Praha je v TOP 20 nejnavštěvovanějších měst světa.</p>
+</div>`,
+13:`<div class="vy-section">
+<h3>🇨🇿 Základní fakta o Česku</h3>
+
+<p>Česká republika (ČR, Czechia) = stát ve středu Evropy. Oficálně vznikla <strong>1. 1. 1993</strong> rozdělením Československa (Sametový rozvod). Hlavní město: <strong>Praha</strong>.</p>
+<p>📊 <strong>Základní data:</strong></p>
+<ul class="vy-list">
+<li>Rozloha: <strong>78 866 km²</strong> (přibližně jako Maine, USA, nebo Česko je 14× menší než Francie)</li>
+<li>Obyvatel: <strong>~10,9 milionu</strong></li>
+<li>Hlavní město: Praha (1,4 mil., 2. největší město střední Evropy po Vídni)</li>
+<li>Vnitrozemský stát — nemá přístup k moři, hranice s Německem, Polskem, Slovenskem, Rakouskem</li>
+</ul>
+<div class="highlight">💡 ČR je přesně geografickým středem Evropy — pokud vezmeme všechny státy EU nebo celý kontinent. Praha = srdce Evropy. To není jen slogan, je to geografický fakt.</div>
+</div>
+
+<div class="vy-section">
+<h3>🏔️ Reliéf — jak vypadá povrch ČR</h3>
+
+<p>ČR je obklopena pohořími, ale centrum tvoří nížiny a pahorkatiny. Struktura: okraj = hory, střed = nížiny.</p>
+<p>⛰️ <strong>Pohoří ČR:</strong></p>
+<ul class="vy-list">
+<li>🏔️ <strong>Krkonoše</strong> — severní hranice s Polskem. Sněžka 1 603 m n.m. = NEJVYŠŠÍ HORA ČR. Lyžařské středisko, NP od 1963.</li>
+<li>🌲 <strong>Šumava</strong> — jihozápadní hranice. Plesné jezero, Vydra, rašeliniště. NP + CHKO.</li>
+<li>🌄 <strong>Beskydy</strong> — severovýchod. Lysá hora 1 323 m. CHKO Beskydy.</li>
+<li>🏔️ <strong>Jeseníky</strong> — střední Morava. Praděd 1 491 m = druhá nejvyšší hora ČR.</li>
+<li>🪨 <strong>Jizerské hory, Krušné hory</strong> — severní Čechy (dříve průmyslová oblast, zásoby uhlí).</li>
+<li>🌊 <strong>Moravský kras</strong> — vápencové souvrství s jeskyněmi (Macocha, Sloupsko-šošůvské jeskyně).</li>
+</ul>
+<div class="highlight">📌 Zapamatuj si: SNĚŽKA = 1 603 m. Trik: 16 + 03 = 1603. Nebo: Sněžka je číslo jedna, šestka, nula, trojka.</div>
+<p>🏜️ <strong>Nížiny a úvaly:</strong> Polabská nížina (nejnižší bod ČR — 115 m, kde Labe opouští ČR), Hornomoravský úval (Haná), Dolnomoravský úval (jižní Morava, nejúrodnější oblast).</p>
+</div>
+
+<div class="vy-section">
+<h3>🌊 Vodstvo ČR — řeky, jezera, přehrady</h3>
+
+<p>🌊 <strong>Nejdůležitější řeky:</strong></p>
+<ul class="vy-list">
+<li>💙 <strong>Vltava</strong> = nejdelší řeka ČR (430 km). Pramení na Šumavě (Černé a Bílé jezero). Protéká Prahou, vlévá se do Labe u Mělníka. Na Vltavě: VD Lipno, VD Orlík, VD Slapy — kaskáda přehrad.</li>
+<li>💙 <strong>Labe</strong> = největší řeka odtékající z ČR. Pramení v Krkonoších, odtéká do Německa → Hamburk → Severní moře.</li>
+<li>💙 <strong>Morava</strong> = Hraje Moravou, vlévá se do Dunaje u Bratislavy → Černé moře.</li>
+<li>💙 <strong>Odra</strong> = odtéká na sever → Baltské moře (malá část ČR na severu Moravy).</li>
+</ul>
+
+<p>⚠️ <strong>ROZVODÍ</strong> = linie, která dělí území podle toho, kam odtéká voda. ČR leží na <strong>trojrozvodí Evropy</strong> — vody odtékají do tří moří: Severního (přes Labe), Černého (přes Moravu→Dunaj) a Baltského (přes Odru).</p>
+<div class="highlight">🧠 Toto rozvodí je unikátní! Déšť, který spadne na Šumavě, skončí v Severním moři u Hamburku. Déšť 10 km jinde skončí v Černém moři u Oděsy. Stejný déšť, jiné moře.</div>
+<p>🏞️ <strong>Jezera:</strong> Přirozená jezera v ČR jsou vzácná (Černé a Čertovo jezero na Šumavě — ledovcová kara). Většina je umělá (přehrady): Lipno (největší), Orlík, Slapy, Nechranice, Dlouhé stráně.</p>
+</div>
+
+<div class="vy-section">
+<h3>🌡️ Klima ČR</h3>
+
+<p>ČR má <strong>mírné přechodné (oceánsko-kontinentální) klima</strong> — mezi oceánickým (Velká Británie — mírné, vlhké) a kontinentálním (Rusko — extrémní). Čtyři roční období, průměrné srážky ~650 mm/rok.</p>
+<p>Průměrné teploty: Praha — leden ~0 °C, červenec ~19 °C. V horách: leden −8 °C, červenec +10 °C.</p>
+<p>🌡️ <strong>Regionální rozdíly:</strong></p>
+<ul class="vy-list">
+<li>Jižní Morava — nejteplejší a nejsušší (víno, meruňky, slunečnice)</li>
+<li>Hory (Krkonoše, Šumava) — nejchladnější, nejvíce srážek (zimní sporty)</li>
+<li>Praha — tepelný ostrov města (o 2–4 °C teplejší než okolí)</li>
+</ul>
+<div class="priklad">Klimatická změna v ČR: Sucha 2018–2019 vyschl Labe u Děčína tak, že lodě nemohly plout. Kůrovcová kalamita — oslabené smrky. Průměrná teplota v ČR vzrostla od 1880 o ~2 °C. Vinná réva se teď pěstuje i v Čechách a na Moravě s rekordními výnosy.</div>
+</div>`,
+14:`<div class="vy-section">
+<h3>👥 Obyvatelstvo České republiky</h3>
+
+<p>ČR má <strong>~10,9 milionu obyvatel</strong>. Hustota zalidnění: ~140 ob/km² (průměr EU je ~110 ob/km²).</p>
+<p>📊 <strong>Demografické charakteristiky:</strong></p>
+<ul class="vy-list">
+<li>Přirozený přírůstek: záporný (~−0,2 ‰) — umírá víc lidí, než se rodí</li>
+<li>Stárnutí populace — podíl lidí 65+ roste (dnes ~21 %), do 2050 bude ~30 %</li>
+<li>Celkový přírůstek kladný — díky imigrantům (Ukrajiné, Slováci, Vietnamci, Rusové)</li>
+<li>Střední délka života: muži 76 let, ženy 82 let</li>
+</ul>
+<p>🏙️ <strong>Největší města:</strong> Praha (1,4 mil.), Brno (400 tis.), Ostrava (280 tis.), Plzeň (175 tis.), Liberec (105 tis.), Olomouc (100 tis.), České Budějovice (95 tis.), Hradec Králové (93 tis.).</p>
+<div class="highlight">🧠 Praha je absolutně dominantní — má 10× víc obyvatel než druhé největší Brno. Taková disproporce je výjimečná (říkáme makrocefalita sídlení sítě). V Německu jsou Berlín, Hamburg, Mnichov, Kolín srovnatelné.</div>
+</div>
+
+<div class="vy-section">
+<h3>🚗 Průmysl ČR — co vyrábíme</h3>
+
+<p>ČR je průmyslová velmoc v rámci EU — průmysl tvoří ~25 % HDP, což je nadprůměr EU. Jsme výrobní centrum střední Evropy.</p>
+<p>🚗 <strong>Automobilový průmysl</strong> — NEJVĚTŠÍ odvětví. ČR vyrobí přes 1,4 milionu aut ročně.</p>
+<ul class="vy-list">
+<li>🏭 <strong>Škoda Auto</strong> (Mladá Boleslav, Kvasiny, Vrchlabí) — značka VW Group. Vyrábí Fabia, Octavia, Superb, Enyaq. 40 000+ zaměstnanců.</li>
+<li>🏭 <strong>Hyundai Motor Manufacturing Czech</strong> (Nošovice u Frýdku-Místku, MSK) — 1 milion aut ročně, 3 300 zaměstnanců.</li>
+<li>🏭 <strong>Toyota Peugeot Citroën Automobile</strong> (TPCA Kolín) — malá auta.</li>
+</ul>
+
+<p>⚙️ <strong>Strojírenství a elektrotechnika:</strong> Siemens (Praha, Drásov), ABB, Bosch, Continental. Výroba motorů, turbín, elektromotorů.</p>
+<p>🧪 <strong>Chemický průmysl:</strong> Unipetrol/Orlen (Litvínov, Kralupy) — rafinérie ropy. Synthos, Spolana.</p>
+<p>🏗️ <strong>Stavební materiály:</strong> Knauf, Wienerberger, Rako — keramika, cihly, sádra.</p>
+<p>🍺 <strong>Potravinářství:</strong> ČR je světoznámá výrobou piva — Pilsner Urquell (Plzeň, světový EXPORT), Budvar (České Budějovice). Sladovnický ječmen z Hané.</p>
+</div>
+
+<div class="vy-section">
+<h3>🌾 Zemědělství ČR</h3>
+
+<p>Zemědělství zaměstnává jen ~3 % pracovní síly, ale produkuje dostatek potravin a vytváří exportní přebytek.</p>
+<p>🌾 <strong>Rostlinná výroba:</strong></p>
+<ul class="vy-list">
+<li><strong>Polabí a Haná</strong> — nejúrodnější oblasti. Pšenice, ječmen, řepka, cukrovka.</li>
+<li><strong>Jižní Morava</strong> — nejsušší a nejteplejší. Víno (Znojmo, Mikulov, Velké Pavlovice), meruňky, broskve, slunečnice.</li>
+<li><strong>ČR je mezi TOP světovými producenty chmelí</strong> — Žatec (Saaz chmel = světová značka).</li>
+</ul>
+<p>🐄 <strong>Živočišná výroba:</strong> Skot, prasata, drůbež. Chov v nížinách (Haná, Polabí). Horské oblasti — louky, chov ovcí.</p>
+<p>🌲 <strong>Lesnictví:</strong> 34 % ČR je les. Dříve smrková monokultura → kůrovcová kalamita → nyní přeměna na smíšené lesy.</p>
+</div>
+
+<div class="vy-section">
+<h3>🚗🚂✈️ Doprava a infrastruktura ČR</h3>
+
+<p>ČR leží na křižovatce hlavních evropských dopravních koridorů (sever–jih, západ–východ).</p>
+<p>🛣️ <strong>Silniční síť:</strong> Dálniční síť ~1 300 km. Klíčové dálnice: D1 Praha–Brno–Slovensko, D5 Praha–Plzeň–Německo (Regensburg), D8 Praha–Drážďany, D11 Praha–Hradec Králové. Stav: přetížená D1 (chronické zácpy).</p>
+<p>🚂 <strong>Železnice:</strong> Hustá síť (~9 400 km). Správce: SŽDC/Správa železnic. Koridory modernizovány pro 160–200 km/h. Mezinárodní: Praha–Vídeň, Praha–Berlín, Praha–Varšava. Chybí: vysokorychlostní tratě (HSR plánované do Brna a Drážďan 2035+).</p>
+<p>✈️ <strong>Letiště:</strong> Letiště Václava Havla Praha (LKPR) — 17+ milionů cestujících ročně (před covidem). Mezinárodní hub pro střední Evropu. Letiště Brno (Tuřany), Ostrava (Mošnov), Karlovy Vary.</p>
+<p>🛢️ <strong>Potrubní doprava:</strong> Ropa přichází ropovodem IKL (z Terstu) a Druzhba (z Ruska, nyní omezena). Plyn: plynovody ze Slovenska a Německa.</p>
+<div class="priklad">ČR je tranzitní zemí — přes naše území prochází velké množství nákladu ze Španělska/Francie do Polska/Ruska a z Německa na Balkán. Nákladní doprava kamiony je obrovská — D1 v úseku Praha–Brno patří k nejzatíženějším v Evropě.</div>
+</div>`,
+15:`<div class="vy-section">
+<h3>⚙️ Moravskoslezský kraj — průmyslové srdce ČR</h3>
+
+<p><strong>Moravskoslezský kraj (MSK)</strong> je třetí největší kraj ČR (rozloha 5 427 km², ~1,2 milionu obyvatel). Krajské město: <strong>Ostrava</strong> — 2. (nebo 3.) největší město ČR, ~280 000 obyvatel.</p>
+<p>🗺️ <strong>Poloha a hranice:</strong> Severovýchodní ČR. Hranice s Polskem (sever) a Slovenskem (jihovýchod). Leží v Moravskoslezské nížině + přilehlé části Karpat (Beskydy).</p>
+<div class="highlight">MSK je nejprůmyslovější kraj ČR — historicky centrum těžkého průmyslu, dnes procházející transformací k modernímu hospodářství.</div>
+</div>
+
+<div class="vy-section">
+<h3>⛏️ Historický průmysl — hornictví a hutnictví</h3>
+
+<p>MSK byl od 18. století centrem <strong>černouhelného hornictví</strong> (Ostravsko-karvinský revír = OKR). Černé uhlí = koksovatelné = základ pro výrobu oceli.</p>
+<p>⛏️ <strong>OKD (Ostravsko-karvinské doly)</strong> — státní těžební podnik. Vrchol: 100 000 horníků v 50.–70. letech. Dnes: privatizace, problémy, bankrot 2016, záchrana státem. Omezená těžba pokračuje. Důlní závaly, subsidence (poklesání terénu), znečištění.</p>
+<p>🏭 <strong>Hutnictví</strong> — ocel z koksovatelného uhlí. Vítkovice (nyní muzeum průmyslového dědictví + kulturní centrum!), NHKG (Nová huť, dnes Liberty Ostrava / ArcelorMittal).</p>
+
+<p>🌟 Dolní oblast Vítkovice = dnes UNESCO kandidát — unikátně zachovalý průmyslový komplex (vysoké pece, plynojemy, elektrárna), přeměněný na kulturní centrum světové třídy.</p>
+</div>
+
+<div class="vy-section">
+<h3>🚗 Moderní průmysl — Hyundai a nové ekonomiky</h3>
+
+<p>Po útlumu hornictví a hutnictví přišly nové investice:</p>
+<p>🚗 <strong>Hyundai Motor Manufacturing Czech (HMMC)</strong> — Nošovice, 2008. Plocha: 200 ha. Kapacita: ~350 000 aut/rok. ~3 300 přímých zaměstnanců + tisíce v dodavatelském řetězci. Vyváží Hyundai i30, ix20, Tucson, Kona do celé Evropy.</p>
+<p>💼 <strong>IT a služby</strong>: Ostrava je dnes hub IT firem — Tieto, Accenture, AT&T. Ostravská technická universita (VŠB-TUO). Kariéra v IT v Ostravě = reálná možnost bez odchodu do Prahy.</p>
+<p>⚡ <strong>Energetika</strong>: Elektrárna Dětmarovice (uhlí, postupné odstavování), OZE přichází pomalu.</p>
+</div>
+
+<div class="vy-section">
+<h3>🏔️ Příroda MSK — Beskydy a Jeseníky</h3>
+
+<p>MSK má překvapivě krásnou přírodu vedle průmyslu:</p>
+<p>🏔️ <strong>Beskydy</strong> — jihozápadní část MSK. CHKO Beskydy (největší CHKO v ČR). Lysá hora 1 323 m (nejvyšší bod MSK). Staré Hamry, Pustevny, Radhošť. Karpaty — flyšové (vrstvené pískovce a břidlice).</p>
+<p>🏔️ <strong>Jeseníky</strong> — severozápadní MSK. CHKO Jeseníky. Praděd 1 491 m (2. nejvyšší hora ČR, televizní věž). Velká kotlina — sněhová oblast.</p>
+<p>🌊 <strong>Poodří</strong> — CHKO Poodří (Odra a její niva) — mokřady, lužní lesy, ptáci. Unikátní pro MSK — příroda uprostřed průmyslové krajiny.</p>
+<p>♨️ <strong>Jeseník</strong> (město) = lázně (Priessnitz — zakladatel vodoléčby), horský cestovní ruch.</p>
+<div class="highlight">MSK je paradox: hrozné ovzduší v Ostravě (historicky, dnes se zlepšuje) vs. krásné Beskydy a Jeseníky. Kraj přechází od „hnědého" průmyslu k „zelenější" ekonomice — ale je to bolestný a pomalý proces.</div>
+</div>
+
+<div class="vy-section">
+<h3>🌆 Města a sídla MSK</h3>
+
+<p>🏙️ <strong>Ostrava</strong> — metropole kraje, 2. největší průmyslové centrum ČR. Centrum: Masarykovo náměstí, Stodolní ulice (noční život), Dolní oblast Vítkovice. Ostravská (ostravský dialekt — „Idu do baňi" = jdu do dolů).</p>
+<p>🏘️ <strong>Frýdek-Místek</strong> — druhé město MSK (~55 tis. ob.). Frýdek a Místek — historicky dvě samostatná města. Blízko Hyundai v Nošovicích.</p>
+<p>⛏️ <strong>Karviná</strong> — hornické město. Centrum — pokleslé o metry kvůli důlní poddolovanosti! Unikátní jev — domy se naklonily, kostel stojí v úhlu. Město se postupně sanuje.</p>
+<p>🏭 <strong>Opava</strong> — historické centrum (dříve hlavní město Slezska), dnes spíše administrativní a obchodní centrum severní části MSK.</p>
+<p>🌊 <strong>Bohumín, Havířov, Třinec</strong> — průmyslová města (Třinecké železárny = jediná fungující velká ocelárna v ČR).</p>
+</div>`,
+16:`<div class="vy-section">
+<h3>🗺️ Střední Evropa — vymezení a charakteristika</h3>
+
+<p>Střední Evropa nemá pevnou definici — různí geografové ji vymezují různě. Typicky: <strong>ČR, Slovensko, Maďarsko, Polsko, Německo, Rakousko, Švýcarsko</strong>, někdy i Slovinsko, Chorvatsko, Lichtenštejnsko.</p>
+<p>Fyzickogeograficky: alpsko-karpatský oblouk na jihu, hercynská pohoří (Krkonoše, Šumava, Erzgebirge) na severu, mezi nimi rozsáhlé nížiny (Polabí, Dunajská nížina, Vídeňská pánev).</p>
+<div class="highlight">Střední Evropa je ekonomicky nejdynamičtější část Evropy mimo západ — V4 + Německo + Rakousko jsou motor celé EU.</div>
+</div>
+
+<div class="vy-section">
+<h3>🇩🇪 Německo — lokomotiva Evropy</h3>
+
+<p>Německo (84 mil. obyvatel) = <strong>největší ekonomika EU, 4. světová</strong>. Federace 16 spolkových zemí (Länder). Republika — prezident a kancléř (skutečná výkonná moc).</p>
+<p>🏭 <strong>Průmysl</strong>: Chemie (BASF — Ludwigshafen, největší chemický komplex světa), automobilový (BMW–Mnichov, Mercedes–Stuttgart, VW–Wolfsburg, Audi–Ingolstadt, Porsche–Stuttgart), strojírenství (Siemens, Bosch), elektrotechnika, farmaceutika (Bayer).</p>
+
+<p>🏙️ <strong>Klíčová města</strong>: Berlín (3,7 mil., hlavní město, kulturní centrum, startup hub), Hamburk (1,8 mil., největší přístav Německa), Mnichov (1,5 mil., ekonomické centrum Bavorska, BMW, Siemens, oktoberfest), Frankfurt nad Mohanem (750 tis., finanční centrum — ECB, Deutsche Bank, Frankfurt Börse), Kolín (1 mil., Porýní), Stuttgart (620 tis., Mercedes, Porsche).</p>
+<div class="highlight">💡 Německo je náš NEJVĚTŠÍ obchodní partner — 32 % všeho, co ČR vyváží, jde do Německa. Škoda Auto = VW Group. Naše ekonomiky jsou provázány. Proto každá německá krize (energetická, automobilová) nás přímo zasahuje.</div>
+<p>⚡ <strong>Energetická transformace (Energiewende)</strong>: Německo zavřelo všechny jaderné elektrárny (2023) a masivně investuje do OZE. Přesto stále spaluje uhlí (lignit z Porýní).</p>
+</div>
+
+<div class="vy-section">
+<h3>🇵🇱 Polsko — rychle rostoucí velmoc</h3>
+
+<p>Polsko (38 mil. ob.) = <strong>6. největší ekonomika EU</strong>, největší postkomunistická ekonomika. Za 30 let od r. 1990 více než zdvojnásobilo HDP — nejúspěšnější ekonomická transformace v historii.</p>
+<p>🏙️ <strong>Města</strong>: Varšava (1,8 mil., moderní finanční centrum, obnovena po 2. sv. válce kdy byla z 80 % zničena), Krakov (800 tis., historické centrum, královský hrad Wawel, Jagellonská universita — 1364), Gdaňsk (470 tis., přístav Baltu, kolébka Solidarity — Lech Wałęsa, Solidarność 1980 = hnutí, které zlomilo komunismus), Wrocław (640 tis.).</p>
+<p>🏭 <strong>Průmysl</strong>: Automobilový (Fiat, VW, Toyota), těžba uhlí (Slezsko, Polsko závislé na uhlí), ocelářství, elektrotechnika, IT (Wrocław — IT centrum). Potravinářství: Polsko = největší exportér jablek v EU, mléčné výrobky, maso.</p>
+<div class="priklad">Polská ekonomická úspěšnost: V r. 1990 bylo Polsko chudší než Brazílie. Dnes má HDP na osobu přes 40 000 USD (PPP) — podobně jako Španělsko nebo Řecko. Přijalo 160 miliard eur z EU fondů a smysluplně je investovalo do infrastruktury.</div>
+</div>
+
+<div class="vy-section">
+<h3>🏔️ Österreich a Švýcarsko — alpské státy</h3>
+
+<p>🇦🇹 <strong>Rakousko</strong> (9 mil., Vídeň 1,9 mil.) = federace 9 spolkových zemí. Vídeň = historický skvost — Mozart, Freud, Klimt, Mahler, Strauss. Dnes: finanční centrum, turismus (Alpy!), strojírenství, turismus. Člen EU od 1995, Schengen.</p>
+<p>🇨🇭 <strong>Švýcarsko</strong> (8,7 mil.) = 26 kantonů, 4 úřední jazyky (němčina 63 %, francouzština 23 %, italština 8 %, rétorománština 1 %). <em>Trvalá neutralita</em> od 1815 — nikdy ve válce od té doby. <em>Není v EU ani NATO</em>. Do OSN vstoupilo až 2002!</p>
+
+<p>💰 Švýcarsko = jeden z nejbohatších států světa. Bankovnictví (UBS, Credit Suisse — zkrachovala 2023), farmaceutika (Roche, Novartis — obě v Basileji), luxusní průmysl (Rolex, Omega, Swatch), potravinářství (Nestlé — Vevey). Bern = politické hl. město. Curych = finanční centrum. Ženeva = sídlo OSN-Evropa, WHO, WTO, Červený kříž, CERN (fyzika).</p>
+</div>
+
+<div class="vy-section">
+<h3>🤝 Visegrádská čtyřka (V4) a regionální spolupráce</h3>
+
+<p><strong>V4</strong> = ČR + Slovensko + Maďarsko + Polsko. Pojmenována po hradě Visegrád (Maďarsko). Summity v únoru 1991 — rok po pádu komunismu.</p>
+<p>📋 <strong>Cíle V4</strong>: Koordinace vstupu do NATO a EU (obojí 2004). Spolupráce v oblasti bezpečnosti, energetiky, infrastruktury. Společný hlas v EU.</p>
+<p>⚡ <strong>Napětí ve V4</strong>: Maďarsko pod Orbánem a Polsko pod PiS (2015–2023) blokovaly EU záměry, odmítaly přijímat uprchlíky, porušovaly právní stát → konflikty s EU. ČR a Slovensko jsou méně konfrontační.</p>
+<div class="highlight">V4 sdílí: komunistickou historii, přechod k demokracii a tržní ekonomice, členství v EU+NATO, kulturní blízkost (slovanské jazyky — mimo Maďarsko). Přesto nejde o pevnou alianci — každá země má svou politiku.</div>
+</div>`,
+17:`<div class="vy-section">
+<h3>🌍 Přehled — co je Západní Evropa</h3>
+
+<p>Západní Evropa = kolébka průmyslové revoluce, moderní demokracie a evropské integrace. Zahrnuje: <strong>Francie, Německo, UK, Belgie, Holandsko, Lucembursko (Benelux), Irsko</strong>. Někdy i Španělsko, Itálii, Rakousko, Švýcarsko.</p>
+<p>📊 Tato malá oblast (méně než 3 miliony km²) vytváří přibližně <strong>25–30 % světového HDP</strong>. Hustě osídlená (400–500 ob/km² v jadru), vysoce urbanizovaná, dominantní v globálních financích, kultuře, technologiích.</p>
+</div>
+
+<div class="vy-section">
+<h3>🗼 Francie — pátá ekonomika světa</h3>
+
+<p>Francie (68 mil.) = <strong>největší stát EU rozlohou</strong> (551 000 km²) a 5. největší ekonomika světa. Největší destinace světového turismu — 90+ milionů turistů ročně!</p>
+<p>✈️ <strong>Airbus</strong> (Toulouse) = 2. největší letecký výrobce světa (vedle Boeingu). Společný projekt Francie, Německa, Španělska, UK. A380 (největší osobní letadlo světa), A320, A350. Zaměstnává 135 000 lidí.</p>
+
+<p>🍷 <strong>Zemědělství a luxus</strong>: Francie = světová velmoc v gastronomii a luxusu. LVMH (Louis Vuitton Moët Hennessy) = největší luxusní konglomerát světa (Dior, Bulgari, Givenchy, TAG Heuer). Víno (Bordeaux, Burgundsko, Champagne), sýry (430+ druhů!), foie gras. UNESCO kulturní dědictví: francouzská kuchyně.</p>
+<p>⚛️ <strong>Jaderná energie</strong>: 70 % elektřiny z jaderných elektráren — nejvíce závislý stát na jádru. 56 reaktorů. Elektřinu exportuje do sousedů. Kontroverzní: bezpečnost, odpad.</p>
+<p>🏙️ <strong>Regiony Francie</strong>: Paříž (12 mil. v aglomeraci — politické, kulturní, vědecké centrum), Lyon (gastronomie, automobilový průmysl — Renault), Marseille (2. město, přístav, multikulturní), Toulouse (Airbus, universita), Bordeaux (víno, architektura — UNESCO), Alsasko-Lotrinsko (německo-francouzský přechod — Štrasburk = sídlo Rady Evropy a Europarlamentu).</p>
+<div class="highlight">🇫🇷 Francie má ZÁMOŘÍ: Guadeloupe, Martinik, Francouzská Guiana (kde startují rakety Ariane!), Réunion, Mayotte. Jsou to DEPARTEMENTY — plnohodnotná součást Francie a EU! Mají euro, volí do Europarlamentu. Francie proto má území ve 3 oceánech.</div>
+</div>
+
+<div class="vy-section">
+<h3>🇬🇧 Spojené království — po Brexitu</h3>
+
+<p>UK = Anglie + Skotsko + Wales + Severní Irsko. 68 mil. obyvatel. Konstituční monarchie (nyní král Karel III.). Parlamentní demokracie — premiér má skutečnou moc.</p>
+<p>🗳️ <strong>Brexit</strong> (2016 referendum, 2020 odchod): 52 % hlasovalo pro odchod z EU. Důvody: imigrace, suverenita, příspěvky do EU rozpočtu. Výsledky: komplikace obchodu se zbytkem EU (nové celní formuláře), odliv finančních firem z Londýna do Dublinu, Frankfurtu, Paříže. Severní Irsko má speciální status (de facto v EU vnitřním trhu). Skotsko 62 % hlasovalo PROTI Brexitu → volá po nové nezávislosti.</p>
+
+<p>💰 <strong>Londýn</strong> (9 mil.) = i po Brexitu 2. největší finanční centrum světa (za NYC). City of London = 1 míle² srdce světových financí. London Stock Exchange, Lloyd's, HSBC, Barclays, Bank of England.</p>
+<p>🏭 <strong>Průmysl</strong>: Aerospace — Rolls-Royce (motory, ne auta!), BAE Systems. Farmaceutika — AstraZeneca (vakcína COVID), GlaxoSmithKline. Automobily — Jaguar Land Rover (nyní Tata Motors — indická), Mini, Bentley, Rolls-Royce (nyní BMW).</p>
+<p>🎭 <strong>Soft power</strong>: anglický jazyk (lingua franca světa!), BBC, Premier League, The Beatles, Rolling Stones, Harry Potter, James Bond. Britská kultura dominuje globálně.</p>
+</div>
+
+<div class="vy-section">
+<h3>🚢 Benelux — malé ale mocné státy</h3>
+
+<p>Belgie + Holandsko (Nizozemsko) + Lucembursko = Benelux. Dohromady jen 29 mil. obyvatel, ale OBROVSKÝ ekonomický a politický vliv. Celní unie od 1948 — předchůdce EU.</p>
+<p>🚢 <strong>Rotterdam</strong> (Holandsko) = největší přístav Evropy, 10. největší světa. 470 milionů tun/rok. Brána, přes níž proudí zboží z celého světa do EU. Obrovský petrochemický průmysl (Shell, BP rafinérie).</p>
+
+<p>🏛️ <strong>Brusel</strong> (Belgie) = de facto hlavní město EU (sídlo Evropské komise, Rady EU, NATO). Belgie = kulturně rozdělena: Vlámové (70 %, holandsky, bohatší sever) a Valonové (30 %, francouzsky, chudší jih). Chronická politická krize — rekord: 589 dní bez vlády (2010–2011)!</p>
+<p>💰 <strong>Lucembursko</strong> (660 000 ob.) = nejvyšší HDP/obyvatele v EU. Finanční centrum, nízké daně → sídlo Evropského soudního dvora, EIB (Evropská investiční banka). Amazon, PayPal, Skype — evropská sídla.</p>
+<p>🌷 <strong>Holandsko</strong>: Shell (ropný gigant), Philips (elektronika), ASML (litografické stroje — KEY pro výrobu mikročipů celého světa, monopol!), Heineken, ING. Zemědělství: květiny (60 % světového exportu), zelenina ve sklenících, mléčné výrobky. Níže pod hladinou moří — 27 % území pod hladinou moře, 60 % obyvatel v ohrožené zóně → system hrází, pump a poldrů.</p>
+</div>`,
+18:`<div class="vy-section">
+<h3>❄️ Severní Evropa — Skandinávie + Island</h3>
+
+<p>Severní Evropa = Norsko, Švédsko, Finsko, Dánsko, Island (+ baltské státy). Tato skupina se <strong>pravidelně umisťuje na vrcholu světových žebříčků</strong> — nejšťastnější lidé, nejmenší korupce, nejlepší vzdělávání, největší rovnost pohlaví.</p>
+<p>🌍 Proč? Kombinace: silný sociální stát, kvalitní vzdělávání (zdarma pro všechny), transparentní politika, přírodní bohatství, malá populace a homogenní hodnoty.</p>
+<div class="highlight">💡 „Nordický model" = kombinace tržní ekonomiky + silného sociálního státu + aktivní pracovní politiky. Vysoké daně (55–57 % z příjmu), ale výborné zdravotnictví, školství, infrastruktura zdarma. Diskutovaný model — funguje v malých zemích, ale lze ho škálovat?</div>
+</div>
+
+<div class="vy-section">
+<h3>🛢️ Norsko — ropná pohádka fjordů</h3>
+
+<p>Norsko (5,5 mil.) leží na Skandinávském poloostrově, díváme se na Atlantik. Extrémní příroda: fjordy (ledovcové zálivy mezi strmými skalními stěnami), hory, polární záře, půlnoční slunce (léto za polárním kruhem = 24 hodin denní světlo!).</p>
+<p>🛢️ <strong>Ropa</strong>: V 60. letech nalezena ropa v Severním moři → Norsko se z chudé rybářské země stalo 1. nejbohatší na světě. Equinor (státní ropná firma). Norsko produkuje 2 mil. barelů/den — největší producent v Evropě.</p>
+
+<p>💰 <strong>Oljefond (Státní penzijní fond)</strong>: Peníze z ropy se NEINVESTUJÍ v Norsku — jdou do globálního portfolia akcií, dluhopisů, nemovitostí. Hodnota: >1 500 miliard USD = největší suverénní fond světa. Vlastní ~1,5 % VŠECH akcií celého světa. Cíl: zachovat bohatství pro budoucí generace, až ropa dojde.</p>
+<p>🐟 <strong>Rybolov a akvakultury</strong>: Norský losos = světoznámá značka. Norsko je 2. největší exportér ryb světa. Treska, makrela, sledě.</p>
+<p>🌊 <strong>Energie</strong>: 99 % norské elektřiny z vodních elektráren (hydropower) — čistá, obnovitelná. Paradox: Norsko vyrábí čistou elektřinu pro sebe a exportuje špinavou ropu světu.</p>
+<div class="priklad">Norský elektromobilní zázrak: Norsko = největší podíl elektroaut na světě. Proč? Stát aktivně podporuje EV — nulové DPH, nulové mýto, bezplatné parkování. Výsledek: 80+ % nových prodaných aut jsou elektrická. Zbývá přesvědčit zbytek světa.</div>
+</div>
+
+<div class="vy-section">
+<h3>🇸🇪 Švédsko — IKEA, Spotify a sociální model</h3>
+
+<p>Švédsko (10,5 mil., Stockholm 1 mil.) = „třetí cesta" — kapitalismus + silný sociální stát. Neutralita ve válkách (od Napoleonových válek). Nepatří do NATO (vstoupilo 2024 po švédském odmítání) a není v eurozóně.</p>
+<p>🏭 <strong>Švédské globální značky</strong>: IKEA (nábytek, design pro masy), Volvo (auta + kamiony — nyní čínský Geely), H&M (módní řetězec), Ericsson (telekomunikace), Scania (kamiony), Spotify (streaming hudby — Stockholmský startup), Klarna (fintech), ABBA Music, Mojang (Minecraft), Skype (původně).</p>
+<p>🎭 <strong>Kultura</strong>: ABBA (největší hudební export Evropy), Astrid Lindgren (Pipi Dlouhá punčocha), Stieg Larsson (Dívka s dračím tetováním), Ingmar Bergman (filmy), Nobel (Alfred Nobel — Švéd, vynálezce dynamitu → Nobelova cena). Stockholmský syndrom (unesenec se identifikuje s únoscem — pochází odtud).</p>
+<div class="highlight">Stockholmský syndrom NENÍ pojmenován po ABBA. Pochází z loupežné přepadení banky v Stockholmu 1973 — rukojmí se po 6 dnech začali identifikovat s pachateli. Psychiatr Nils Bejerot to pojmenoval.</div>
+</div>
+
+<div class="vy-section">
+<h3>🎓 Finsko — vzdělávací zázrak</h3>
+
+<p>Finsko (5,6 mil., Helsinki 650 tis.) = nejlepší vzdělávací systém světa (PISA testy). Finský vzdělávací model: škola začíná v 7 letech, ŽÁDNÉ domácí úkoly, ŽÁDNÉ celoplošné testy do 13 let, učitelé = prestižní profese (přijati z top 10 % absolventů).</p>
+<p>💻 <strong>Technologie</strong>: Nokia (kdysi vládla světovému telefonu — dnes padla, prodána Microsoftu a zpět), Rovio (Angry Birds), Supercell (Clash of Clans), F-Secure (kybernetická bezpečnost). Helsinki = skandinávský startup hub.</p>
+<p>🌲 <strong>Příroda</strong>: 188 000 jezer! 70 % území je les. Sauna = finský vynález — 3,2 milionu saun na 5,6 milionu lidí (skoro 1 na rodinu). Polární záře, polární noc (v Laponsku slunce nevychází vůbec 50+ dní v zimě), losi, medvědi, sobi.</p>
+<p>🇸🇦 <strong>Sámové</strong> = domorodý národ Laponska. Žijí v severním Finsku, Norsku, Švédsku a Rusku. Tradiční: chov sobů, rybolov, řemesla. Dnes: obnovení jazyka, kulturní práva, turismus.</p>
+</div>
+
+<div class="vy-section">
+<h3>🌋 Island — ohněm a ledem</h3>
+
+<p>Island (370 000 ob.) = ostrůvek na hranici Euroasijské a Severoamerické desky (středoatlantský hřeben!) → intenzivní vulkanismus. Sopky eruputjí každých pár let. Eyjafjallajökull (2010) — mrakodrap popela ochromil letectví celé Evropy na týdny.</p>
+<p>♨️ <strong>Geotermální energie</strong>: 90 % domů vytápěno geotermálně (levné!). 100 % elektřiny z OZE (geotermál + voda). Island je vzor udržitelné energetiky — ale jen proto, že sedí doslova na vulkanickém systému.</p>
+<p>🌈 <strong>Turismus</strong>: Obrovský boom — Northern Lights (září–březen), gejzíry, Zlatý okruh (Þingvellir, Geysir, vodopád Gullfoss), Reykjavík (hlavní město — největší světové severní hlavní město).</p>
+<p>💸 <strong>Finanční krize 2008</strong>: Islandské banky přerostly ekonomiku 10×. Zkrachovaly. Island odmítl splácet dluhy zahraničním věřitelům (britskí a holandší střadatelé přišli o peníze). Zatčení bankéři! Kontroverzní — ale Island se rychle zotavil díky turismu a devalvaci koruny.</p>
+</div>`,
+19:`<div class="vy-section">
+<h3>☀️ Jižní Evropa — středomořský svět</h3>
+
+<p>Jižní Evropa = státy kolem Středozemního moře: Španělsko, Portugalsko (Pyrenejský poloostrov), Francie (jižní pobřeží), Itálie, Slovinsko, Chorvatsko, Bosna, Albánie, Řecko, ostrovní státy (Malta, Kypr).</p>
+<p>🌞 <strong>Středomořské klima</strong>: horká suchá léta, mírné deštivé zimy. Ideální pro olivy, vinnou révu, citrusy, fíky, mandle, granátová jablka. Moře moderuje extrémní teploty.</p>
+<div class="highlight">Středomoří bylo kolébkou lidské civilizace — Starý Egypt, Řecko, Řím, Byzantská říše, islámský zlatý věk, renesance. Obchodní centrum starověku = kdo ovládl Středomoří, ovládl svět.</div>
+</div>
+
+<div class="vy-section">
+<h3>🇪🇸 Španělsko — slunce, turismus a separatismus</h3>
+
+<p>Španělsko (48 mil.) = 4. největší ekonomika EU. Konstituční monarchie (Král Felipe VI.). Rozloha 505 000 km² — 2. největší stát EU (po Francii).</p>
+<p>🌴 <strong>Turismus</strong>: 85 milionů turistů ročně — 2. nejnavštěvovanější stát světa! Španělsko žije z turismu. Největší lákadla: Barcelona (Sagrada Família, Gaudí, plážová kultura), Madrid (Prado museum, Real Madrid + Atlético), Granada (Alhambra — arabský palác 14. stol.), Costa del Sol, Costa Brava, Mallorca, Ibiza, Kanárské ostrovy (španělské, ale u Afriky!).</p>
+
+<p>🫒 <strong>Zemědělství</strong>: Španělsko = největší producent oliv na světě (Andalusie, 8 mil. tun/rok). Citrusy (Valencia — "Španělsko pomeranče a fotbalu"). Víno (La Rioja, Ribera del Duero). Zelenina ze skleníků v Almerii — zásobuje celou EU v zimě.</p>
+<p>🚗 <strong>Průmysl</strong>: Automobilový (SEAT — VW Group, Zaragoza; továrny Ford, Renault, Mercedes). Strojírenství, obnovitelná energie (větrné farmy — Španělsko lídrem EU v kapacitě).</p>
+<p>⚔️ <strong>Katalánský separatismus</strong>: Katalánsko (7,8 mil. ob., Barcelona) = 20 % španělského HDP a jen 16 % populace. Katalánci mají vlastní jazyk (katalánština!), kulturu, identitu. Referendum 2017 o nezávislosti — španělský Ústavní soud ho zakázal, policie zasáhla → mezinárodní skandál. Lídři odsouzeni. Napětí přetrvává.</p>
+<div class="priklad">Španělsko má 17 autonomních oblastí (comunidades autónomas) — každá má vlastní parlament, vládu, policii. Baskicko má dokonce vlastní jazyk (baskičtina — žádný příbuzný jazyk na světě!) a daňový systém. Španělsko je de facto neformální federace.</div>
+</div>
+
+<div class="vy-section">
+<h3>🍕 Itálie — kontrast severu a jihu</h3>
+
+<p>Itálie (60 mil.) = 3. největší ekonomika EU, 8. světová. Republika — prezident + premiér. Extrémně nestabilní politika: od 1946 přes 70 vlád!</p>
+<p>⬆️ <strong>Severní Itálie (Pianura Padana)</strong> = průmyslové centrum. Milán = 2. největší průmyslové centrum EU + módní metropole (Armani, Versace, Prada, Gucci, Dolce&Gabbana). Turín = průmysl (Fiat — nyní Stellantis, Ferrari — Maranello!). Bologna = „červené město" (historicky levicové), gastronomie (boloňská omáčka → ale Italové ji nevolají bolognese, říkají ragù). Benátky = umírající turistická past (90 turistů na 1 místního).</p>
+
+
+
+<p>⬇️ <strong>Jižní Itálie (Mezzogiorno)</strong> = chudší, zemědělský, turistický. Řím (hlavní město, 4 mil., Vatikán uprostřed Říma — nejmenší stát světa 0,44 km², 800 obyvatel, Papež). Neapol (3 mil., pizza napoletana — UNESCO nehmotné dědictví!, Vesuv 10 km od centra — stále aktivní sopka). Sicílie + Sardinie — ostrovy, turistika, zemědělství, mafia.</p>
+<div class="highlight">Italský „Nord vs. Sud" problém: Sever platí daně, jih je příjemce. Průměrný příjem na severu je 2× vyšší než na jihu. Stagnace jihu = politický problém Itálie po 150 let od sjednocení.</div>
+</div>
+
+<div class="vy-section">
+<h3>🏺 Řecko — kolébka civilizace</h3>
+
+<p>Řecko (10,5 mil., Athény 3,5 mil.) = kolébka evropské civilizace. Demokracie, filozofie (Sokrates, Platón, Aristoteles), matematika (Pythagoras, Euklides), divadlo (Sofokles, Euripidés), olympijské hry — vše vzniklo v antickém Řecku.</p>
+<p>🌴 <strong>Turismus</strong>: 30+ milionů turistů/rok = 3× více než Řeků! Santorini, Mykonos, Kréta, Rhodos, Korfu, Athény. Turismus tvoří ~20 % HDP — nebezpečná závislost.</p>
+
+<p>💸 <strong>Finanční krize 2010</strong>: Řecko vstoupilo do eurozóny 2001 s falšovanými statistikami (Goldman Sachs pomáhal maskovat dluh). Pak přišla světová krize → investoři ztratili důvěru → úroky z řeckého dluhu explodovaly → Řecko nemohlo splácet → EU + ECB + MMF zachraňovaly s podmínkami (úsporné balíčky). Výsledek: HDP klesl o 25 %, nezaměstnanost vyskočila na 27 % (mládež 60 %!), emigrace 500 000 mladých. Teprve od 2018 se ekonomika zotavuje.</p>
+<p>🚢 <strong>Lodní přeprava</strong>: Řekové vlastní 17 % světové obchodní flotily. Lodní magnáti (Onassis, Niarchos) = nejbohatší Řekové. Pireus = největší přístav Středomoří.</p>
+</div>`,
+20:`<div class="vy-section">
+<h3>⚔️ Balkán — geografie, kultura, konflikty</h3>
+
+<p>Balkánský poloostrov leží v jihovýchodní Evropě. Omývají ho: Jaderské, Středozemní, Egejské a Černé moře. Zahrnuje: Slovinsko, Chorvatsko, Bosnu a Hercegovinu, Srbsko, Černou Horu, Severní Makedonii, Kosovo, Albánii, Bulharsko, Rumunsko, Řecko, části Turecka.</p>
+<p>🌍 <strong>Extrémní rozmanitost</strong>: Na malém prostoru žijí různé národy s různými jazyky (slovanské, románské = rumunština, albánština), abecedami (latinka, cyrilice, arabské písmo), náboženstvími (pravoslavní, katolíci, muslimové, židé).</p>
+<div class="highlight">💡 Proč „sud prachu Evropy"? 500 let Osmanská říše, pak kolaps → každý národ chtěl vlastní stát → ale hranice se překrývaly. K tomu supermoci (Rusko, Rakousko, UK, USA) zasahovaly do místních sporů. Výbušná směs.</div>
+</div>
+
+<div class="vy-section">
+<h3>🇾🇺 Jugoslávie — vznik a rozpad</h3>
+
+<p>Jugoslávie (1918–1991/2003) = „Království jižních Slovanů" → po 2. světové válce komunistická republika pod vedením <strong>Josipa Broze Tita</strong>.</p>
+<p>🧩 Skládala se z 6 republik: Slovinsko, Chorvatsko, Bosna a Hercegovina, Srbsko (+ autonomní Vojvodina + Kosovo), Černá Hora, Makedonie. + 2 autonomní oblasti v rámci Srbska.</p>
+<p>🤝 <strong>Tito</strong> (vládl 1945–1980) = komunista, ale NEZÁVISLÝ na Moskvě. „Titoismus" = třetí cesta (Ne sovětskému bloku, ale ne Západu). Udržoval soudržnost různých národů silnou rukou a svou charizmatickou osobností.</p>
+<p>💥 Po Titově smrti (1980): napětí narostlo. Ekonomická krize. Srbský prezident Slobodan Miloševič podněcoval srbský nacionalismus. Slovinci a Chorváti chtějí pryč → vyhlásili nezávislost <strong>25. června 1991</strong>.</p>
+</div>
+
+<div class="vy-section">
+<h3>⚔️ Jugoslávské války 1991–2001</h3>
+
+<p>🔫 <strong>Válka v Chorvatsku (1991–1995)</strong>: Jugoslávská armáda (kontrolovaná Srby) zaútočila. Kraina (chorvatské Srbsko) se pokusila o odtržení. Obléhání Dubrovníku (UNESCO!). ~20 000 mrtvých. Ukončeno Daytonem/Erdutskou dohodou.</p>
+<p>🔫 <strong>Válka v Bosně a Hercegovině (1992–1995)</strong>: NEJKRVAVĚJŠÍ. Tři strany: Bosňáci (muslimové), Chorváti, Srbové. Obléhání Sarajeva: 1 425 dní — nejdelší obléhání hlavního města v moderní historii! Srbové ostřelovali z okolních kopců, přes 10 000 mrtvých jen v Sarajevu.</p>
+
+<p>☠️ <strong>Srebrenica (1995)</strong>: Srpské jednotky pod velením Ratka Mladiče systematicky popravily přes 8 000 bosňáckých mužů a chlapců. OSN ho prohlásila za genocidu. Mezinárodní trestní tribunál pro bývalou Jugoslávii odsoudil Mladiče a Karadžiče. Srebrenica = nejtemnější stránka evropské historie od holokaustu.</p>
+<p>🔫 <strong>Válka v Kosovu (1998–1999)</strong>: Kosovo (90 % albánského obyvatelstva) vs. Srbsko. NATO bombardovalo Jugoslávii 78 dní bez souhlasu OSN (Rusko by vetovalo). Kosovo pod správou OSN od 1999. Nezávislost 2008.</p>
+</div>
+
+<div class="vy-section">
+<h3>🗺️ Stav Balkánu dnes</h3>
+
+<p>📊 <strong>Přehled států a jejich status:</strong></p>
+<ul class="vy-list">
+<li>🇸🇮 <strong>Slovinsko</strong> — v EU od 2004, euro od 2007. Nejbohatší balkánský stát. Turistika (Bled, Triglav). Stabiliní demokracie.</li>
+<li>🇭🇷 <strong>Chorvatsko</strong> — EU od 2013, euro od 2023. Turismus (Dubrovník, Split, Plitvická jezera — UNESCO). Rapidní ekonomický rozvoj díky turismu.</li>
+<li>🇧🇦 <strong>Bosna a Hercegovina</strong> — mimo EU. Daytoneská smlouva 1995 rozdělila na dvě entity: Federaci BiH + Republiku Srbskou. Funguje jako dva quasi-státy. Politická paralýza.</li>
+<li>🇷🇸 <strong>Srbsko</strong> — kandidát EU, ale vstup blokuje Kosovo. Vučić balancuje mezi EU a Ruskem.</li>
+<li>🇽🇰 <strong>Kosovo</strong> — nejchudší stát Evropy, uznáno ~100 státy (ne Srbsko, Rusko, Čína, Španělsko, Řecko).</li>
+<li>🇧🇬 <strong>Bulharsko</strong>, 🇷🇴 <strong>Rumunsko</strong> — EU od 2007, nejchudší státy EU, masová emigrace na západ.</li>
+<li>🇲🇰 <strong>Severní Makedonie</strong>, 🇲🇪 <strong>Černá Hora</strong>, 🇦🇱 <strong>Albánie</strong> — NATO, kandidáti EU.</li>
+</ul>
+<div class="priklad">Scénář Bosny: Republika Srbská (Dodik) vyhrožuje oddělením od Bosny. Srbsko neuznává Kosovo. Kosovci a Srbové se pravidelně dohadují na severu Kosova. Balkán stále vaří pod pokličkou — války skončily, napětí ne.</div>
+</div>`,
+21:`<div class="vy-section">
+<h3>🗺️ Východní Evropa — definice a přehled</h3>
+
+<p>Východní Evropa v geografickém smyslu = postsovětský prostor mimo EU: Rusko, Ukrajina, Bělorusko, Moldavsko. Někdy i Kavkaz (Gruzie, Arménie, Ázerbájdžán).</p>
+<p>Historický kontext: všechny tyto státy byly součástí SSSR (Sovětského svazu), který se rozpadl <strong>26. prosince 1991</strong>. Od té doby prochází transformací — s různými výsledky.</p>
+<div class="highlight">SSSR = Svaz sovětských socialistických republik (1922–1991). Na vrcholu: 15 svazových republik, 300 milionů lidí, druhá supervelmoc světa. Rozpad byl poklidný — na rozdíl od Jugoslávie (většinou). Vyjímky: Náhorní Karabach, Čečensko.</div>
+</div>
+
+<div class="vy-section">
+<h3>🐻 Rusko — největší stát světa</h3>
+
+<p>Rusko = <strong>17,1 milionu km²</strong> = 11 % pevniny celé planety. Rozkládá se přes 11 časových pásem. Největší stát světa.</p>
+<p>👥 Obyvatelstvo: ~144 milionů. 80 % žije v evropské části (západ od Uralu) — přestože ta tvoří jen 23 % rozlohy. Sibiř = obrovský, skoro prázdný prostor.</p>
+<p>🏙️ <strong>Klíčová města</strong>: Moskva (12,5 mil. — politické, ekonomické centrum, sídlo Kremlu), Petrohrad (5,5 mil. — kulturní metropole: Ermitáž, bílé noci, kolébka revoluce 1917), Novosibirsk (1,6 mil. — největší město Sibiře), Jekatěrinburg, Vladivostok (Pacifické pobřeží).</p>
+
+<p>🌊 <strong>Bajkalské jezero</strong>: Nejhlubší jezero světa (1 642 m) a největší sladkovodní reservoir (20 % světové povrchové sladké vody). UNESCO. Unikátní biodiverzita (bajkalský tuleň, omul). Je ohroženo průmyslovým znečištěním.</p>
+<p>⛰️ <strong>Fyzická geografie</strong>: Ural = hranice Evropy a Asie. Sibiř = tajga (největší les světa), permafrost (trvale zmrzlá půda — taje s klimatickou změnou → problémy). Kavkaz na jihu — Elbrus 5 642 m = nejvyšší hora Evropy (záleží na definici hranic Evropy).</p>
+</div>
+
+<div class="vy-section">
+<h3>⛽ Přírodní bohatství Ruska</h3>
+
+<p>Rusko = přírodní velmoc. Disponuje zásobami surovin, o jakých jiné státy mohou jen snít.</p>
+<p>🛢️ <strong>Ropa a plyn</strong>: Rusko je 3. největší producent ropy (po USA, Saúdské Arábii) a NEJVĚTŠÍ exportér zemního plynu. Gazprom = státní plynárenský gigant. Před 2022: 40 % plynu do EU šlo z Ruska přes plynovody Nord Stream (pod Baltem) a Jamal.</p>
+<p>💎 <strong>Další suroviny</strong>: Diamanty (Jakutsko — 30 % světové produkce), nikl a palladium (Norilsk — nejznečištenější město světa!), zlato, platina, chrom, bauxit, uran, mangán.</p>
+<p>🌲 <strong>Tajga</strong>: Největší les světa — 80 % ruského území. „Plíce Asie" absorbují CO₂. Těžba dřeva je masivní, ale obrovská rozloha je stále relativně zachována.</p>
+<div class="highlight">Ruský paradox: Nejbohatší stát světa na suroviny, ale ekonomika menší než Itálie (HDP ~1,9 bilionu USD vs. Itálie 2,2 bilionu). Příčiny: závislost na ropě (Dutch disease), korupce, sankce, odliv mozků, autokratický systém odrazující investice.</div>
+</div>
+
+<div class="vy-section">
+<h3>🇺🇦 Ukrajinskiý konflikt — co se stalo a proč</h3>
+
+<p>Ukrajina (44 mil. ob., 603 000 km²) = <strong>největší stát plně v Evropě</strong> (Rusko je větší, ale sahá do Asie). Klíčová zemědělská velmoc — „obilnice Evropy" (černozem, pšenice, kukuřice, slunečnicový olej — 50 % světového exportu před válkou).</p>
+<p>📅 <strong>2014 — Krymská krize</strong>: Masové protesty na Majdanu v Kyjevě svrhly proruského prezidenta Janukovyče. Rusko odpovědělo: anektovalo Krym (mírové referendum za přítomnosti ruských vojáků). Mezinárodní komunita neuznala. Začaly boje na Donbasu.</p>
+<p>📅 <strong>24. 2. 2022 — Plná invaze</strong>: Rusko zahájilo rozsáhlý útok po celé délce hranic. Cíl: „denacifikace a demilitarizace" Ukrajiny. Ve skutečnosti: politický a strategický zájem o vliv nad Ukrajinou a zabránění jejímu vstupu do NATO.</p>
+
+<p>🌍 <strong>Důsledky pro svět</strong>: Energetická krize v EU (nahrazení ruského plynu → drahé energie 2022–2023), rekordní inflace, globální zdražení potravin (Ukrajna a Rusko = 30 % světového exportu pšenice). 6–8 milionů uprchlíků (do ČR ~500 000). Nejdražší válka pro Rusko od 2. sv. války.</p>
+<div class="priklad">Zrnová iniciativa (2022): Turkiye zprostředkovalo dohodu umožňující vývoz obilí z Oděsy přes Černé moře. Bez toho by desítky milionů lidí v Africe a Asii čelily hladomoru, protože Ukrajina je jejich hlavní dodavatel pšenice.</div>
+</div>`,
+22:`<div class="vy-section">
+<h3>🏜️ Jihozápadní Asie — fyzická geografie</h3>
+
+<p>Jihozápadní Asie (= Blízký východ) = Arabský poloostrov, Levant, Mezopotámie, Anatolie, Írán. Zahrnuje: Turecko, Sýrii, Libanon, Jordánsko, Izrael/Palestinu, Irák, Írán, Saúdskou Arábii, Kuvajt, Katar, SAE, Bahrajn, Omán, Jemen.</p>
+<p>🌡️ <strong>Přírodní podmínky</strong>: Převládají pouště a polopouště. Arabský poloostrov = jedna z nejhostinnějších oblastí světa. Rub'al-Chali (Prázdná čtvrť) = největší nepřetržitá písečná poušť světa. Klima: tropické suché + subtropické. Výjimky: Turecko (různorodé, středomořské i alpské), Írán (hory i pouště).</p>
+<div class="highlight">💧 Voda = strategický zdroj. Mezopotámie (dnešní Irák) = „země mezi řekami" — Eufrat a Tigris. Civilizace se rodí u vody. Spory o vodu (Turecko staví přehrady na Eufratu, Sýrie a Irák trpí nedostatkem) jsou předzvěstí budoucích konfliktů.</div>
+</div>
+
+<div class="vy-section">
+<h3>🛢️ Ropné monarchie Perského zálivu</h3>
+
+<p>Perský záliv = centrum světových ropných rezerv. <strong>65 % prokázaných světových zásob ropy</strong> leží zde.</p>
+<p>🇸🇦 <strong>Saúdská Arábie</strong> (35 mil. + 10 mil. expats): Absolutní monarchie — Král Salmán + korunní princ MBS (Mohammed bin Salman). Islámský stát (šaría). Mekka a Medína — nejposvátnější místa islámu (vstup: pouze muslimové). Saudi Aramco = největší ropná společnost světa (hodnota 2+ biliony USD). Nová ekonomická strategie Vision 2030: turismus (NEOM — futuristické město v poušti), sport (golf LIV, fotbal — Ronaldo, Neymar), snaha o diversifikaci od ropy.</p>
+
+<p>🇦🇪 <strong>SAE (Spojené arabské emiráty)</strong>: Federace 7 emirátů. Abu Dhabi = nejbohatší (ropa). Dubai = globální obchodní, turistický a finanční hub. Burj Khalifa (828 m = nejvyšší budova světa), Dubai Mall (největší nákupní centrum světa), Palm Islands (umělé ostrovy), Dubai Airport (nejrušnější mezinárodní letiště světa). Ekonomika: obchod, turismus, finance (> 90 % HDP) — ne ropa!</p>
+<p>🇶🇦 <strong>Katar</strong>: 3 miliony lidí (z toho 90 % cizinci!). Největší zásoby LNG (zkapalněný zemní plyn) světa. HDP/obyvatele = nejvyšší na světě (~100 000 USD). Pořadatel MS fotbal 2022 (kontroverzní — klimaticky nevhodné, pracovní podmínky dělníků z Asie). Vlastní Paris Saint-Germain, Al Jazeera, nákupní firmy po celém světě.</p>
+</div>
+
+<div class="vy-section">
+<h3>🇹🇷 Turecko — most dvou světů</h3>
+
+<p>Turecko (85 mil.) = most mezi Evropou a Asií. Thrácie (3 % území) je v Evropě, Anatolie (97 %) je v Asii. Istanbul (16 mil.) = jediné město světa na dvou kontinentech — Bospor ho rozděluje.</p>
+<p>🌉 <strong>Strategická poloha</strong>: Kontroluje průlivy Bospor a Dardanely — jediný přístup z Černého moře do Středomoří. Rusko je tedy v Bosporu závislé na turecké milosti. NATO člen od 1952 — ale vztahy napjaté (zakoupení ruského systému S-400).</p>
+<p>⚙️ <strong>Ekonomika</strong>: 19. největší světová ekonomika. Textil (2. největší exportér na světě), automobilový průmysl (Ford, Fiat, Toyota továrny), stavebnictví, turismus (İstanbul, Cappadocie — skalní útvary + horkovzdušné balóny!, Efez, Pamukkale). Lískové ořechy (70 % světové produkce!), bavlna, fíky, tabák.</p>
+<p>🏛️ <strong>Politika</strong>: Prezident Erdoğan (od 2003, stále silnější autokratické tendence). Kandidát EU od 1987 — vstup blokován (lidská práva, kurdská otázka, Cyprus). „Türkiye" — Erdoğan přejmenoval Turecko anglicky (2022).</p>
+</div>
+
+<div class="vy-section">
+<h3>🇮🇱🇵🇸 Izrael a Palestina — komplexní konflikt</h3>
+
+<p>Jeruzalém je posvátný pro 3 miliardami lidí: Chrám/Zeď nářků (judaismus), Chrám Božího hrobu (křesťanství), Skalní dóm + mešita Al-Aksá (islám). Na pár km² nejposvátnější místa tří světových náboženství — v centru konfliktu.</p>
+<p>📅 <strong>Chronologie</strong>: Balfourova deklarace 1917 (UK slíbila Žid domovinu v Palestině). OSN 1947 → rozdělení Palestiny. Vznyk Izraele 14. 5. 1948 → arabská koalice útočí → Izrael vítězí + obsazuje víc území. Války 1956, 1967 (Šestidenní = Izrael obsadil Sinaj, Gazu, Západní břeh, Golanské výšiny), 1973 (Jom Kippur). Oslo dohody 1993 — naděje na mír. Druhá intifáda 2000. Hamas ovládl Gazu 2007. Eskalace 2023...</p>
+<p>🔬 <strong>Izrael</strong> (9,5 mil., Jeruzalém/Tel Aviv) = demokratická republika. „Startup Nation" — nejvíce startupů na obyvatele na světě. Intel, Microsoft, Google, Apple — výzkumná centra. Průmysl: high-tech, obranu (Elbit Systems, IAI), zemědělství v pouštích (kapkové zavlažování = izraelský vynález).</p>
+<p>🏚️ <strong>Palestina</strong> = Palestinská národní samospráva. Dvě části: Západní břeh (vláda PA/Fatah) + Gaza (Hamas od 2007). Gaza: 2,3 mil. lidí na 365 km² = jeden z nejhustěji osídlených území světa. Blokáda, chudoba, opakované eskalace.</p>
+<div class="priklad">Dvoustátní řešení = Izrael + Palestina jako dva suverénní státy. Je to plán OSN, USA, EU. V praxi: Izraelské osady na Západním břehu komplikují realizaci. Jeruzalém si nárokují obě strany jako hlavní město. Problém uprchlíků (1948 + 1967). Každá vláda říká „ano dvoustátnímu řešení" a pak nic nedělá.</div>
+</div>`,
+23:`<div class="vy-section">
+<h3>🌵 Střední Asie — mezi Ruskem a Čínou</h3>
+
+<p>Střední Asie = 5 postsovětských republik: Kazachstán, Uzbekistán, Turkmenistán, Tádžikistán, Kyrgyzstán. Všechny jsou vnitrozemské (bez přístupu k moři!) — komplikuje to obchod a ekonomický rozvoj.</p>
+<p>🌍 <strong>Fyzickogeografické rysy</strong>: Kazašská step (obrovská travnatá pláň), pohoří Ťan-šan a Pamír (Tádžikistán — Píc imeni Ismoila Somononi 7 495 m), pouště Karakum a Kyzylkum (Uzbekistán, Turkmenistán), Aralská pánev.</p>
+<div class="highlight">Střední Asie byla křižovatkou světa — přes ni vedla Hedvábná stezka. Samarkand, Buchara, Chiva (dnes v Uzbekistánu) byly centrem islámské vzdělanosti a obchodu. Ibn Battúta, Al-Bírúní, Ibn Síná (Avicenna) — všichni odtud.</div>
+</div>
+
+<div class="vy-section">
+<h3>🇰🇿 Kazachstán — největší vnitrozemský stát světa</h3>
+
+<p>Kazachstán (19 mil., 2,7 milionů km²) = 9. největší stát světa (větší než celá Evropa bez Ruska!). Hustota: jen 6 ob/km². Nové hlavní město: <strong>Astana</strong> (přejmenovaná z Nur-Sultan, zpět na Astana v 2022) — postavena od nuly v stepi v 90. letech. Futuristická architektura.</p>
+<p>⛽ <strong>Suroviny</strong>: Ropa (zásoby v Kaspickém moři — Tengiz, Kašagan = gigantická ložiska). Uran — <strong>Kazachstán = největší producent uranu na světě</strong> (43 % světové těžby!). Chromit, mangan, zinek, měď.</p>
+<p>🌾 <strong>Ekonomika</strong>: Ropa tvoří 60 % exportu. Zemědělství: pšenice (step — černozem), bavlna (jih). Průmysl: těžební, chemický.</p>
+
+<p>🚀 <strong>Bajkonur</strong> — kosmický přístav v jihokazašské stepi. Odtud vzlétl Gagarin (1961), Sputnik (1957), ISS dodávky. Rusko ho pronajímá od Kazachstánu. Historické místo.</p>
+</div>
+
+<div class="vy-section">
+<h3>💧 Arálské moře — největší ekologická katastrofa 20. stol.</h3>
+
+<p><strong>Arálské moře</strong> (Aral = „ostrov" v turečtině) bylo kdysi 4. největším jezerem světa (68 000 km² — větší než Irsko!).</p>
+<p>🌾 <strong>Příčina katastrofy</strong>: 60. léta: SSSR rozhodl pěstovat bavlnu v suchých oblastech Uzbekistánu a Kazachstánu — „bílé zlato". K zavlažování odvedl vody řek Amudarji a Syrdárji, které Arál napájely. Za 40 let odvedl takřka veškerou vodu.</p>
+<p>📉 <strong>Výsledek</strong>: Hladina klesla o 20+ metrů. Jezero ztratilo 90 % objemu. Rybí průmysl zmizel (44 000 rybářů přišlo o práci — ryby vymřely kvůli zasolení). Lodi trčí v písku 200 km od vody.</p>
+<p>☠️ <strong>Zdravotní katastrofa</strong>: Na dně vyschlého moře zůstaly dekady pesticidů a průmyslového jedu. Větr roznáší toxický prach → rakovina, anémie, potraty, respirační nemoci v regionu.</p>
+
+<p>✅ <strong>Obnova</strong>: Kazachstán postavil přehradu Kokaral (2005) → zachránil malé Severní Arálské moře. Hladina stoupla, ryby se vrátily. Uzbekistánská část je stále mrtvá.</p>
+<div class="priklad">Sovětský výrok: „Aral musí obětovat pro blahobyt lidstva." Bavlna ano — ale cena? Největší ekologická katastrofa v dějinách SSSR. Ukázka, co se stane, když centrální plánování ignoruje přírodu.</div>
+</div>
+
+<div class="vy-section">
+<h3>🏔️ Zakavkazsko — Gruzie, Arménie, Ázerbájdžán</h3>
+
+<p>Tři malé republiky mezi Kavkazem (severní hranice), Černým mořem, Kaspickým mořem, Tureckem a Íránem. Extrémně strategická poloha — přes ně vedou ropovody z Kaspiku do Turecka/Evropy.</p>
+<p>🇬🇪 <strong>Gruzie</strong> (3,7 mil., Tbilisi): „Perla Kavkazu". Turistika (Tbilisi — mix staré a moderní architektury), víno (Gruzie = kolébka vinohradnictví — 8 000 let!), hory. Aspiruje do EU a NATO. Rusko-gruzínská válka 2008 — Rusko obsadilo Jižní Osetii a Abcházii (mezinárodně neuznané separatistické oblasti).</p>
+<p>🇦🇲 <strong>Arménie</strong> (2,8 mil., Jerevan): Malý vnitrozemský stát. Křesťanství přijala jako první stát na světě v roce 301 n. l.! Arménská genocida 1915: Osmanská říše deportovala a systematicky zavraždila 600 000–1,5 milionu Arménů. Turecko to stále nepřiznává. Arménie nemá přímý přístup k moři.</p>
+<p>🇦🇿 <strong>Ázerbájdžán</strong> (10 mil., Baku): Ropný stát u Kaspiku. Baku = 1. místo světa, kde byla komerčně těžena ropa (1848!). Dnes: moderní metropole, futuristická architektura. Konflikt s Arménií o <strong>Náhorní Karabach</strong>: arménsky osídlené území v Ázerbájdžánu → válka 2020 → Ázerbájdžán získal kontrolu → 2023 obsadil zbytek → 100 000 Arménů muselo odejít.</p>
+</div>`,
+24:`<div class="vy-section">
+<h3>🐘 Jižní Asie — subkontinent</h3>
+
+<p>Jižní Asie = Indický subkontinent = Indie, Pákistán, Bangladéš, Nepál, Bhútán, Srí Lanka, Maledivy. ~1,9 miliardy lidí = čtvrtina světové populace!</p>
+<p>🏔️ <strong>Fyzickogeografické rysy</strong>: Himaláje na severu (přirozená bariéra, vznik při srážce Indo-australské a Euroasijské desky — stále rostou o 5 mm/rok). Dekkánská plošina (centrální Indie — starý kraton). Indoganžská nížina (nejúrodnější oblast, nejvíce osídlená). Pobřeží Indického oceánu.</p>
+<p>🌧️ <strong>Monzun</strong> = sezonní vítr přinášející obrovské srážky (červen–září). Celá civilizace jižní Asie je na monzunu závislá — zemědělství, zásoby vody. Monsunové selhání = hladomor.</p>
+</div>
+
+<div class="vy-section">
+<h3>🇮🇳 Indie — demografická a demokratická velmoc</h3>
+
+
+<p>Indie (1,44 mld.) = největší demokracie světa + od 2023 nejlidnatější stát světa (překonala Čínu). 5. největší ekonomika světa (brzy 3.) — roste ~7 %/rok.</p>
+<p>💻 <strong>IT velmoc</strong>: Bangalore = „Silicon Valley Indie". Wipro, Infosys, TCS — gigantické IT firmy. Outsourcing softwaru, zákaznická centra, výzkum. Indičtí CEO: Sundar Pichai (Google), Satya Nadella (Microsoft), Shantanu Narayen (Adobe), Arvind Krishna (IBM). Indie ročně absolvuje 1,5 milionu inženýrů (3× více než USA!).</p>
+
+<p>🚀 <strong>ISRO (Indická vesmírná agentura)</strong>: Přistání na jižním pólu Měsíce 2023 (Chandrayaan-3) — 4. stát světa na Měsíci. Za pouhých 75 milionů USD — NASA by totéž stálo miliardy. Indie vynáší satelity pro ostatní státy za zlomek ceny USA nebo EU.</p>
+<p>🌍 <strong>Složitá Indie</strong>: 22 úředních jazyků, 4 000+ dialektů. Hindi + angličtina = komunikační jazyk. 80 % hinduisté, 14 % muslimové (2. největší muslimská populace světa!). Kastovní systém — de jure zrušen, de facto přetrvává. Chudoba: 300 mil. pod hranicí bídy. Ale roste střední třída: 400 mil. spotřebitelů.</p>
+</div>
+
+<div class="vy-section">
+<h3>⚔️ Kašmír — opomíjený konflikt</h3>
+
+<p>Kašmír = hornaté území na severu Indického subkontinentu. Při odchodu Britů z Indie (1947) vznikly dva státy: muslimský Pákistán + sekulární (ale hinduisticky majoritní) Indie.</p>
+<p>Kašmír byl knížectví s hinduistickým mahárádžou a muslimskou populací. Maharádža přistoupil k Indii — muslimská většina chtěla Pákistán → první kašmírská válka 1947–1948 → příměří → „Line of Control" rozdělila území (Indie 55 %, Pákistán 30 %, Čína 15 %).</p>
+<p>💣 <strong>Jaderná dimenze</strong>: Indie od 1974 (operace Smiling Buddha), Pákistán od 1998. Obě země mají střely schopné zasáhnout hlavní města druhé strany. Kašmír = nejnebezpečnější ohnisko konfliktu na světě z hlediska jaderného rizika.</p>
+<div class="highlight">V roce 2019 Indie odvolala zvláštní statut Kašmíru (čl. 370 ústavy), rozdělila ho na dvě svazová území pod přímou centrální správou. Pákistán protestoval, mezinárodní společenství si téměř nevšimlo — přehlédnutý moment velkého geopolitického posunu.</div>
+</div>
+
+<div class="vy-section">
+<h3>🌏 Jihovýchodní Asie</h3>
+
+<p>Jihovýchodní Asie = 11 států (ASEAN + Timor-Leste), ~700 milionů lidí. Extrémně různorodý region — pevninský (Thajsko, Vietnam, Kambodža, Myanmar, Laos) + ostrovní (Indonésie, Filipíny, Malajsie, Singapur, Brunej).</p>
+<p>🇸🇬 <strong>Singapur</strong> (5,9 mil., 720 km²): Mikrostát — ale největší přepočítané bohatství v Asii. Strategická poloha na Malackém průlivu = křižovatka lodních cest Indický a Tichý oceán. Přístav č. 2 na světě (po Šanghaji). Nulová korupce, přísné zákony, excelentní vzdělání. Světové finanční centrum.</p>
+<p>🇮🇩 <strong>Indonésie</strong> (278 mil., 17 000+ ostrovů): 4. nejlidnatější stát světa. Jáva = jeden z nejhustěji osídlených ostrovů světa. Ropa, palmový olej (devastuje pralesy Bornea!), kaučuk, cín, nikl. Jakarta klesá do moře (záplavy) → přesun hlavního města do <strong>Nusantara</strong> (nové město v Borneu).</p>
+<p>🇻🇳 <strong>Vietnam</strong> (97 mil.): Ekonomický tygr. Samsung vyrábí 50 % svých telefonů ve Vietnamu. Intel, LG — továrny. Turismus: Ha Long Bay (UNESCO), Hoi An, Ho Či Minovo Město.</p>
+<p>🇹🇭 <strong>Thajsko</strong>: Turismus (Bangkok, Phuket, Chiang Mai). Automobilový průmysl (Toyota, Honda — regionální centrum). Rýže (5. exportér světa). Buddhistická monarchie.</p>
+</div>`,
+25:`<div class="vy-section">
+<h3>🐉 Přehled východní Asie</h3>
+
+<p>Východní Asie = Čína, Japonsko, Jižní Korea, Severní Korea, Tchaj-wan, Mongolsko. ~1,7 miliardy lidí. Tato oblast je ekonomicky nejdynamičtější na světě — za posledních 50 let se přesunulo centrum světové ekonomiky z Atlantiku do Pacifiku.</p>
+<div class="highlight">🌐 „Pacifické desetiletí": Čína, Japonsko, Korea, Taiwan — tyto čtyři ekonomiky dohromady tvoří ~25 % světového HDP. A roste to dál.</div>
+</div>
+
+<div class="vy-section">
+<h3>🇨🇳 Čína — druhá supervelmoc</h3>
+
+<p>Čína (1,4 mld.) = <strong>2. největší ekonomika světa</strong> (~18 bil. USD HDP). Vládne Čínská komunistická strana od 1949. Prezident Si Ťin-pching — nejmocnější vůdce od Mao Ce-tunga.</p>
+<p>🏭 <strong>„Továrna světa"</strong>: Čína vyrábí 28 % světové průmyslové produkce. Přístav Šanghaj = největší kontejnerový přístav světa. Nike, Apple, Ikea — vše se vyrábí v Číně. Ale mzdy rostou → výroba se přesouvá do Vietnamu, Bangladéše.</p>
+
+<p>💻 <strong>Technologická velmoc</strong>: Alibaba (e-commerce, větší než Amazon), Tencent (WeChat, hry — největší herní firma světa), Huawei (5G sítě — západ blokuje kvůli bezpečnosti), BYD (elektroauta — překonal Tesla v prodejích 2023!), DJI (drony — 70 % světového trhu), TikTok (ByteDance). <strong>Velká čínská firewall</strong> = čínský internet je oddělený — Google, Facebook, YouTube blokovány. Číňané mají vlastní ekvivalenty.</p>
+<p>🏗️ <strong>Páásová a cesta (Belt and Road Initiative)</strong>: Čínský plán investovat do infrastruktury v Asii, Africe, Evropě. Buduje přístavy, silnice, železnice, elektrárny. Kritici: „dluhová past" — státy se zadlužují u Číny, nemohou splácet, předávají strategická aktiva.</p>
+<p>⚠️ <strong>Problémy</strong>: Stárnutí populace (důsledek politiky jednoho dítěte), zadluženost místních vlád, nemovitostní krize (Evergrande), znečištění ovzduší (Peking, Šanghaj), geopolitické napětí s USA (tchajwanská otázka, Jihočínské moře).</p>
+<div class="highlight">📏 Čína postavila za posledních 30 let více infrastruktury než za celou předchozí historii: 40 000 km vysokorychlostních železnic (11× více než USA!), stovky letišť, přehrady, metro ve 30+ městech. Výsledek nesmírné koncentrace zdrojů a autoritativní rozhodnosti.</div>
+</div>
+
+<div class="vy-section">
+<h3>🇯🇵 Japonsko — tradice a inovace</h3>
+
+<p>Japonsko (125 mil., souostroví ~6 850 ostrovů) = <strong>3. největší ekonomika světa</strong>. Ohnivý kruh Pacifiku: 1 500 zemětřesení ročně, 110 aktivních sopek, tsunami (2011 → Fukushima).</p>
+<p>🚗 <strong>Průmysl</strong>: Toyota (2024 — největší automobilka světa, přes 10 mil. aut/rok), Honda, Nissan, Mazda, Subaru, Suzuki. Sony (elektronika, PlayStation), Panasonic, Canon, Nikon, Sharp. Nintendo (Mario, Zelda). Fanuc (průmyslové roboty — leader). Japonci vynalezli: walkman, Blu-ray, Shinkansen.</p>
+<p>🍣 <strong>Kultura</strong>: Sushi, ramen, manga, anime, haiku, zen, samurai, ikebana, origami, sumo. Japonská kultura dobyla svět — Nintendo, Pokemon, Studio Ghibli (Miyazaki), anime seriály, japonská architektura. Tokio (37 mil. v aglomeraci) = největší metropolitní oblast světa.</p>
+
+<p>⚠️ <strong>Problémy</strong>: Stárnutí — 30 % obyvatel nad 65 let (světový rekord!), extrémně nízká porodnost (~1,2 dítěte/žena), pracovní kultura (karoshi = smrt z přepracování), xenofobie (přijímá minimum imigrantů). Ekonomická stagnace od 90. let — „ztracená dekáda".</p>
+</div>
+
+<div class="vy-section">
+<h3>🇰🇷 Jižní Korea — z trosek na high-tech</h3>
+
+<p>Jižní Korea (52 mil., Soul 10 mil.) = „Korejský zázrak" (Han River Miracle). V roce 1960 = HDP nižší než Ghana. Dnes = HDP/obyvatele ~35 000 USD — bohatší než Španělsko nebo Itálie.</p>
+<p>📱 <strong>Chaeboly</strong> (obrovské rodinné konglomeráty): Samsung (22 % jihokorejského HDP — telefony, čipy, televize, lodě, pojišťovny, stavební firmy), Hyundai/Kia (3. největší automobilová skupina světa), LG, SK, Lotte. Čínský model s kapitalistickými chaeboly místo státních podniků.</p>
+
+<p>🎵 <strong>K-pop a kulturní export</strong>: BTS, BLACKPINK, EXO — jihokorejská hudba globální fenomén. „Parazit" (2019) = první neanglofonní film s Oscarem za nejlepší film. Netflix „Hra na oliheň" = nejsledovanější série v historii Netflixu. Korejská vlna (Hallyu) = kulturní soft power.</p>
+<p>🇰🇵 <strong>Severní Korea</strong> (25 mil., Kim Čong-un): Totalitní komunistická dynastická diktatura. Izolovaná, chudá (HDP ~1 800 USD/ob. — 20× méně než Jižní), ale má jaderné zbraně a mezikontinentální střely. Největší tajemství světa — málo víme o tom, co se uvnitř skutečně děje.</p>
+</div>`,
+26:`<div class="vy-section">
+<h3>🌎 Severní Amerika — přehled</h3>
+
+<p>Severní Amerika zahrnuje: USA, Kanada, Mexiko, státy Střední Ameriky (Guatemala až Panama), Karibik. Anglosaská Amerika (USA + Kanada) vs. Latinská Amerika (Mexiko + jih).</p>
+<p>🌍 <strong>Fyzickogeografické rysy</strong>: Skalisté hory (Rockies) na západě, Apalačské hory na východě, Veliké roviny (prairies/plains) uprostřed. Řeka Mississippi-Missouri = 2. nejdelší systém světa. Velká jezera (Superior, Michigan, Huron, Erie, Ontario) = 21 % světových povrchových sladkých vod.</p>
+</div>
+
+<div class="vy-section">
+<h3>🗽 USA — supervelmoc č. 1</h3>
+
+<p>USA (335 mil.) = <strong>největší ekonomika světa</strong> (~27 bil. USD = 25 % světového HDP). Federace 50 států + Washington D.C. (federální okrsek). Prezidentská republika.</p>
+<p>💻 <strong>Silicon Valley</strong> (Santa Clara/San Jose, Kalifornie): Apple, Google (Alphabet), Meta (Facebook, Instagram, WhatsApp), Amazon, Netflix, Tesla, Intel, NVIDIA, Cisco, eBay, Twitter/X, Uber, Lyft, Airbnb — vše odtud. Vytvořeno díky kombinaci Stanford University, venture kapitálu, imigrační politiky (mnoho zakladatelů jsou imigranti) a kultury experimentování.</p>
+
+<p>💰 <strong>Wall Street</strong> (New York City, Manhattan): NYSE (největší burza světa), NASDAQ (technologická burza), Goldman Sachs, JPMorgan, Citigroup, Morgan Stanley. Dolar = světová rezervní měna → USA může tisknou dolary bez inflačních dopadů jaké by měla jiná země.</p>
+<p>🎬 <strong>Hollywood</strong> (Los Angeles): Největší filmová továrna světa. Marvel, DC, Star Wars, Disney. USA dominuje globální zábavě — „soft power" větší než vojenská síla.</p>
+<p>🌾 <strong>Zemědělství</strong>: Střední západ (Corn Belt, Wheat Belt) = obilnice světa. Největší exportér zemědělských produktů. Průměrná americká farma = 180 ha (česká = 130 ha, ale v EU průměr je 17 ha!).</p>
+<p>🛢️ <strong>Fracking revoluce</strong>: Hydraulické štěpení břidlicových hornin → USA se stalo největším producentem ropy A plynu na světě (od 2018). Energetická nezávislost dosažena.</p>
+<div class="highlight">USA = vojenská velmoc č. 1. Výdaje na obranu: ~860 miliard USD/rok (2023) = 40 % světových vojenských výdajů. 750+ vojenských základen v 80 zemích. Letadlové lodě: 11 (zbytek světa dohromady má 12).</div>
+</div>
+
+<div class="vy-section">
+<h3>🇨🇦 Kanada — tichý obr</h3>
+
+
+<p>Kanada (40 mil., 10 mil. km²) = 2. největší stát světa. Hustota: 4 ob/km² — jedno z nejřidčeji osídlených zemí. 90 % obyvatel žije v 200 km pásku u americké hranice.</p>
+<p>🌲 <strong>Přírodní bohatství</strong>: Největší zásoby sladké vody světa (Velká jezera + tisíce jezer), obrovské lesy (boreální tajga — 25 % světových tajgových lesů), ropné písky Alberty (3. největší zásoby ropy světa), uran, diamanty, zlato, nikl.</p>
+<p>🌍 <strong>Multikulturalita</strong>: Jeden z největších příjemců imigrantů světa (~400 000/rok). Toronto = jedno z nejrozmanitějších měst světa (50 % obyvatel narozeno mimo Kanadu). Dva úřední jazyky: angličtina + francouzština (Quebec je kulturně francouzský → separatistické hnutí, referendum 1995 — těsně neprošlo).</p>
+</div>
+
+<div class="vy-section">
+<h3>🇲🇽 Mexiko a Střední Amerika</h3>
+
+<p>Mexiko (130 mil.) = 15. největší ekonomika světa. Sousedí s USA na severu — 80 % exportu jde do USA. USMCA (nástupce NAFTA) = volný obchod USA+Kanada+Mexiko.</p>
+<p>🏭 <strong>Maquiladory</strong> = průmyslové továrny na americké hranici. Americké firmy posílají součástky, Mexičané montují a posílají zpět. Ford, GM, BMW, Audi, Boeing, GE — všichni mají maquiladory. Levná práce + sousedství USA = magnetický efekt.</p>
+<p>⚠️ <strong>Kartely</strong>: Sinaloa kartel (Joaquín „El Chapo" Guzmán — nyní ve vězení v USA), Jalisco Nueva Generación, CJNG. Obchodují s fentanylem, kokainem, metamfetaminem do USA. Stát v některých regionech ztratil kontrolu — šerif, soudce, novinář = smrt, pokud se postaví kartelům.</p>
+<p>🌴 <strong>Kultura</strong>: Mayská (Chichén Itzá, Uxmal, Tikal — v Guatemale) a aztécká (Teotihuacán) civilizace — UNESCO. Día de los Muertos (UNESCO nehmotné dědictví). Tequila, mole, tamales, mariachi.</p>
+<p>🌿 <strong>Střední Amerika</strong>: 7 malých států (Guatemala, Belize, Honduras, El Salvador, Nicaragua, Kostarika, Panama). Kostarika = ekologický ráj — 25 % plochy chráněná příroda, 99 % elektřiny z OZE. Panama Canal = klíčová vodní cesta (zkratka z Atlantiku do Pacifiku).</p>
+</div>`,
+27:`<div class="vy-section">
+<h3>🌿 Jižní Amerika — fyzická geografie</h3>
+
+<p>Jižní Amerika (12 států, 440 mil. lidí, 17,8 mil. km²). Fyzickogeografické extrémy:</p>
+<ul class="vy-list">
+<li>🏔️ <strong>Andy</strong> = 2. nejvyšší pohoří světa (délkou nejdelší = 7 200 km!). Aconcagua 6 961 m = nejvyšší hora Ameriky. Sopky (Cotopaxi, Villarrica), zemětřesení.</li>
+<li>🌊 <strong>Amazonka</strong> = nejvodnatější řeka světa. Délka ~6 400 km, povodí 7 milionů km². 20 % veškeré sladké vody tekoucí do oceánů.</li>
+<li>🏜️ <strong>Atacama</strong> = nejsušší poušť světa (některá místa nedostala déšť nikdy měřeně). V Chile.</li>
+<li>🌿 <strong>Amazonie</strong> = největší tropický prales. 5,5 mil. km² — větší než Brazílie samotná (přesahuje do Bolívie, Peru, Kolumbie...).</li>
+<li>🧊 <strong>Tierra del Fuego</strong> = „Ohňová země" — nejjižnější kus pevniny. Sdílí ji Argentiny a Chile.</li>
+</ul>
+</div>
+
+<div class="vy-section">
+<h3>🇧🇷 Brazílie — obr Latinské Ameriky</h3>
+
+<p>Brazílie (215 mil.) = <strong>největší stát Jižní Ameriky</strong> (8,5 mil. km²) a 9. největší ekonomika světa. Jediný stát Jižní Ameriky, kde se mluví <strong>PORTUGALSKY</strong> (ostatní španělsky) — dědictví koloniální hranice (Treaty of Tordesillas 1494).</p>
+
+<p>🌴 <strong>Amazonie</strong>: 60 % Amazonie leží v Brazílii. „Plíce Země" — absorbují obrovské množství CO₂. Domov 3 milionů druhů živočichů, 40 000 druhů rostlin, 400+ domorodých kmenů (mnoho izolovaných = nechtějí kontakt se světem). Odlesňování je obrovský problém (za vlády Bolsonara se dramaticky zrychlilo, za Luly se zpomaluje).</p>
+<p>⚽ <strong>Kultura</strong>: Fotbal (5× mistři světa — rekord), karneval v Riu (největší festival světa — 2 miliony lidí denně po 5 dní!), samba, bossa nova, capoeira. Náboženství: 50 % katolíci (rychle klesá), 30 % evangelikálové (rychle roste — politický vliv).</p>
+<p>🔋 <strong>Obnovitelná energie</strong>: 85 % elektřiny z OZE (vodní + vítr + solár). Největší vodní elektrárna Jižní Ameriky: Itaipu na hranici s Paraguayí (dosud druhá největší světa). Bioetanol z cukrové třtiny — brazilská auta jezdí z části na biopalivo.</p>
+<p>⚠️ <strong>Problémy</strong>: Obrovská sociální nerovnost (Gini koeficient ~0,53 — jeden z nejvyšších světa), favelas, korupce (Petrobras/Lava Jato skandál), politická polarizace (Lula vs. Bolsonaro).</p>
+</div>
+
+<div class="vy-section">
+<h3>🏔️ Andské státy</h3>
+
+<p>🇵🇪 <strong>Peru</strong> (33 mil., Lima 11 mil.): Centrem Incké říše (Tawantinsuyu) — největší prekolumbovská říše Ameriky. Machu Picchu (inkuská citadela z 15. stol., 2 430 m n.m.) = nejnavštěvovanější památka Jižní Ameriky + UNESCO. Ekonomika: měď a zlato (těžba v Andách), rybolov (sardele — 2. největší exportér rybí mouky), turismus. Jazyk: španělština + keččuánština (Inků).</p>
+<p>🇧🇴 <strong>Bolívie</strong> (12 mil., La Paz 900 tis.): 2 hlavní města — La Paz (faktická, 3 650 m = 2. nejvýše položené hl. město světa) + Sucre (konstitucní). Nejchudší andský stát. Salar de Uyuni = největší solná pláň světa. Obrovské zásoby lithia (klíčové pro EV baterie — „Arabská Sáúdska Arábie lithia?"). Problém: těžit to šetrně a profitovat — ne opakovat naftovou past.</p>
+<p>🇨🇱 <strong>Chile</strong> (19 mil., Santiago 7 mil.): Nejbohatší stát Jižní Ameriky (HDP/ob. ~17 000 USD). Extrémně protáhlé (4 200 km × průměrně 180 km). Největší producent mědi světa (30 % světové produkce — Chuquicamata, největší povrchový důl světa). Víno (Maipo, Colchagua), losos (2. největší exportér), lithium (2. největší zásoby světa). Politika: od diktatury Pinocheta (1973–1990) k demokratické levici.</p>
+</div>
+
+<div class="vy-section">
+<h3>🇦🇷 Argentina a Guyana + Venezuela</h3>
+
+<p>🇦🇷 <strong>Argentina</strong> (46 mil., Buenos Aires 15 mil.): 2. největší stát J. Ameriky. Buenos Aires = „Paříž Jižní Ameriky" (architektura, tango, opera, kava). Pampas = obrovská zemědělská pláň (sója, kukuřice, pšenice, hovězí maso — Argentinci sní nejvíce hovězího na světě). Ekonomika: chronické krize — default 2001, 2018, 2023+. Inflace přes 200 % (2023–2024). Prezident Milei = radikální libertariánský experiment.</p>
+<p>🇻🇪 <strong>Venezuela</strong>: Kdysi nejbohatší stát J. Ameriky (ropa — 17 % světových zásob). Pod Chávestem + Madure kolaps: HDP klesl o 75 %, 8 milionů uprchlíků (2. největší uprchlická krize světa po Sýrii). Hyperinflace miliony procent. Autoritářský Maduro.</p>
+<p>🇨🇴 <strong>Kolumbie</strong>: Kafe (Kolumbijská káva UNESCO), tulipány, smaragdy. Dříve: kokainové kartely (Pablo Escobar). Dnes: mírová smlouva s FARC (2016), ale problémy přetrvávají. Cartagena = turistická perla.</p>
+</div>`,
+28:`<div class="vy-section">
+<h3>🦁 Afrika — přehled a základní fakta</h3>
+
+<p>Afrika je <strong>2. největší kontinent</strong> (30,3 mil. km² = 3× USA nebo celá Evropa × 3) a <strong>2. nejlidnatější</strong> (~1,4 miliardy, roste nejrychleji). 54 suverénních států. 2 000+ jazyků a etnických skupin.</p>
+<div class="highlight">⚠️ Africká velikost: Na Mercatorově mapě vypadá menší než Grónsko. Ve skutečnosti: do Afriky se vejde USA, Čína, Indie, Mexiko, Peru, Španělsko a Japonsko DOHROMADY. Je obrovská!</div>
+<p>🌍 <strong>Fyzickogeografické rysy</strong>: Sahara (největší horká poušť světa, 9,2 mil. km²). Kilimanjaro (5 895 m = nejvyšší hora Afriky, Tanzánie). Konžský prales (2. největší tropický prales světa). Nil (nejdelší nebo 2. nejdelší řeka světa — záleží na definici). Viktoriino jezero (největší tropické jezero světa). Velký příkopový propadlisin (East African Rift Valley) — Afrika se zde rozlamuje a za miliony let se oddělí Africký roh.</p>
+</div>
+
+<div class="vy-section">
+<h3>🏜️ Arabská (severní) Afrika</h3>
+
+<p>Sahara odděluje „arabskou Afriku" (sever) od „černé Afriky" (subsaharská). Severní Afrika = arabská kultura, islám, Středomoří.</p>
+<p>🇪🇬 <strong>Egypt</strong> (105 mil., Káhira 22 mil.): Nejstarší nepřetržitá civilizace světa (6 000+ let). Nil = záchrana Egypta — bez Nilu je Egypt poušť. Pyramidy v Gíze (UNESCO, jediný přeživší div starověkého světa). <strong>Suezský průplav</strong> (1869): 193 km, spojuje Středomoří s Rudým mořem, zkracuje cestu z Asie do Evropy o 7 000 km. 12 % světového obchodu. Blokáda Evergreenem (2021) stála světovou ekonomiku 10 mld. USD/den.</p>
+
+<p>🇲🇦 <strong>Maroko</strong> (37 mil.): Fosfáty — <strong>největší zásoby fosfátů na světě (70 %!)</strong> = klíčová surovina pro hnojiva. Zemědělství závisí na fosfátech — Maroko má strategický vliv na světovou potravinovou bezpečnost. Turismus (Marrákeš, Fez, Saharské duny). Výhodná poloha u Středomoří a Atlantiku.</p>
+<p>🇩🇿 <strong>Alžírsko</strong>: Největší africký stát rozlohou (2,4 mil. km²), ale Sahara tvoří 90 % území. 45 milionů lidí žijí v severním pásu. Ropa a plyn = základ ekonomiky.</p>
+</div>
+
+<div class="vy-section">
+<h3>🌍 Subsaharská Afrika</h3>
+
+<p>Subsaharská Afrika = ~50 států, ~900 mil. lidí. Nejpestřejší kulturně, jazykově i přírodně část světa.</p>
+<p>💎 <strong>Nerostné bohatství</strong>: Afrika je zásobárnou světa:</p>
+<ul class="vy-list">
+<li>🇨🇩 DRC (Demokratická republika Kongo) — 70 % světového kobaltu (klíčový pro baterie elektroaut!), koltan (pro elektroniku), diamanty, zlato</li>
+<li>🇿🇦 Jižní Afrika — zlatý (Johannesburg = nejbohatší město Afriky), platina (80 % světové produkce!), chróm, uhlí</li>
+<li>🇳🇬 Nigérie — největší africká ekonomika, ropa v Nigérijské deltě</li>
+<li>🇬🇭 Ghana — zlato, kakao (2. největší producent světa!), ropa</li>
+<li>🇪🇹 Etiopie — nejrychleji rostoucí velká ekonomika světa, ale káva (ODTUD pochází!)</li>
+</ul>
+<div class="highlight">Paradox: DRC má minerály za odhadovaných 24 BILIONŮ USD — ale průměrný příjem je 2,5 USD/den. Proč? Koloniální exploatace, korupce, nestabilita, těžba nadnárodních firem (zisky odtékají ven).</div>
+</div>
+
+<div class="vy-section">
+<h3>⚠️ Problémy a ✅ Potenciál Afriky</h3>
+
+<p>⚠️ <strong>Problémy</strong>: Chudoba (40 % subsaharské Afriky pod 2,15 USD/den). Nemoci (malárie — 600 000 mrtvých ročně, HIV v jižní Africe). Konflikty (DRC, Mali, Súdán, Sahel). Klimatická změna (Afrika bude nejvíce zasažena, ale nejméně přispívá k emisím). Mozková emigrace (nejkvalifikovanější odcházejí). Koloniální dluhy (finanční systémy nastaveny v zájmu Evropy).</p>
+<p>✅ <strong>Potenciál</strong>:</p>
+<ul class="vy-list">
+<li>👶 Nejmladší populace světa — průměrný věk 19 let. Demografická dividenda — pracovní síla budoucnosti</li>
+<li>📱 <strong>M-Pesa</strong> (Keňa, 2007) = mobilní bankovnictví přeskočilo banky. Bez bankovního účtu, přes SMS. Dnes používá 40 milionů lidí v Africe. Inovace ze Afriky!</li>
+<li>☀️ Obrovský potenciál solární energie (Sahara = největší sluneční kolektor na Zemi)</li>
+<li>🌾 Nevyužitá zemědělská půda (60 % světové nevyužité orné půdy je v Africe)</li>
+<li>🤝 AfCFTA (Africká kontinentální volná obchodní zóna, 2021) — největší volný obchodní blok světa rozlohou</li>
+</ul>
+<div class="priklad">Etiopie roste o 8–10 % ročně po desetiletí. H&M, Primark šijí v Addis Abebě. Letiště Bole (Addis Abeba) = největší hub v Africe. Etiopie = příklad, že Afrika se může rozvíjet — ale je potřeba mír a stabilita.</div>
+</div>`,
+29:`<div class="vy-section">
+<h3>🦘 Austrálie — kontinent a stát</h3>
+
+<p>Austrálie je unikátní: je zároveň nejmenším kontinentem A největším ostrovem světa. Rozloha 7,7 mil. km², ale pouze 26 milionů lidí (hustota: 3 ob/km² — méně než Mongolsko).</p>
+<p>🏙️ <strong>Osídlení</strong>: 90 % obyvatel žije v úzkém pásu jihovýchodního a východního pobřeží. Sydney (5,3 mil.), Melbourne (5 mil.), Brisbane (2,5 mil.), Perth (2,1 mil.), Adelaide (1,4 mil.). Střed a západ = téměř prázdný „Outback".</p>
+<p>🌡️ <strong>Klima</strong>: Extrémně různorodé — tropický sever (monsun, deštné pralesy — Daintree), suchý střed (Outback — Gibson Desert, Tanami Desert), mírný jihovýchod (Melbourne = čtyři roční období za jeden den!), středomořský jihozápad (Perth).</p>
+</div>
+
+<div class="vy-section">
+<h3>🦘 Unikátní fauna Austrálie</h3>
+
+<p>Austrálie se oddělila od Gondwany před ~80 miliony let → izolace → evoluce šla vlastní cestou → unikátní živočichové.</p>
+<p>🐾 <strong>Vačnatci</strong>: klokan (přes 50 druhů), koala, vombat, tasmánský čert, vakoveverky, bandikuti. Mají váček na přenášení mláďat (marsupials). Jinde na světě prakticky neexistují.</p>
+<p>🥚 <strong>Vejcorodí savci (monotremata)</strong>: ptakopysk a ježura = jediní savci na světě, kteří kladou vejce! Ptakopysk má také zobák kachny, ocas bobra, tlapky vydry, jedu v ostruhách noh a vnímá elektrická pole kořisti. Absolutně unikátní.</p>
+
+<p>🕷️ <strong>Nebezpečná fauna</strong>: Austrálie má 7 z 10 nejjedovatějších hadů světa (taipan vnitrozemský = nejjedovatější had světa), modropruhá chobotnice, krabí pavouk, medúza krabice (nejjedovatější živočich světa). Ale: více turistů zemře na krab v laguně než na hada.</p>
+<p>🌿 <strong>Unikátní flóra</strong>: Eukalypty (přes 700 druhů — dávají koaly potravu a zápalnost lesním požárům), akácie, stromové kapradiny. Nativní rostliny jsou přizpůsobeny ohni — semena klíčí teprve po požáru.</p>
+</div>
+
+<div class="vy-section">
+<h3>⛏️ Přírodní bohatství a ekonomika Austrálie</h3>
+
+<p>Austrálie je ekonomicky vyspělý stát (12. největší ekonomika světa). Klíčové: těžba nerostů, zemědělství, turismus.</p>
+<p>⛏️ <strong>Nerosty</strong>:</p>
+<ul class="vy-list">
+<li>🪨 Železná ruda — Pilbara (WA) = zásoby a export č. 1 světa. Rio Tinto, BHP Billiton. Zákazník: Čína (90 %).</li>
+<li>⚡ Lithium — Austrálie = největší producent světa (40 % světové produkce). Pro baterie EV!</li>
+<li>💛 Zlato — 3. největší producent světa. Kalgoorlie (WA) = super-pit, obrovský povrchový zlatý důl viditelný ze satelitu.</li>
+<li>☢️ Uran — 3. největší zásoby světa (Olympic Dam).</li>
+<li>🔥 Uhlí — klíčový exportní produkt (ale ekologicky kontroverzní).</li>
+</ul>
+<p>🐑 <strong>Zemědělství</strong>: Merino ovce (Australia = největší exportér vlny světa), hovězí maso (obrovská cattle ranches), pšenice (4. největší exportér světa), víno (Barossa Valley, Hunter Valley, Marlborough), cukr, bavlna.</p>
+<div class="highlight">Australská ekonomika = „štěstí na suroviny". Bohatství na ropě, uhlí, železu → rozvoj bez potřeby budovat průmysl. Ale: závislost na Číně (klíčový odběratel) = geopolitická zranitelnost. Co když Čína přestane nakupovat?</div>
+</div>
+
+<div class="vy-section">
+<h3>🏝️ Oceánie — ostrovy Tichého oceánu</h3>
+
+<p>Oceánie = Austrálie + Nový Zéland + tisíce ostrovů Tichého oceánu. Tři skupiny:</p>
+<p>🌺 <strong>Melanésie</strong> (= „tmavé ostrovy"): Papua Nová Guinea (PNG — 800+ jazyků! polovina světových jazyků je na tichomořských ostrovech), Šalomounovy ostrovy, Vanuatu, Nová Kaledonie (Francie), Fidži. PNG = 2. největší ostrov světa (Nová Guinea), nesmírná biodiverzita a kulturní rozmanitost.</p>
+<p>🌊 <strong>Mikronésie</strong> (= „malé ostrovy"): Guam (USA — vojenská základna), Federativní státy Mikronésie, Marshallovy ostrovy, Palau, Nauru (kdysi nejbohatší na světě díky fosfátům — nyní vyčerpáno a chudý).</p>
+<p>🌈 <strong>Polynésie</strong> (= „mnoho ostrovů"): Havaj (USA), Samoa, Tonga, Tahiti (Francie), Cook Islands, Nový Zéland. Polynéská kultura: navigace podle hvězd (přepluli Tichý oceán tisíce let bez kompasu!), tetování (polynéský vynález!), hula, moana.</p>
+<p>🇳🇿 <strong>Nový Zéland</strong> (5 mil.): Maorská kultura (haka — kdo neviděl, musí googlit!). Geotermální aktivita. Lord of the Rings a Hobbit natočeny zde. Vína z Marlborough (Sauvignon blanc).</p>
+
+<p>🌊 <strong>Klimatická hrozba</strong>: Tuvalu, Kiribati, Marshallovy ostrovy — průměrná výška nad mořem 1–2 m. Stoupání hladiny ohrožuje jejich existenci. Kiribati koupila půdu na Fidži. Jsou to první „klimatičtí uprchlíci" v dějinách — stát doslova zmizí pod vodou.</p>
+</div>
+
+<div class="vy-section">
+<h3>🌊 Světový oceán — základy</h3>
+
+<p>Oceány = 71 % povrchu Země, 97,5 % veškeré vody. Motor klimatu, zásobárna potravin, tepelný regulátor.</p>
+<p>🌊 <strong>Tichý oceán</strong>: Největší (~165 mil. km² = větší než všechny pevniny dohromady). Nejhlubší — Mariánský příkop 11 034 m (nejhlubší místo Země). Ohnivý kruh = 75 % světových sopek. El Niño a La Niña = klimatický jev ovlivňující počasí celé planety.</p>
+<p>🌊 <strong>Atlantský oceán</strong>: 2. největší. <strong>Golfský proud</strong> = teplý oceánský proud z Mexického zálivu → Karibik → Atlantik → Britské ostrovy + Skandinávie. Bez Golfského proudu by Londýn měl klima Varšavy a Oslo klima Severního pólu! Klimatická změna může Golfský proud zpomalit.</p>
+<p>🌊 <strong>Indický oceán</strong>: 3. největší. Monzunové větry. Tsunami 2004 (zemětřesení u Sumatry, 9,1 na Richterově škále, 230 000 mrtvých — největší přírodní katastrofa moderní doby).</p>
+<p>⚠️ <strong>Problémy oceánů</strong>: Plastový odpad — Velká tichomořská odpadková skvrna (1,6 mil. km² plastového odpadu — 3× Francie). Přelovení rybích populací (70 % je přeloveno nebo na hranici). Acidifikace (CO₂ → kyselina uhličitá → ničí koraly a mušle). Vzestup hladiny (tání Grónska + Antarktidy).</p>
+<div class="priklad">Mariánský příkop (Challengerova hlubina, 11 034 m): Více lidí bylo na Měsíci než na dně Mariánského příkopu! Tlak na dně = 1 100× tlak na hladině. Přesto tam žijí organismy — extremofily. Dno bylo navštíveno jen párkrát (James Cameron v ponorce 2012).</div>
+</div>`
+};
+
+
+
+const DATA = [
+  {n:1,emoji:"🌍",title:"Úvod do geografie",group:"fyzická",keys:["Geografie = věda o prostoru a vztazích na Zemi","Fyzická, humánní, regionální geografie","Globalizace = světové propojování","Globální problémy: klima, chudoba, migrace"],tip:"FHR = Fyzická, Humánní, Regionální. Jako tři kamarádky 🎀",q:{text:"Co studuje humánní geografie?",opts:["Hory a řeky","Počasí a klima","Lidi, sídla, hospodářství","Horniny a vulkány"],a:2,exp:"Humánní = o lidech ❤️ Obyvatelstvo, sídla, ekonomika, kultura."}},
+  {n:2,emoji:"🪐",title:"Planetární geografie",group:"fyzická",keys:["Rotace = otáčení kolem osy za 24 hod → den a noc","Revoluce = oběh kolem Slunce za 365,25 dne","Střídání ročních období z revoluce + náklonu osy","Tvar Země = geoid (mírně zploštělá koule)"],tip:"Rotace = točení sebe. Revoluce = obíhání. R-R. 🌞",q:{text:"Co způsobuje střídání dne a noci?",opts:["Revoluce kolem Slunce","Sluneční aktivita","Coriolisova síla","Rotace Země kolem vlastní osy"],a:3,exp:"Rotace! Země se otočí jednou za 24 hodin 🌍"}},
+  {n:3,emoji:"🗺️",title:"Kartografie",group:"fyzická",keys:["Mapa = zmenšený, symbolický obraz Země","Měřítko: 1:50 000 → 1 cm = 500 m","Vrstevnice = čáry stejné nadmořské výšky","Typy: topografická (terén), tematická (jeden jev)"],tip:"Větší číslo za lomítkem = větší plocha, méně detailů 📜",q:{text:"Co znamená měřítko 1 : 100 000?",opts:["1 cm = 100 m","1 cm = 10 km","1 cm = 1 km","1 cm = 1 mm"],a:2,exp:"1 cm na mapě = 100 000 cm = 1 km ve skutečnosti ✅"}},
+  {n:4,emoji:"🌋",title:"Litosféra a georeliéf",group:"fyzická",keys:["Litosféra = pevný obal, 70–150 km silný","Deskotektonika = pohyb litosférických desek","Endogenní = energie ze středu Země (sopky, zemětřesení)","Exogenní = energie ze Slunce (eroze, zvětrávání)"],tip:"Endo = dovnitř (endoskopie). Exo = ven (exoplanet). 🌋",q:{text:"Sopky a zemětřesení jsou...",opts:["Exogenními pochody","Hydrologickým cyklem","Atmosferickými jevy","Endogenními pochody"],a:3,exp:"Endogenní = energie z nitra Země 🌋"}},
+  {n:5,emoji:"☁️",title:"Atmosféra a hydrosféra",group:"fyzická",keys:["Vrstvy: troposféra → stratosféra → mezosféra...","Počasí = krátkodobý stav, klima = dlouhodobý průměr","Oběh vody: výpar → kondenzace → srážky → odtok","Problémy: skleníkový efekt, ozónová díra"],tip:"Troposféra = spodní vrstva, TAM je počasí a TAM žijeme ☁️",q:{text:"Kde vzniká počasí?",opts:["Stratosféra","Termosféra","Mezosféra","Troposféra"],a:3,exp:"Troposféra — nejspodnější vrstva, mraky a vítr jsou zde ☁️"}},
+  {n:6,emoji:"🌿",title:"Biosféra a pedosféra",group:"fyzická",keys:["Biosféra = celá sféra života na Zemi","Biomy: tundra, tajga, mírný les, step, tropický les...","Půda = horniny + humus + mikroorganismy + voda","Černozem = nejúrodnější (jižní Morava, stepi)"],tip:"Černozem = černá = hodně humusu = nejúrodnější 🌱",q:{text:"Která půda je nejúrodnější?",opts:["Podzol","Rendzina","Hnědozem","Černozem"],a:3,exp:"Černozem 🌱 Tmavá, bohatá humusem. Typická pro stepi."}},
+  {n:7,emoji:"🏞️",title:"Krajina a životní prostředí",group:"fyzická",keys:["Přírodní krajina = min. vliv člověka","Kulturní krajina = přetvořena člověkem (pole, města)","NP = národní park (přísná ochrana)","CHKO = méně přísná ochrana, lidé tam bydlí"],tip:"NP = přísné (NP Krkonoše, Šumava). CHKO = mírnější. 🏔️",q:{text:"Kulturní krajina se liší od přírodní...",opts:["Větší nadmořskou výškou","Absencí živočichů","Přítomností průmyslu","Zásahem člověka"],a:3,exp:"Kulturní = přetvořená člověkem 🏗️ Pole, silnice, přehrady."}},
+  {n:8,emoji:"👥",title:"Geografie obyvatelstva",group:"humánní",keys:["Světová populace: ~8 miliard (2024)","Přirozený přírůstek = porodnost − úmrtnost","Demografický přechod: 4 fáze od vysoké k nízké porodnosti","Emigrace = odejít, imigrace = přijít"],tip:"EMIgrace = EMIgrovat odtud. E = exit 🚪",q:{text:"Co je emigrace?",opts:["Příchod do nové země","Přirozený přírůstek","Sčítání lidu","Odchod z vlastní vlasti"],a:3,exp:"Emigrace = odejít ze své země 🛫"}},
+  {n:9,emoji:"🏙️",title:"Geografie sídel",group:"humánní",keys:["Urbanizace = přesun z venkova do měst","Suburbanizace = přesun na předměstí","Aglomerace = velkoměsto + okolní obce","Megalopolis = splynulé aglomerace (BosWash)"],tip:"Sub = mimo centrum. Bohatí za domkem, ale za prací do centra 🚗",q:{text:"Co je suburbanizace?",opts:["Zánik vesnic","Přesun do centra","Zakládání průmyslových měst","Odchod z center na předměstí"],a:3,exp:"Suburbanizace = předměstí. Klid + zahrada, ale dojíždění do práce 🏡"}},
+  {n:10,emoji:"🏛️",title:"Politická geografie",group:"humánní",keys:["Stát = území + obyvatelstvo + svrchovanost","Monarchie vs. republika","Unitární stát vs. federace","OSN, NATO, EU — klíčové organizace"],tip:"ČR = unitární. USA, Německo = federace (spolkové státy) 🇩🇪",q:{text:"ČR je příkladem...",opts:["Federace","Konfederace","Teokracie","Unitárního státu"],a:3,exp:"ČR je unitární stát 🇨🇿 Bez spolkových zemí."}},
+  {n:11,emoji:"🕌",title:"Náboženství a ohniska neklidu",group:"humánní",keys:["Křesťanství ~2,4 mld (největší)","Islám ~1,9 mld (Blízký východ, Afrika, Asie)","Hinduismus ~1,2 mld (Indie, Nepál)","Konflikty: Izrael–Palestina, Rusko–Ukrajina, Kašmír"],tip:"Pódium: 🥇Křesťanství 🥈Islám 🥉Hinduismus",q:{text:"Které náboženství má nejvíce věřících?",opts:["Islám","Buddhismus","Hinduismus","Křesťanství"],a:3,exp:"Křesťanství má ~2,4 miliardy věřících 🏆"}},
+  {n:12,emoji:"🏭",title:"Světové hospodářství",group:"humánní",keys:["Primér: zemědělství, těžba (rozvojové země)","Sekundér: průmysl, výroba","Terciér: služby (rozvinuté země — 60–70 %)","OPEC = organizace vývozců ropy"],tip:"Primér → továrna → kancelář. Jak roste ekonomika 📈",q:{text:"Do kterého sektoru patří zemědělství?",opts:["Terciér","Kvartér","Sekundér","Primér"],a:3,exp:"Primér = příroda 🌾 Zemědělství, rybolov, těžba."}},
+  {n:13,emoji:"🇨🇿",title:"Fyzická geografie Česka",group:"česko",keys:["ČR = vnitrozemský stát, 78 866 km²","Sněžka = 1 603 m (Krkonoše) — nejvyšší hora","Vltava = nejdelší řeka (430 km)","Hlavní rozvodí: Severní moře / Černé moře"],tip:"Sněžka = 1 603 m. Pamatuj si jako 1-6-0-3 ❄️",q:{text:"Jaká je nejvyšší hora ČR?",opts:["Praděd","Lysá hora","Ještěd","Sněžka"],a:3,exp:"Sněžka, 1 603 m n. m. 🏔️ Krkonoše, česko-polská hranice."}},
+  {n:14,emoji:"🚗",title:"Socioekonomika Česka",group:"česko",keys:["~10,9 milionu obyvatel, hustota ~140 ob/km²","Praha (1,4 mil.), Brno, Ostrava, Plzeň","Automobilový průmysl: Škoda (MB), Hyundai (Nošovice)","Člen EU, NATO, OECD — vysoce rozvinutá ekonomika"],tip:"Škoda = Mladá Boleslav. Hyundai = Nošovice u Ostravy 🚗",q:{text:"Kolik má ČR přibližně obyvatel?",opts:["7 milionů","13 milionů","8 milionů","10,9 milionu"],a:3,exp:"~10,9 milionu 🇨🇿 Jedno z menších států EU."}},
+  {n:15,emoji:"⚙️",title:"Moravskoslezský kraj",group:"česko",keys:["5 427 km², ~1,2 milionu obyvatel","Krajské město: Ostrava (2. největší v ČR)","Průmysl: hornictví (OKD), hutnictví (ArcelorMittal), Hyundai","Příroda: Beskydy, Jeseníky"],tip:"MSK = Ostrava. Ocel a uhlí → dnes IT a logistika 💻",q:{text:"Jaké je krajské město MSK?",opts:["Opava","Frýdek-Místek","Karviná","Ostrava"],a:3,exp:"Ostrava 🏙️ Druhé největší město ČR a krajské město MSK."}},
+  {n:16,emoji:"🏔️",title:"Střední Evropa",group:"evropa",keys:["ČR, SK, HU, PL, DE, AT, CH — jádro regionu","Německo = největší ekonomika EU","Polsko = největší ekonomika V4, rychlý růst","V4 = ČR + SK + HU + PL (Visegrádská skupina)"],tip:"V4 = spolupráce 4 zemí. Pojmenováno po hradu ve Visegrádu v Maďarsku 🤝",q:{text:"Která země má největší ekonomiku ve střední Evropě?",opts:["Slovensko","Maďarsko","Česká republika","Polsko"],a:3,exp:"Polsko 🇵🇱 38 milionů lidí, velký průmysl, dynamický rozvoj."}},
+  {n:17,emoji:"🗼",title:"Západní Evropa",group:"evropa",keys:["Francie = 5. ekonomika světa, turismus č. 1","UK: Brexit 2020, Londýn = finanční centrum Evropy","Benelux: Rotterdam = největší přístav Evropy","Brusel = sídlo EU a NATO"],tip:"Rotterdam = brána Evropy. Přes něj projde obrovské množství zboží 🚢",q:{text:"Největší finanční centrum Evropy?",opts:["Paříž","Frankfurt","Brusel","Londýn"],a:3,exp:"Londýn 🏦 I po Brexitu největší finanční centrum Evropy."}},
+  {n:18,emoji:"🎿",title:"Severní Evropa",group:"evropa",keys:["Norsko, Švédsko, Finsko, Dánsko + Island","Nejvyšší životní úroveň na světě (HDI)","Norsko: ropa ze Severního moře, suverénní fond","Island: geotermální energie, polární záře"],tip:"Norský fond = ~1,5 bilionu dolarů uložených pro budoucnost 💰",q:{text:"Čím je Norsko ekonomicky proslulé?",opts:["Turismem","Zemědělstvím","Automobilovým průmyslem","Těžbou ropy a zemního plynu"],a:3,exp:"Norsko má obrovské zásoby ropy v Severním moři 🛢️"}},
+  {n:19,emoji:"🍕",title:"Jižní Evropa",group:"evropa",keys:["Pyrenejský poloostrov: Španělsko + Portugalsko","Apeninský poloostrov: Itálie","Španělsko: olivy, citrusy, turismus, Barcelóna","Itálie: průmysl sever (Milán), turismus jih (Řím)"],tip:"Sever Itálie = bohatý průmysl. Jih = krásný ale chudší 🌊",q:{text:"Typické plodiny španělského zemědělství?",opts:["Banány a kakao","Brambory a řepa","Rýže a čaj","Olivy a citrusy"],a:3,exp:"Španělsko = přední producent oliv a citrusů v EU 🍊"}},
+  {n:20,emoji:"🕯️",title:"Jihovýchodní Evropa (Balkán)",group:"evropa",keys:["Rozpad Jugoslávie v 90. letech — série válek","Slovinsko = člen EU, nejbohatší balkánský stát","Řecko = turismus, finanční krize 2010","Rumunsko a Bulharsko = nejchudší státy EU"],tip:"Balkán = 'sud prachu Evropy'. Mnoho národů, jazyků, náboženství 🕯️",q:{text:"Co se stalo na Balkáně v 90. letech?",opts:["Válka o Malvíny","Perský záliv","Korejský konflikt","Rozpad Jugoslávie"],a:3,exp:"Rozpad Jugoslávie 1991–2001 ⚔️ Série válek, vznik 7 nových států."}},
+  {n:21,emoji:"🐻",title:"Východní Evropa a Rusko",group:"evropa",keys:["Rusko = největší stát světa, 17 mil. km²","144 milionů obyvatel, 11 časových pásem","Zásoby: ropa, plyn, diamanty, dřevo — největší na světě","Konflikt s Ukrajinou od 2014, plná invaze 2022"],tip:"Rusko = 1/8 světové pevniny. Ale ekonomika menší než Itálie 🛢️",q:{text:"Jakou rozlohu má Rusko?",opts:["9 mil. km²","22 mil. km²","12 mil. km²","17 mil. km²"],a:3,exp:"Rusko má ~17 milionů km² 🗺️ Největší stát světa."}},
+  {n:22,emoji:"🏜️",title:"Jihozápadní Asie",group:"svět",keys:["Turecko, Izrael, Saúdská Arábie, SAE, Katar...","Ropné velmoci: Saúdská Arábie, Kuvajt, SAE","Izrael–Palestina: konflikt od roku 1948","Tři světová náboženství vznikla zde"],tip:"Blízký východ = ropa + náboženství + konflikty. Ale i starověké civilizace 🌙",q:{text:"Které náboženství NEVZNIKLO na Blízkém východě?",opts:["Judaismus","Islám","Hinduismus","Křesťanství"],a:2,exp:"Hinduismus vznikl v Indii 🇮🇳 Islám, křesťanství i judaismus z Blízkého východu."}},
+  {n:23,emoji:"🌵",title:"Střední Asie a Zakavkazsko",group:"svět",keys:["Kazachstán, Uzbekistán, Turkmenistán, Tádžikistán, Kyrgyzstán","Arálské moře = ekologická katastrofa (zmizelo)","Zakavkazsko: Gruzie, Arménie, Ázerbájdžán","Náhorní Karabach = sporé území (válka 2020)"],tip:"Arálské moře = symbol ekologické katastrofy. Bylo 4. největší jezero světa 😢",q:{text:"Proč skoro zmizelo Arálské moře?",opts:["Globální oteplování","Zemětřesením","Těžbou nerostů","Odklonění řek pro zavlažování"],a:3,exp:"SSSR odváděl vodu na bavlníkové plantáže 🌿 Moře vyschlo — ekologická katastrofa."}},
+  {n:24,emoji:"🐘",title:"Jižní a jihovýchodní Asie",group:"svět",keys:["Indie = 1,44 mld ob., největší demokracie světa","Bangalore = IT centrum (indické Silicon Valley)","Indie vs. Pákistán: spor o Kašmír, jaderné zbraně","Singapur = city-state, nejbohatší HDP v Asii"],tip:"Singapur = přístav + finance + nulová korupce = bohatství 🇸🇬",q:{text:"Proč je Singapur ekonomicky silný?",opts:["Zásoby ropy","Zemědělství","Průmysl strojů","Strategická poloha a finance"],a:3,exp:"Singapur 🇸🇬 Přístav na křižovatce + finanční centrum = obrovské bohatství."}},
+  {n:25,emoji:"🐉",title:"Východní Asie",group:"svět",keys:["Čína = 2. největší ekonomika světa, 1,4 mld ob.","Politika jednoho dítěte → stárnutí populace","Japonsko = 3. ekonomika světa, stárnutí, robotika","Jižní Korea: Samsung, Hyundai, K-pop — Korejský zázrak"],tip:"Čína = továrna. Japonsko = laborka. Korea = K-pop + Samsung 🎵",q:{text:"Jak se nazývá fenomén rozvoje Jižní Koreje?",opts:["Korejský skok","Korejský boom","Korejský vzlet","Korejský zázrak"],a:3,exp:"Korejský zázrak 🇰🇷 Z chudé země na hi-tech velmoc za 70 let!"}},
+  {n:26,emoji:"🗽",title:"Severní a Střední Amerika",group:"svět",keys:["USA = 335 mil. ob., největší ekonomika světa","Silicon Valley, Wall Street, Hollywood — 3 pilíře moci","Kanada = 2. největší stát, zásoby nerostů","Mexiko: průmysl, drogové kartely"],tip:"Anglosaská Amerika = USA + Kanada. Latinská = Mexiko dál 🌎",q:{text:"Kde se nachází Silicon Valley?",opts:["Texas","New York","Florida","Kalifornie"],a:3,exp:"Silicon Valley v Kalifornii 🍎 Apple, Google, Meta, Tesla..."}},
+  {n:27,emoji:"🌿",title:"Jižní Amerika",group:"svět",keys:["Brazílie = 9. ekonomika světa, největší v J. Americe","Amazonie = největší tropický prales světa — plíce Země","Andské země: Chile, Peru, Bolívie, Kolumbie, Ekvádor","Argentina = 2. největší ekonomika, finanční krize"],tip:"Amazonie = plíce Země. Kácení = globální problém 🌳",q:{text:"Největší tropický prales světa?",opts:["Kongo","Borneo","Taiga","Amazonie"],a:3,exp:"Amazonie 🌿 5,5 mil. km² v Brazílii. Největší biodiverzita na Zemi."}},
+  {n:28,emoji:"🦁",title:"Afrika",group:"svět",keys:["2. největší kontinent, 54 států, ~1,4 mld ob.","Arabská Afrika (sever): Egypt, Maroko — islám","Subsaharská Afrika: chudší, nejrychlejší demografický růst","Problémy: chudoba, korupce, HIV/AIDS, sucho"],tip:"Afrika = nejmladší populace + nejrychlejší růst = potenciál 🌍",q:{text:"Kde leží poušť Sahara?",opts:["Jihovýchodní Afrika","Střední Afrika","Jihozápadní Afrika","Severní Afrika"],a:3,exp:"Sahara je v severní Africe 🏜️ Největší horká poušť světa."}},
+  {n:29,emoji:"🦘",title:"Austrálie, Oceánie a oceány",group:"svět",keys:["Austrálie = 6. největší stát, 26 mil. ob., suché klima","Zásoby: železná ruda, uhlí, zlato, zemní plyn","Oceánie: Melanésie, Mikronésie, Polynésie","Tichý oceán = největší (165 mil. km²), Mariánský příkop 11 034 m"],tip:"Tichý oceán > všechny pevniny dohromady. Mariánský příkop = nejhlubší místo Země 🌊",q:{text:"Který oceán je největší?",opts:["Atlantský","Antarktický","Indický","Tichý"],a:3,exp:"Tichý oceán 🌊 165 milionů km² — větší než všechny pevniny!"}}
+];
+
+const GROUPS={fyzická:{label:"🌍 Fyzická geografie",nums:"1–7"},humánní:{label:"👥 Humánní geografie",nums:"8–12"},česko:{label:"🇨🇿 Česko a místní region",nums:"13–15"},evropa:{label:"🌍 Evropa",nums:"16–21"},svět:{label:"🌏 Svět mimo Evropu",nums:"22–29"}};
+let quizScore=0,quizTotal=0,quizLives=3,quizIdx=0,quizOrder=[],quizAnswered=false;
+const activeVyklad={};
+
+function showSection(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(btn)btn.classList.add('active');
+}
+
+function buildCards(filter=''){
+  const container=document.getElementById('cards-container');
+  const fl=filter.toLowerCase();
+  let html='';let lastGroup='';
+  DATA.forEach((item,i)=>{
+    const match=!fl||item.title.toLowerCase().includes(fl)||item.keys.join(' ').toLowerCase().includes(fl);
+    if(!match)return;
+    if(item.group!==lastGroup){const g=GROUPS[item.group];html+=`<div class="group-label">${g.label} <span style="font-size:.7rem;color:#C99AB5;font-weight:400">(${g.nums})</span></div>`;lastGroup=item.group;}
+    const delay=(i%10)*0.04;
+    html+=`<div class="okruh-card" id="card-${item.n}" onclick="toggleCard(${item.n})" style="animation-delay:${delay}s">
+      <div class="card-head">
+        <div class="card-num-bubble">${item.n}</div>
+        <div class="card-emoji-big">${item.emoji}</div>
+        <div class="card-title-wrap"><div class="card-title-main">${item.title}</div><div class="card-title-sub">${item.keys.length} klíčových bodů · výklad dostupný</div></div>
+        <div class="card-arrow">›</div>
+      </div>
+      <div class="card-body">
+        <div class="key-tags">${item.keys.map(k=>`<span class="key-tag">${k}</span>`).join('')}</div>
+        <div class="trick-box">🎀 <strong>Trick na zapamatování:</strong> ${item.tip}</div>
+        <button class="more-btn" onclick="event.stopPropagation();toggleVyklad(${item.n})">📖 Chci výklad → klikni sem</button>
+        <div class="vyklad-panel" id="vyklad-${item.n}">${VYKLAD[item.n]||''}</div>
+      </div>
+    </div>`;
+  });
+  container.innerHTML=html||'<p style="color:#C99AB5;text-align:center;padding:2rem">Nic nenalezeno 🔍</p>';
+}
+
+function toggleCard(n){
+  const el=document.getElementById('card-'+n);
+  el.classList.toggle('open');
+}
+
+function toggleVyklad(n){
+  const panel=document.getElementById('vyklad-'+n);
+  if(!panel)return;
+  panel.classList.toggle('show');
+}
+
+function filterCards(val){buildCards(val)}
+
+const TAHAK_POPIS = {
+1:"Geografie zkoumá Zemi a vše na ní — přírodu i lidi. Dělí se na fyzickou (příroda), humánní (lidé a sídla) a regionální (konkrétní místa světa).",
+2:"Rotace = Země se otáčí kolem sebe za 24 hodin → střídají se den a noc. Revoluce = Země obíhá kolem Slunce za 365 dní → střídají se roční období.",
+3:"Mapa je zmenšený obraz Země. Měřítko říká, kolikrát je zmenšená (1:100 000 = 1 cm na mapě = 1 km ve skutečnosti). Vrstevnice = čáry stejné výšky.",
+4:"Litosféra je pevný obal Země rozlámaný na desky, které se pohybují. Sopky a zemětřesení vznikají na jejich okrajích — to jsou endogenní (vnitřní) pochody.",
+5:"Troposféra (0–12 km) je vrstva, kde žijeme a kde vzniká počasí. Počasí = co je teď venku. Klima = jaké počasí bývá průměrně za 30 let.",
+6:"Biosféra zahrnuje vše živé na Zemi. Černozem je nejúrodnější půda (tmavá, plná humusu) — najdeme ji na jižní Moravě a stepích celého světa.",
+7:"Přírodní krajina = téměř nedotčená člověkem (polární oblasti, pralesy). Kulturní krajina = přetvořená člověkem (pole, města, přehrady). NP chrání přísněji než CHKO.",
+8:"Světová populace je asi 8 miliard lidí. Přirozený přírůstek = porodnost minus úmrtnost. Emigrace = odejít z vlasti. Imigrace = přijít do nové země.",
+9:"Urbanizace = přesun lidí z venkova do měst (probíhá celý svět). Suburbanizace = bohatší lidé se stěhují z centra na předměstí za klidem a zahradou.",
+10:"Stát má tři znaky: území, obyvatelstvo a svrchovanost. ČR je unitární republika. USA nebo Německo jsou federace — skládají se ze samostatných spolkových zemí.",
+11:"Největší náboženství světa: 1. Křesťanství (~2,4 mld), 2. Islám (~1,9 mld), 3. Hinduismus (~1,2 mld). Klíčové konflikty: Izrael–Palestina, Rusko–Ukrajina, Kašmír.",
+12:"Ekonomika má tři sektory: primér (zemědělství a těžba), sekundér (průmysl a výroba), terciér (služby — banky, IT, obchod). Bohaté země dominují v terciéru.",
+13:"ČR je vnitrozemský stát ve středu Evropy o rozloze 78 866 km². Nejvyšší hora: Sněžka (1 603 m). Nejdelší řeka: Vltava (430 km). Rozvodí → vody tečou do Severního i Černého moře.",
+14:"ČR má ~10,9 milionu obyvatel. Největší města: Praha, Brno, Ostrava. Klíčový průmysl: automobilový (Škoda v Mladé Boleslavi, Hyundai v Nošovicích). Jsme v EU, NATO a OECD.",
+15:"MSK má ~1,2 milionu obyvatel, krajské město je Ostrava (2. největší v ČR). Historicky: hornictví (OKD) a hutnictví. Dnes: Hyundai, IT, logistika. Příroda: Beskydy a Jeseníky.",
+16:"Střední Evropa: ČR, Slovensko, Maďarsko, Polsko, Německo, Rakousko, Švýcarsko. Německo = největší ekonomika EU. V4 = ČR+SK+HU+PL, politická spolupráce čtyř zemí.",
+17:"Západ Evropy: Francie (5. ekonomika světa, turismus č. 1), UK (Londýn = největší finanční centrum Evropy i po Brexitu), Benelux (Rotterdam = největší přístav Evropy).",
+18:"Severní Evropa (Norsko, Švédsko, Finsko, Dánsko, Island) = nejvyšší životní úroveň na světě. Norsko bohatne z ropy v Severním moři a ukládá zisky do suverénního fondu.",
+19:"Jižní Evropa: Španělsko (olivy, citrusy, turismus, Barcelóna), Itálie (bohatý průmyslový sever vs. chudší turistický jih), Řecko (turismus, finanční krize 2010).",
+20:"Balkán = jihovýchodní Evropa. Rozpad Jugoslávie v 90. letech přinesl sérii válek a vznik 7 nových států. Dnes: Slovinsko v EU, Řecko v EU, ostatní státy mimo EU.",
+21:"Rusko = největší stát světa (17 milionů km², 11 časových pásem, 144 milionů obyvatel). Bohatství pochází ze surovin: ropa, plyn, diamanty. Od 2022 vede válku na Ukrajině.",
+22:"Jihozápadní Asie (Blízký východ): ropné velmoci (Saúdská Arábie, SAE), konflikt Izrael–Palestina od roku 1948, Turecko jako most Evropy a Asie. Tři světová náboženství vznikla zde.",
+23:"Střední Asie: 5 postsovětských republik (Kazachstán, Uzbekistán…). Arálské moře skoro zmizelo — SSSR odvedl jeho přítokové řeky na zavlažování bavlny. Největší ekologická katastrofa 20. stol.",
+24:"Indie = 1,44 mld obyvatel, největší demokracie světa, IT velmoc (Bangalore). Singapur = malý stát, ale nejbohatší v Asii díky strategické poloze a financím. Jihovýchodní Asie = Thajsko, Vietnam, Indonésie.",
+25:"Čína = 2. největší ekonomika světa, 1,4 mld obyvatel, továrna světa. Japonsko = 3. ekonomika, robotika a inovace. Jižní Korea = Korejský zázrak: z chudoby na hi-tech velmoc za 70 let.",
+26:"USA = největší ekonomika světa (Silicon Valley, Wall Street, Hollywood). Kanada = 2. největší stát světa, bohatství na surovinách. Mexiko: průmysl podél hranic s USA, problémy s kartely.",
+27:"Brazílie = největší stát Jižní Ameriky, 9. ekonomika světa. Amazonie = největší tropický prales světa, nazývají ho plícemi Země. Andy = druhé nejvyšší pohoří světa (délka 7 200 km).",
+28:"Afrika = 2. největší kontinent, 54 států, ~1,4 mld obyvatel. Arabská Afrika (sever) = islám, bohatší. Subsaharská Afrika = nejrychlejší demografický růst světa, ale i největší chudoba.",
+29:"Austrálie = 6. největší stát světa, 26 mil. obyvatel, zásoby nerostů. Tichý oceán = největší oceán na světě (165 mil. km², větší než všechny pevniny). Mariánský příkop = nejhlubší místo Země (11 034 m)."
+};
+
+function buildTahak(){
+  const container=document.getElementById('tahak-container');
+  const colors=['#FFF0F7','#FFE4F3','#FFD6EC','#FFE9F6','#FDF0F8'];
+  container.innerHTML=DATA.map((item,i)=>`
+    <div class="tahak-tile" style="background:${colors[i%colors.length]}">
+      <div class="tahak-num">Okruh ${item.n}</div>
+      <span class="tahak-emoji">${item.emoji}</span>
+      <div class="tahak-title">${item.title}</div>
+      <div class="tahak-key">${TAHAK_POPIS[item.n]}</div>
+    </div>`).join('');
+}
+
+function buildQuiz(){
+  quizOrder=DATA.map((_,i)=>i).sort(()=>Math.random()-.5);
+  quizIdx=0;quizScore=0;quizTotal=0;quizLives=3;quizAnswered=false;
+  renderQuiz();
+}
+
+function renderQuiz(){
+  const wrapper=document.getElementById('quiz-wrapper');
+  const hearts='❤️'.repeat(quizLives)+'🖤'.repeat(3-quizLives);
+  const progress=Math.round((quizIdx/DATA.length)*100);
+  if(quizIdx>=quizOrder.length||quizLives<=0){
+    const won=quizLives>0;
+    wrapper.innerHTML=`<div class="quiz-header"><div class="hearts">${hearts}</div><div class="score-info"><div class="score-big">${quizScore}/${quizTotal}</div><div class="score-label">správných</div></div><button class="reset-quiz-btn" onclick="buildQuiz()">Hrát znovu</button></div><div class="done-screen"><div class="done-emoji">${won?'🎉':'💔'}</div><div class="done-title">${won?'Zvládla jsi to!':'Příště to dáš!'}</div><div class="done-sub">${won?`Výborně Vanesso! Skóre: ${quizScore} / ${quizTotal} 🌸`:`Skóre: ${quizScore} / ${quizTotal}. Zkus to znovu, věřím ti! 💪`}</div><button class="done-btn" onclick="buildQuiz()">🎀 Znovu shufflovat</button></div>`;
+    if(won)confetti();
+    return;
+  }
+  const item=DATA[quizOrder[quizIdx]];const q=item.q;
+  const optsHtml=q.opts.map((o,i)=>`<button class="quiz-opt" id="opt-${i}" onclick="answerQuiz(${i})">${String.fromCharCode(65+i)}. ${o}</button>`).join('');
+  wrapper.innerHTML=`<div class="quiz-header"><div class="hearts">${hearts}</div><div class="score-info"><div class="score-big">${quizScore}/${quizTotal}</div><div class="score-label">správných</div></div><button class="reset-quiz-btn" onclick="buildQuiz()">Reset</button></div><div class="progress-wrap"><div class="progress-label"><span>Postup</span><span>${quizIdx}/${DATA.length}</span></div><div class="progress-track"><div class="progress-fill" style="width:${progress}%"></div></div></div><div class="quiz-card"><div class="quiz-topic">${item.emoji} Okruh ${item.n} — ${item.title}</div><div class="quiz-question">${q.text}</div><div class="quiz-opts">${optsHtml}</div><div class="quiz-feedback" id="q-feedback"></div><button class="quiz-next-btn" id="next-btn" onclick="nextQuiz()">Další otázka →</button></div>`;
+  quizAnswered=false;
+}
+
+function answerQuiz(chosen){
+  if(quizAnswered)return;
+  quizAnswered=true;quizTotal++;
+  const item=DATA[quizOrder[quizIdx]];const correct=item.q.a;
+  const opts=document.querySelectorAll('.quiz-opt');
+  opts.forEach(o=>o.disabled=true);
+  opts[correct].classList.add('correct');
+  if(chosen!==correct){opts[chosen].classList.add('wrong');quizLives--;}
+  else{quizScore++;confetti();}
+  const fb=document.getElementById('q-feedback');
+  if(chosen===correct){fb.className='quiz-feedback show ok';fb.innerHTML='✅ Správně! '+item.q.exp;}
+  else{fb.className='quiz-feedback show bad';fb.innerHTML='❌ Správná odpověď: <strong>'+item.q.opts[correct]+'</strong>. '+item.q.exp;}
+  document.getElementById('next-btn').classList.add('show');
+  const heartsEl=document.querySelector('.hearts');
+  if(heartsEl)heartsEl.textContent='❤️'.repeat(quizLives)+'🖤'.repeat(3-quizLives);
+}
+
+function nextQuiz(){quizIdx++;renderQuiz();}
+
+function confetti(){
+  const colors=['#FF6BAE','#FFB3D9','#FF3D8A','#FFD6EC','#FF8EC6','#fff'];
+  for(let i=0;i<30;i++){
+    setTimeout(()=>{
+      const p=document.createElement('div');p.className='confetti-piece';
+      p.style.cssText=`left:${Math.random()*100}vw;top:${Math.random()*30}vh;background:${colors[Math.floor(Math.random()*colors.length)]};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;border-radius:${Math.random()>.5?'50%':'3px'};animation-duration:${1+Math.random()}s;animation-delay:${Math.random()*.3}s`;
+      document.body.appendChild(p);setTimeout(()=>p.remove(),2000);
+    },i*40);
+  }
+}
+
+function buildParticles(){
+  const c=document.getElementById('particles');
+  const col=['#FF6BAE','#FFB3D9','#FFD6EC','#FF3D8A','#FFF0F7'];
+  for(let i=0;i<18;i++){
+    const p=document.createElement('div');p.className='particle';
+    const s=[6,10,14,18,8,12][Math.floor(Math.random()*6)];
+    p.style.cssText=`width:${s}px;height:${s}px;background:${col[Math.floor(Math.random()*col.length)]};left:${Math.random()*100}%;animation-duration:${12+Math.random()*18}s;animation-delay:${Math.random()*15}s`;
+    c.appendChild(p);
+  }
+}
+
+buildParticles();buildCards();buildTahak();buildQuiz();
+</script>
+</body>
+</html>
